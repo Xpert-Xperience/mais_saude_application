@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/principal.dart';
-import 'package:mais_saude/telas/confesq.dart';
 import 'package:mais_saude/telas/cadastro.dart';
+import 'package:mais_saude/telas/confesq.dart';
+import 'package:mais_saude/telas/principal.dart';
 import 'package:mais_saude/databaseService.dart';
 
 class login extends StatefulWidget {
@@ -14,7 +14,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final DatabaseService _databaseService = DatabaseService();
+  final DatabaseService _databaseService = DatabaseService(); // Instância da classe fictícia do banco de dados
 
   @override
   Widget build(BuildContext context) {
@@ -32,39 +32,39 @@ class _loginState extends State<login> {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: [ 
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 0, 0, 0),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+               Container(
+                      padding: EdgeInsets.all(0), 
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 0, 0, 0), 
+                        shape: BoxShape.rectangle, 
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
               ],
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 60), 
             const Text(
               'Seja Bem-Vindo!',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 130),
-            _inputField("Username", usernameController),
+            const SizedBox(height: 130), 
+            _inputField("Matrícula", usernameController),
             const SizedBox(height: 70),
-            _inputField("Password", passwordController, isPassword: true),
+            _inputField("Senha", passwordController, isPassword: true),
             const SizedBox(height: 50),
             _loginBtn(),
             const SizedBox(height: 20),
@@ -76,7 +76,7 @@ class _loginState extends State<login> {
   }
 
   Widget _inputField(String hintText, TextEditingController controller,
-      {bool isPassword = false}) {
+      {isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
@@ -107,9 +107,9 @@ class _loginState extends State<login> {
             MaterialPageRoute(builder: (context) => const principal()),
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('Invalid credentials'),
-            duration: Duration(seconds: 2),
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text('Credenciais inválidas'),
+            duration: const Duration(seconds: 2),
           ));
         }
       },
@@ -137,11 +137,11 @@ class _loginState extends State<login> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const confesq()),
+              MaterialPageRoute(builder: (context) => confesq()),
             );
           },
           child: const Text(
-            "Forgot Password?",
+            "Esqueceu a senha?",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
           ),
@@ -151,11 +151,11 @@ class _loginState extends State<login> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const cadastro()),
+              MaterialPageRoute(builder: (context) => cadastro()),
             );
           },
           child: const Text(
-            "Don't have an account? Sign Up",
+            "Não tem uma conta? Cadastre-se",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
           ),
