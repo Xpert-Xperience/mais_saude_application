@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # mais_saude
 
 A new Flutter project.
@@ -15,6 +16,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# praticas-profissionaisIII
+>>>>>>> a0a1f55cd91e0e788bba53e7993c8e721602f755
 =======
 # praticas-profissionaisIII
 >>>>>>> a0a1f55cd91e0e788bba53e7993c8e721602f755
