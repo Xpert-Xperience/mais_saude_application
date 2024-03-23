@@ -1,4 +1,3 @@
-
 class Usuario {
   String matricula;
   String nome;
@@ -13,4 +12,14 @@ class Usuario {
     required this.telefone,
     required this.senha,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'matricula': matricula,
+      'nome': nome,
+      'email': email,
+      'telefone': telefone,
+      'senha': senha,
+    };
+  }
 }
