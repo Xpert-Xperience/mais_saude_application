@@ -1,7 +1,7 @@
-import 'package:mais_saude/databaseHelper.dart';
+import 'package:mais_saude/services/database_service.dart';
 
-class DatabaseService {
-  final DatabaseHelper _databaseHelper = DatabaseHelper();
+class DatabaseHelper {
+  final DatabaseService _databaseHelper = DatabaseService();
 
   Future<bool> login(String username, String password) async {
     List<Map<String, dynamic>> users = await _databaseHelper.getUsers();
