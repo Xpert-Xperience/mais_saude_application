@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# mais_saude
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# praticas-profissionaisIII
->>>>>>> a0a1f55cd91e0e788bba53e7993c8e721602f755
-=======
-# praticas-profissionaisIII
->>>>>>> a0a1f55cd91e0e788bba53e7993c8e721602f755
+# Notas de mudança da branch
+A mudança ainda não terminou, faltam fazer os testes da aplicação
+Com nova disposição de diretórios o entendimento estará facilitado, documentar funções para facilitar trabalho em equipe
