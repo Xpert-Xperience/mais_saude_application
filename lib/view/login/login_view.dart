@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/confesq.dart';
-import 'package:mais_saude/telas/principal.dart';
-import 'package:mais_saude/databaseService.dart';
+import 'package:mais_saude/view/cadastro/cadastro_view.dart';
+import 'package:mais_saude/controller/login/login_controller.dart';
+import 'package:mais_saude/view/esqueceu_senha/confirmar_senha_view.dart';
 
-class login extends StatefulWidget {
-  const login({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<login> createState() => _loginState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _loginState extends State<login> {
+class _LoginViewState extends State<LoginView> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final DatabaseService _databaseService = DatabaseService(); // Instância da classe fictícia do banco de dados
+  final LoginController _controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +36,14 @@ class _loginState extends State<login> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                Container(
-                      padding: EdgeInsets.all(0), 
+                      padding: const EdgeInsets.all(0), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 0, 0, 0), 
                         shape: BoxShape.rectangle, 
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           ),
@@ -97,22 +96,7 @@ class _loginState extends State<login> {
 
   Widget _loginBtn() {
     return ElevatedButton(
-      onPressed: () async {
-        String username = usernameController.text;
-        String password = passwordController.text;
-        bool success = await _databaseService.login(username, password);
-        if (success) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const principal()),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: const Text('Credenciais inválidas'),
-            duration: const Duration(seconds: 2),
-          ));
-        }
-      },
+      onPressed: _controller.login,
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
         backgroundColor: Colors.black,
@@ -137,7 +121,7 @@ class _loginState extends State<login> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => confesq()),
+              MaterialPageRoute(builder: (context) => const ConfirmarEsqueceuSenha()),
             );
           },
           child: const Text(
@@ -151,7 +135,7 @@ class _loginState extends State<login> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => cadastro()),
+              MaterialPageRoute(builder: (context) => const CadastroView()),
             );
           },
           child: const Text(
