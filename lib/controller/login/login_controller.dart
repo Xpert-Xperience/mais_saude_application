@@ -17,7 +17,7 @@ class LoginController {
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         context as BuildContext,
-        MaterialPageRoute(builder: (context) => Principal()),
+        MaterialPageRoute(builder: (context) => const Principal()),
       );
     } else {
       // ignore: use_build_context_synchronously

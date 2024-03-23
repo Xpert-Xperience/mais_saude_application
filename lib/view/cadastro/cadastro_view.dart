@@ -3,7 +3,7 @@ import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
 
 class CadastroView extends StatefulWidget {
-  const CadastroView({Key? key}) : super(key: key);
+  const CadastroView({super.key});
 
   @override
   State<CadastroView> createState() => _CadastroViewState();

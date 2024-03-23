@@ -4,7 +4,7 @@ import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_senha_view.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
