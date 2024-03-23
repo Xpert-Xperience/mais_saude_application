@@ -74,7 +74,7 @@ class _CadastroViewState extends State<CadastroView> {
                 const SizedBox(height: 15),
                 _inputField("Confirmar Senha", _controller.confirmarSenhaController, isPassword: true),
                 const SizedBox(height: 30),
-                _cadastrarBtn(),
+                _cadastrarBtn(context),
                 const SizedBox(height: 20),
                 _loginText(),
                 const SizedBox(height: 23),
@@ -105,24 +105,26 @@ class _CadastroViewState extends State<CadastroView> {
     );
   }
 
-  Widget _cadastrarBtn() {
-    return ElevatedButton(
-      onPressed: _controller.cadastrarUsuario,
-      style: ElevatedButton.styleFrom(
-        shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
-        padding: const EdgeInsets.symmetric(vertical: 16),
+Widget _cadastrarBtn(BuildContext context) {
+  return ElevatedButton(
+    onPressed: () {
+      _controller.cadastrarUsuario(context);
+    },
+    style: ElevatedButton.styleFrom(
+      shape: const StadiumBorder(),
+      backgroundColor: Colors.black,
+      padding: const EdgeInsets.symmetric(vertical: 16),
+    ),
+    child: const SizedBox(
+      width: double.infinity,
+      child: Text(
+        "Cadastrar",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, color: Colors.white),
       ),
-      child: const SizedBox(
-        width: double.infinity,
-        child: Text(
-          "Cadastrar",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _loginText() {
     return GestureDetector(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/model/usuario.dart';
 import 'package:mais_saude/services/database_service.dart';
 import 'package:mais_saude/view/login/login_view.dart';
-import 'package:path/path.dart';
 
 class CadastroController {
   TextEditingController matriculaController = TextEditingController();
@@ -12,7 +11,7 @@ class CadastroController {
   TextEditingController senhaController = TextEditingController();
   TextEditingController confirmarSenhaController = TextEditingController();
 
-  void cadastrarUsuario() async {
+  void cadastrarUsuario(context) async {
     String matricula = matriculaController.text;
     String nome = nomeController.text;
     String email = emailController.text;
@@ -34,7 +33,7 @@ class CadastroController {
     );
 
     DatabaseService dbHelper = DatabaseService();
-    int userId = await dbHelper.insertUser(user as Map<String, dynamic>);
+    int userId = await dbHelper.insertUser(user.toMap());
 
     if (userId != 0) {
       print('User inserted with ID: $userId');
