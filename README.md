@@ -1,3 +1,2 @@
 # Notas de mudança da branch
-A mudança ainda não terminou, faltam fazer os testes da aplicação
-Com nova disposição de diretórios o entendimento estará facilitado, documentar funções para facilitar trabalho em equipe
+As alterações referentes a autenticação de usuario e cadastro de novos usuarios foram realizadas e essas funções foram habilitadas. A nova disposição de diretorio tera a funcao de ajudar a equipe a trabalharem de forma assincrona
