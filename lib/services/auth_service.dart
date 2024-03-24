@@ -5,8 +5,10 @@ class DatabaseHelper {
 
   Future<bool> login(String username, String password) async {
     List<Map<String, dynamic>> users = await _databaseHelper.getUsers();
-    for (Map<String, dynamic> user in users) {
-      if (user['matricula'] == username && user['senha'] == password) {
+   for (Map<String, dynamic> user in users) {
+      // Verifica se os dados recebidos correspondem ao usuário no banco de dados
+      if (user['matricula'].trim() == username.trim() &&
+          user['senha'] == password) {
         return true; // Username and password match
       }
     }
