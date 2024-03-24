@@ -2,14 +2,14 @@
 import 'package:path/path.dart' show join;
 import 'package:sqflite/sqflite.dart' show Database, getDatabasesPath, openDatabase;
 
-class DatabaseHelper {
-  static final DatabaseHelper _instance = DatabaseHelper._internal();
+class DatabaseService {
+  static final DatabaseService _instance = DatabaseService._internal();
 
-  factory DatabaseHelper() => _instance;
+  factory DatabaseService() => _instance;
 
   static Database? _database;
 
-  DatabaseHelper._internal();
+  DatabaseService._internal();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
