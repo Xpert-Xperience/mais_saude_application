@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/inicial.dart';
-import 'package:mais_saude/telas/login.dart';
+import 'package:mais_saude/view/cadastro/cadastro_view.dart';
+import 'package:mais_saude/view/login/login_view.dart';
 
 class Principal extends StatefulWidget {
   const Principal({super.key});
@@ -15,7 +14,7 @@ class _PrincipalState extends State<Principal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home', textAlign: TextAlign.center),
+        title: const Text('Home', textAlign: TextAlign.center),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -23,53 +22,53 @@ class _PrincipalState extends State<Principal> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.only(left: 8.0),
               child: Text('Olá, Lucas'),
             ),
-            SizedBox(height: 20),
-            Row(
+            const SizedBox(height: 20),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Próxima Consulta'),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
   child: Container(
     width: 308,
     height: 75,
-    padding: EdgeInsets.symmetric(horizontal: 8),
+    padding: const EdgeInsets.symmetric(horizontal: 8),
+    decoration: BoxDecoration(
+      border: Border.all(),
+      borderRadius: BorderRadius.circular(5),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Nome do Doutor'),
-        SizedBox(width: 40),
+        const Text('Nome do Doutor'),
+        const SizedBox(width: 40),
         Container(
           width: 1, 
           height: 40, 
           color: Colors.black, 
         ),
-        SizedBox(width: 40),
-        Text('Data'),
+        const SizedBox(width: 40),
+        const Text('Data'),
       ],
-    ),
-    decoration: BoxDecoration(
-      border: Border.all(),
-      borderRadius: BorderRadius.circular(5),
     ),
   ),
 ),
 
-            SizedBox(height:50),
+            const SizedBox(height:50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => login()),
+                    MaterialPageRoute(builder: (context) => const LoginView()),
                   ),
                   child: Column(
                     children: [
@@ -85,7 +84,7 @@ class _PrincipalState extends State<Principal> {
                          fit: BoxFit.contain, 
                        ),
                       ),
-                      Text('Fisioterapia',
+                      const Text('Fisioterapia',
                        style: TextStyle(
                       fontSize: 20, 
                       fontWeight: FontWeight.bold, 
@@ -97,7 +96,7 @@ class _PrincipalState extends State<Principal> {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => cadastro()),
+                    MaterialPageRoute(builder: (context) => const CadastroView()),
                   ),
                   child: Column(
                     children: [
@@ -113,7 +112,7 @@ class _PrincipalState extends State<Principal> {
                          fit: BoxFit.contain, 
                        ),
                       ),
-                        Text('Odontologia',
+                        const Text('Odontologia',
                        style: TextStyle(
                       fontSize: 20, 
                       fontWeight: FontWeight.bold, 
@@ -124,14 +123,14 @@ class _PrincipalState extends State<Principal> {
                 ),
               ],
             ),
-            SizedBox(height: 55),
+            const SizedBox(height: 55),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => login()),
+                    MaterialPageRoute(builder: (context) => const LoginView()),
                   ),
                   child: Column(
                     children: [
@@ -147,7 +146,7 @@ class _PrincipalState extends State<Principal> {
                          fit: BoxFit.contain, 
                        ),
                       ),
-                        Text('Clínico Geral',
+                        const Text('Clínico Geral',
                        style: TextStyle(
                       fontSize: 20, // Tamanho da fonte
                       fontWeight: FontWeight.bold, // Peso da fonte (negrito)
@@ -158,7 +157,7 @@ class _PrincipalState extends State<Principal> {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => login()),
+                    MaterialPageRoute(builder: (context) => const LoginView()),
                   ),
                   child: Column(
                     children: [
@@ -174,7 +173,7 @@ class _PrincipalState extends State<Principal> {
                          fit: BoxFit.contain, 
                         ),
                       ),
-                       Text('Psicologia',
+                       const Text('Psicologia',
                        style: TextStyle(
                       fontSize: 20, 
                       fontWeight: FontWeight.bold, 
@@ -211,19 +210,19 @@ class _PrincipalState extends State<Principal> {
             case 0:
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => login()),
+                MaterialPageRoute(builder: (context) => const LoginView()),
               );
               break;
             case 1:
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => principal()),
+                MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 2:
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => cadastro()),
+                MaterialPageRoute(builder: (context) => const CadastroView()),
               );
               break;
           }
