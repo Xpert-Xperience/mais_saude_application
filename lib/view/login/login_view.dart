@@ -13,59 +13,64 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final LoginController _controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: _page(),
+        child: _page(context),
       ),
     );
   }
 
-  Widget _page() {
+  Widget _page(BuildContext context) {
+    // Passando os controladores para o LoginController
+    final LoginController controller = LoginController(
+      usernameController: usernameController,
+      passwordController: passwordController,
+    );
+
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [ 
+          children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-               Container(
-                      padding: const EdgeInsets.all(0), 
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 0, 0, 0), 
-                        shape: BoxShape.rectangle, 
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
+                Container(
+                  padding: const EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
                     ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
               ],
             ),
-            const SizedBox(height: 60), 
+            const SizedBox(height: 60),
             const Text(
               'Seja Bem-Vindo!',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 130), 
+            const SizedBox(height: 130),
             _inputField("Matrícula", usernameController),
             const SizedBox(height: 70),
             _inputField("Senha", passwordController, isPassword: true),
             const SizedBox(height: 50),
-            _loginBtn(),
+            _loginBtn(context, controller),
             const SizedBox(height: 20),
             _extraText(),
           ],
@@ -94,9 +99,11 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _loginBtn() {
+  Widget _loginBtn(BuildContext context, LoginController controller) {
     return ElevatedButton(
-      onPressed: _controller.login,
+      onPressed: () {
+        controller.login(context);
+      },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
         backgroundColor: Colors.black,
