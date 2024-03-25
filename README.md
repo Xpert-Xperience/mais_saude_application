@@ -2,33 +2,37 @@
 
 ## Organização dos diretórios:
 
- - lib <br>
-    ├── controller <br>
-    |   ├── cadastro <br>
-    |   |   └── cadastro_controller.dart <br>
-    |   └── login <br>
-    |       └── login_controller.dart <br>
-    ├── model <br>
-    |   └── usuario.dart <br>
-    ├── services <br>
-    |   ├── auth_service.dart <br>
-    |   └── database_service.dart <br>
-    ├── views <br>
-    |   ├── cadastro <br>
-    |   |   └── cadastro_view.dart <br>
-    |   ├── esqueceu_senha <br>
-    |   |   ├── confcheck.dart <br>
-    |   |   ├── confirmar_esqueceu_senha_view.dart <br>
-    |   |   └── novaSenha.dart <br>
-    |   ├── inicio <br>
-    |   |   └── inicio_view.dart <br>
-    |   ├── login <br>
-    |   |   └── login_view.dart <br>
-    |   ├── perfil <br>
-    |   |   └── perfil.dart <br>
-    |   └── principal <br>
-    |       └── principal_view.dart <br>
-    └── main.dart <br>
+ - `lib/`: Contém o código-fonte do seu projeto.
+  - `controller/`: Controllers responsáveis pela lógica de negócio.
+    - `cadastro/`: Contém o controller para cadastro.
+      - `cadastro_controller.dart`
+    - `login/`: Contém o controller para login.
+      - `login_controller.dart`
+
+  - `model/`: Models representando a estrutura de dados.
+    - `usuario.dart`: Modelo para usuário.
+
+  - `services/`: Serviços utilizados no projeto.
+    - `auth_service.dart`: Serviço de autenticação.
+    - `database_service.dart`: Serviço de acesso ao banco de dados.
+
+  - `views/`: Telas e componentes visuais.
+    - `cadastro/`: Telas relacionadas ao cadastro.
+      - `cadastro_view.dart`: View para cadastro.
+    - `esqueceu_senha/`: Telas relacionadas à recuperação de senha.
+      - `confcheck.dart`: Componente para confirmação.
+      - `confirmar_esqueceu_senha_view.dart`: View para confirmar esqueceu a senha.
+      - `novaSenha.dart`: View para nova senha.
+    - `inicio/`: Telas relacionadas à tela inicial.
+      - `inicio_view.dart`: View para a tela inicial.
+    - `login/`: Telas relacionadas ao login.
+      - `login_view.dart`: View para o login.
+    - `perfil/`: Telas relacionadas ao perfil do usuário.
+      - `perfil.dart`: View para o perfil do usuário.
+    - `principal/`: Telas principais do aplicativo.
+      - `principal_view.dart`: View principal.
+
+- `main.dart`: Arquivo principal do aplicativo.
 
     ## Sobre o funcionamento do projeto:
     Ficamos acordados de criar uma branch para cada tela a ser implementada.
