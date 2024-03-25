@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/inicial.dart';
 import 'package:mais_saude/telas/login.dart';
 
 class principal extends StatefulWidget {

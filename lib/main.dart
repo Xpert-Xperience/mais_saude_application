@@ -3,6 +3,7 @@ import 'package:mais_saude/telas/cadastro.dart';
 import 'package:mais_saude/telas/confesq.dart';
 import 'package:mais_saude/telas/inicial.dart';
 import 'package:mais_saude/telas/login.dart';
+import 'package:mais_saude/telas/novaSenha.dart';
 import 'package:mais_saude/telas/principal.dart';
 
 void main() {
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
         ),
          const Scaffold(
           body: principal(),
+        ),
+        const Scaffold(
+          body: novasenha(),
         ),
       ]
      )

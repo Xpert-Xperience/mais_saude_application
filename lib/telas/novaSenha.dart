@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/novaSenha.dart';
 
-class confesq extends StatefulWidget {
-  const confesq({super.key});
+class novasenha extends StatefulWidget {
+  const novasenha({super.key});
 
   @override
-  State<confesq> createState() => _confesqState();
+  State<novasenha> createState() => _novasenhaState();
 }
 
-class _confesqState extends State<confesq> {
+class _novasenhaState extends State<novasenha> {
   @override
   Widget build(BuildContext context) {
      return Scaffold(
@@ -18,7 +17,7 @@ class _confesqState extends State<confesq> {
       ),
     );
   }
-
+  
   Widget _page() {
     return Padding(
       padding: const EdgeInsets.all(40.0),
@@ -53,16 +52,13 @@ class _confesqState extends State<confesq> {
             ),
             const SizedBox(height: 60), 
             const Text(
-              'Esqueceu a',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600),
-            ),const Text(
-              'Senha?',
+              'Nova senha',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600),
             ),
+            SizedBox(height: 40),
             const Text(
-              'Digite seu email utilizado no cadastro para receber um \nlink de recuperação',
+              'Redefina sua senha',
               textAlign: TextAlign.start,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
@@ -72,7 +68,20 @@ class _confesqState extends State<confesq> {
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  labelText: 'E-mail',
+                  labelText: 'Digite sua senha',
+                  labelStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w400, color: Colors.black),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
+                  contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.only(left: 0, right: 0), 
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: 'Digite a senha novamente',
                   labelStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w400, color: Colors.black),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
                   contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
