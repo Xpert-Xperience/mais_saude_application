@@ -34,6 +34,28 @@
 
 - `main.dart`: Arquivo principal do aplicativo.
 
-    ## Sobre o funcionamento do projeto:
-    Ficamos acordados de criar uma branch para cada tela a ser implementada.
-    Essa decisão vem para que possamos trabalhar de forma assíncrona sem causar-mos erros nos trabalhos dos outros
+## Sobre o funcionamento do projeto:
+  Ficamos acordados de criar uma branch para cada tela a ser implementada.
+  Essa decisão vem para que possamos trabalhar de forma assíncrona sem causar-mos erros nos trabalhos dos outros
+
+## Sobre as funcionalidades já implementadas:
+
+  ### Cadastro
+
+  - [x] Página de cadastro com formulário.
+  - [x] Integração com o serviço de autenticação para criar novos usuários.
+
+  ### Login
+
+  - [x] Página de login com campos de usuário e senha.
+  - [x] Autenticação de usuário com o serviço de autenticação.
+
+  ### Recuperação de senha
+  
+  - [x] Página de "esqueci minha senha"
+  - [x] Página de "criar nova senha"
+
+  ### Principal
+  
+  - [x] Página principal da aplicação com botões
+  - [x] Página principal com botão de página de perfil
