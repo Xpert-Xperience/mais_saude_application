@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/login/login_view.dart';
 
 class NovaSenha extends StatefulWidget {
   const NovaSenha({super.key});
@@ -90,11 +91,11 @@ class _NovaSenhaState extends State<NovaSenha> {
             ),
             SizedBox(height: 60), 
             Center(
-              child: ElevatedButton(
+            child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const NovaSenha()),
+                MaterialPageRoute(builder: (context) => const LoginView()),
               );
             
                 },

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/login.dart';
-import 'package:mais_saude/telas/principal.dart';
+import 'package:mais_saude/view/principal/principal_view.dart';
 
-class perfil extends StatefulWidget {
-  const perfil({super.key});
+class Perfil extends StatefulWidget {
+  const Perfil({super.key});
 
   @override
-  State<perfil> createState() => _perfilState();
+  State<Perfil> createState() => _PerfilState();
 }
 
-class _perfilState extends State<perfil> {
+class _PerfilState extends State<Perfil> {
  double displayHeight() => MediaQuery.of(context).size.height;
   double displayWidth() => MediaQuery.of(context).size.width;
 
@@ -129,19 +128,19 @@ onTap: (index) {
             case 0:
             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const principal()),
+                MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 1:
              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const principal()),
+                MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 2:
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const perfil()),
+                MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
           }
