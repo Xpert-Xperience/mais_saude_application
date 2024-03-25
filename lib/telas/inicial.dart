@@ -55,7 +55,7 @@ class _inicialState extends State<inicial> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const login(key: null,)),
+                MaterialPageRoute(builder: (context) => const login()),
               );
             },
         style: ButtonStyle(

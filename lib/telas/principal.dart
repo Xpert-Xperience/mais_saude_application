@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/inicial.dart';
 import 'package:mais_saude/telas/login.dart';
+import 'package:mais_saude/telas/perfil.dart';
 
 class principal extends StatefulWidget {
   const principal({super.key});
@@ -74,11 +74,11 @@ class _principalState extends State<principal> {
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 140,
+                        height: 110,
                         decoration: BoxDecoration(
                           border: Border.all(),
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
                          "assets/fisioterapia.png", 
@@ -102,11 +102,11 @@ class _principalState extends State<principal> {
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 140,
+                        height: 110,
                         decoration: BoxDecoration(
                           border: Border.all(),
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
                          "assets/dentista.png", 
@@ -136,11 +136,11 @@ class _principalState extends State<principal> {
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 140,
+                        height: 110,
                         decoration: BoxDecoration(
                           border: Border.all(),
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
                          "assets/plus.png", 
@@ -163,11 +163,11 @@ class _principalState extends State<principal> {
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 140,
+                        height: 110,
                         decoration: BoxDecoration(
                           border: Border.all(),
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
                          "assets/psico.png", 
@@ -190,6 +190,7 @@ class _principalState extends State<principal> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -209,21 +210,21 @@ class _principalState extends State<principal> {
          
           switch (index) {
             case 0:
-              Navigator.pushReplacement(
+            Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => login()),
+                MaterialPageRoute(builder: (context) => const principal()),
               );
               break;
             case 1:
-              Navigator.pushReplacement(
+             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => principal()),
+                MaterialPageRoute(builder: (context) => const principal()),
               );
               break;
             case 2:
-              Navigator.pushReplacement(
+                Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => cadastro()),
+                MaterialPageRoute(builder: (context) => const perfil()),
               );
               break;
           }

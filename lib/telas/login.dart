@@ -37,7 +37,7 @@ class _loginState extends State<login> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                Container(
-                      padding: EdgeInsets.all(0), 
+                      padding: EdgeInsets.only(left: 0), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 0, 0, 0), 
                         shape: BoxShape.rectangle, 

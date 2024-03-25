@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/telas/cadastro.dart';
+import 'package:mais_saude/telas/confcheck.dart';
 import 'package:mais_saude/telas/confesq.dart';
 import 'package:mais_saude/telas/inicial.dart';
 import 'package:mais_saude/telas/login.dart';
+import 'package:mais_saude/telas/novasenha.dart';
+import 'package:mais_saude/telas/perfil.dart';
 import 'package:mais_saude/telas/principal.dart';
 
 void main() {
@@ -39,6 +42,15 @@ class MyApp extends StatelessWidget {
         ),
          const Scaffold(
           body: principal(),
+        ),
+        const Scaffold(
+          body: perfil(),
+        ),
+         const Scaffold(
+          body: confcheck(),
+        ),
+        const Scaffold(
+          body: novasenha(),
         ),
       ]
      )
