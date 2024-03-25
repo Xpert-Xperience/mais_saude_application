@@ -38,7 +38,7 @@ Widget _page() {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           size: 25,
@@ -65,20 +65,20 @@ const SizedBox(height: 60),
               textAlign: TextAlign.start,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
-             SizedBox(height: 60), 
+             const SizedBox(height: 60), 
             Padding(
-              padding: EdgeInsets.only(left: 0, right: 0), 
+              padding: const EdgeInsets.only(left: 0, right: 0), 
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: 'E-mail',
-                  labelStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w400, color: Colors.black),
+                  labelStyle: const TextStyle(fontSize: 22, fontWeight: FontWeight.w400, color: Colors.black),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
-                  contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 ),
               ),
             ),
-            SizedBox(height: 60), 
+            const SizedBox(height: 60), 
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -88,17 +88,17 @@ const SizedBox(height: 60),
               );
 },
                 style: ElevatedButton.styleFrom(
-                minimumSize: Size(300, 50),
+                minimumSize: const Size(300, 50),
                  backgroundColor: Colors.black
               ),
-              child: Text(
+              child: const Text(
                 'Confirmar',
-                style: TextStyle(fontSize: 22, color: const Color.fromARGB(255, 255, 255, 255)), 
+                style: TextStyle(fontSize: 22, color: Color.fromARGB(255, 255, 255, 255)), 
               ),
               ),
             ),
-            SizedBox(height: 50,),
-            Center(
+            const SizedBox(height: 50,),
+            const Center(
               child:  Text(
                 'Cancelar',
                 style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 20, 20, 20)), 

@@ -26,27 +26,27 @@ class _PerfilState extends State<Perfil> {
               Expanded(
                 child: Container(
                   color: Colors.white,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 60),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 60),
+                        const SizedBox(height: 60),
                         _buildTextField("Email", "chiquin@gmail.com"),
                         _buildTextField("Matrícula", "123456"),
                         _buildTextField("Celular", "85998876543"),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Center(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                              minimumSize: Size(150, 40),
+                              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                              minimumSize: const Size(150, 40),
                             ),
                             onPressed: () {
                               // Adicione aqui a lógica para a ação do botão "Editar"
                             },
-                            child: Text(
+                            child: const Text(
                               'Editar',
                               style: TextStyle(fontSize: 20, color: Colors.white),
                             ),
@@ -62,7 +62,7 @@ class _PerfilState extends State<Perfil> {
           Positioned(
             top: displayHeight() / 7 + 167 + 20,
             left: displayWidth() / 1.52 - 167 / 2, 
-            child: Center(
+            child: const Center(
               child: Text(
                 'Erick',
                 style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold,),
@@ -75,7 +75,7 @@ class _PerfilState extends State<Perfil> {
             child: Container(
               width: 167, 
               height: 156, 
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.grey, 
                 image: DecorationImage(
@@ -90,12 +90,12 @@ class _PerfilState extends State<Perfil> {
             top: 20,
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 55, 47, 47),
+                color: const Color.fromARGB(255, 55, 47, 47),
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 color: Colors.white,
                 onPressed: () {
                   Navigator.pop(context);
@@ -155,13 +155,13 @@ onTap: (index) {
       children: [
         Text(
           labelText,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10), 
+        const SizedBox(height: 10), 
         Container(
           width: 400, 
           height: 45, 
-          margin: EdgeInsets.symmetric(vertical: 5), 
+          margin: const EdgeInsets.symmetric(vertical: 5), 
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 255, 255, 255), 
             borderRadius: BorderRadius.circular(10), 
@@ -170,7 +170,7 @@ onTap: (index) {
           child: Center(
             child: Text(
               value, 
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ),
