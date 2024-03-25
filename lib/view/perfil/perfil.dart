@@ -9,7 +9,7 @@ class Perfil extends StatefulWidget {
 }
 
 class _PerfilState extends State<Perfil> {
- double displayHeight() => MediaQuery.of(context).size.height;
+  double displayHeight() => MediaQuery.of(context).size.height;
   double displayWidth() => MediaQuery.of(context).size.width;
 
   @override

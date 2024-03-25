@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/view/perfil/perfil.dart';
 
 class Principal extends StatefulWidget {
   const Principal({super.key});
@@ -222,7 +223,7 @@ class _PrincipalState extends State<Principal> {
             case 2:
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const CadastroView()),
+                MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
           }
