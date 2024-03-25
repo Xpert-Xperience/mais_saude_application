@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/login.dart';
+import 'package:mais_saude/view/cadastro/cadastro_view.dart';
+import 'package:mais_saude/view/login/login_view.dart';
 
 // ignore: camel_case_types
 class inicial extends StatefulWidget {
@@ -55,7 +55,7 @@ class _inicialState extends State<inicial> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const login()),
+                MaterialPageRoute(builder: (context) => const LoginView(key: null,)),
               );
             },
         style: ButtonStyle(
@@ -79,7 +79,7 @@ class _inicialState extends State<inicial> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const cadastro()),
+                MaterialPageRoute(builder: (context) => const CadastroView()),
               );
             },
         style: ButtonStyle(

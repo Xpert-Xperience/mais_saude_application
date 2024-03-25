@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/login.dart';
-import 'package:mais_saude/databaseHelper.dart';
+import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
 
-class cadastro extends StatefulWidget {
-  const cadastro({Key? key}) : super(key: key);
+class CadastroView extends StatefulWidget {
+  const CadastroView({super.key});
 
   @override
-  State<cadastro> createState() => _cadastroState();
+  State<CadastroView> createState() => _CadastroViewState();
 }
 
-class _cadastroState extends State<cadastro> {
-  TextEditingController matriculaController = TextEditingController();
-  TextEditingController nomeController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController telefoneController = TextEditingController();
-  TextEditingController senhaController = TextEditingController();
-  TextEditingController confirmarSenhaController = TextEditingController();
+class _CadastroViewState extends State<CadastroView> {
+  final CadastroController _controller = CadastroController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,19 +62,19 @@ class _cadastroState extends State<cadastro> {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 15),
-                _inputField("Matrícula", matriculaController),
+                _inputField("Matrícula", _controller.matriculaController),
                 const SizedBox(height: 15),
-                _inputField("Nome", nomeController),
+                _inputField("Nome", _controller.nomeController),
                 const SizedBox(height: 15),
-                _inputField("E-mail", emailController),
+                _inputField("E-mail", _controller.emailController),
                 const SizedBox(height: 15),
-                _inputField("Telefone", telefoneController),
+                _inputField("Telefone", _controller.telefoneController),
                 const SizedBox(height: 15),
-                _inputField("Senha", senhaController, isPassword: true),
+                _inputField("Senha", _controller.senhaController, isPassword: true),
                 const SizedBox(height: 15),
-                _inputField("Confirmar Senha", confirmarSenhaController, isPassword: true),
+                _inputField("Confirmar Senha", _controller.confirmarSenhaController, isPassword: true),
                 const SizedBox(height: 30),
-                _cadastrarBtn(),
+                _cadastrarBtn(context),
                 const SizedBox(height: 20),
                 _loginText(),
                 const SizedBox(height: 23),
@@ -110,67 +105,31 @@ class _cadastroState extends State<cadastro> {
     );
   }
 
-  void _cadastrarUsuario() async {
-    String matricula = matriculaController.text;
-    String nome = nomeController.text;
-    String email = emailController.text;
-    String telefone = telefoneController.text;
-    String senha = senhaController.text;
-    String confirmarSenha = confirmarSenhaController.text;
-
-    if (senha != confirmarSenha) {
-      // Handle password mismatch
-      return;
-    }
-
-    Map<String, dynamic> user = {
-      'matricula': matricula,
-      'nome': nome,
-      'email': email,
-      'telefone': telefone,
-      'senha': senha,
-    };
-
-    DatabaseHelper dbHelper = DatabaseHelper();
-    int userId = await dbHelper.insertUser(user);
-
-    if (userId != 0) {
-      print('User inserted with ID: $userId');
-
-      // Print all users in the database
-      await dbHelper.printUsers();
-
-      // User inserted successfully, navigate to login screen
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const login(key: ValueKey('login_screen'))));
-    } else {
-      print('Failed to insert user');
-      // Handle failure to insert user
-    }
-  }
-
-  Widget _cadastrarBtn() {
-    return ElevatedButton(
-      onPressed: _cadastrarUsuario,
-      style: ElevatedButton.styleFrom(
-        shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
-        padding: const EdgeInsets.symmetric(vertical: 16),
+Widget _cadastrarBtn(BuildContext context) {
+  return ElevatedButton(
+    onPressed: () {
+      _controller.cadastrarUsuario(context);
+    },
+    style: ElevatedButton.styleFrom(
+      shape: const StadiumBorder(),
+      backgroundColor: Colors.black,
+      padding: const EdgeInsets.symmetric(vertical: 16),
+    ),
+    child: const SizedBox(
+      width: double.infinity,
+      child: Text(
+        "Cadastrar",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, color: Colors.white),
       ),
-      child: const SizedBox(
-        width: double.infinity,
-        child: Text(
-          "Cadastrar",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _loginText() {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const login(key: ValueKey('login_screen'))));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginView(key: ValueKey('login_screen'))));
       },
       child: const Text(
         "Já tem uma conta? Login",
