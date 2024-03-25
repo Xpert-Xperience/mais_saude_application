@@ -3,32 +3,32 @@
 ## Organização dos diretórios:
 
  - lib
-    ├── controller\n
-    |   ├── cadastro
-    |   |   └── cadastro_controller.dart
-    |   └── login
-    |       └── login_controller.dart
-    ├── model
-    |   └── usuario.dart   
-    ├── services
-    |   ├── auth_service.dart
-    |   └── database_service.dart
-    ├── views 
-    |   ├── cadastro
-    |   |   └── cadastro_view.dart
-    |   ├── esqueceu_senha
-    |   |   ├── confcheck.dart
-    |   |   ├── confirmar_esqueceu_senha_view.dart
-    |   |   └── novaSenha.dart
-    |   ├── inicio
-    |   |   └── inicio_view.dart
-    |   ├── login
-    |   |   └── login_view.dart
-    |   ├── perfil
-    |   |   └── perfil.dart
-    |   └── principal
-    |       └── principal_view.dart
-    └── main.dart
+    ├── controller <p>
+    |   ├── cadastro <p>
+    |   |   └── cadastro_controller.dart <p>
+    |   └── login <p>
+    |       └── login_controller.dart <p>
+    ├── model <p>
+    |   └── usuario.dart <p>
+    ├── services <p>
+    |   ├── auth_service.dart <p>
+    |   └── database_service.dart <p>
+    ├── views <p>
+    |   ├── cadastro <p>
+    |   |   └── cadastro_view.dart <p>
+    |   ├── esqueceu_senha <p>
+    |   |   ├── confcheck.dart <p>
+    |   |   ├── confirmar_esqueceu_senha_view.dart <p>
+    |   |   └── novaSenha.dart <p>
+    |   ├── inicio <p>
+    |   |   └── inicio_view.dart <p>
+    |   ├── login <p>
+    |   |   └── login_view.dart <p>
+    |   ├── perfil <p>
+    |   |   └── perfil.dart <p>
+    |   └── principal <p>
+    |       └── principal_view.dart <p>
+    └── main.dart <p>
 
     ## Sobre o funcionamento do projeto:
     Ficamos acordados de criar uma branch para cada tela a ser implementada.
