@@ -51,7 +51,7 @@
   - [x] Autenticação de usuário com o serviço de autenticação.
 
   ### Recuperação de senha
-  
+
   - [x] Página de "esqueci minha senha"
   - [x] Página de "criar nova senha"
 
@@ -59,3 +59,51 @@
   
   - [x] Página principal da aplicação com botões
   - [x] Página principal com botão de página de perfil
+
+  ### Perfil
+  - [ ] Página de perfil com informações do usuário
+
+## Sobre as funcionalidades a serem implementadas
+
+  ### Recuperação de senha
+  - [ ] Lógica de recuperação de senha
+
+  ### Principal
+  - [ ] Referenciar ao usuário logado
+
+  ### Perfil
+  - [ ] Referenciar usuário logado
+  - [ ] Lógica de editar informações do usuário  
+
+  ### Marcação 1
+  - [ ] Página de marcação inicial
+  - [ ] Referenciar dados do especialista da área selecionada
+
+  ### Marcação 2
+  - [ ] Página de marcação final
+
+  ### Confirmação de Marcação
+  - [ ] Página de confirmação da marcação
+  - [ ] Enviar comprovante de confirmação para o e-mail do aluno
+
+  ### Histórico
+  - [ ] Página de apresentação do histórico
+  - [ ] Referenciar ao histórico do usuário logado
+
+  ### Informações
+  - [ ] Página de apresentação das informações da consulta
+
+  ### Cancelamento
+  - [ ] Página de cancelamento da consulta marcada
+  - [ ] Enviar comprovante de cancelamento para o e-mail do aluno
+
+  ### Confirmação de check-in
+  - [ ] Página de confirmação entrar na fila de espera
+  - [ ] Implementar logica de fila virtual em tempo real
+
+  ### Check-in
+  - [ ] Página de check-in
+  - [ ] Atualização de fila em tempo real
+
+  ### Cancelamento fila de espera
+  - [ ] Página de cancelamento da fila (sair)
