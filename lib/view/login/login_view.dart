@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/controller/login/login_controller.dart';
-import 'package:mais_saude/view/esqueceu_senha/confirmar_senha_view.dart';
+import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
-import 'package:mais_saude/view/esqueceu_senha/confirmar_senha_view.dart';
+import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
 import 'package:mais_saude/view/inicio/inicio_view.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
