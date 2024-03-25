@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/telas/cadastro.dart';
-import 'package:mais_saude/telas/confesq.dart';
-import 'package:mais_saude/telas/inicial.dart';
-import 'package:mais_saude/telas/login.dart';
-import 'package:mais_saude/telas/novaSenha.dart';
-import 'package:mais_saude/telas/principal.dart';
+import 'package:mais_saude/view/cadastro/cadastro_view.dart';
+import 'package:mais_saude/view/esqueceu_senha/confirmar_senha_view.dart';
+import 'package:mais_saude/view/inicio/inicio_view.dart';
+import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/view/principal/principal_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,22 +26,19 @@ class MyApp extends StatelessWidget {
       controller: pageController,
       children: <Widget>[
         const Scaffold(
-          body: login(),
+          body: LoginView(),
         ),
          Scaffold(
           body: inicial(pageController),
         ), 
         const Scaffold(
-          body: cadastro(),
+          body: CadastroView(),
         ),
         const Scaffold(
-          body: confesq(),
+          body: ConfirmarEsqueceuSenha(),
         ),
          const Scaffold(
-          body: principal(),
-        ),
-        const Scaffold(
-          body: novasenha(),
+          body: Principal(),
         ),
       ]
      )
