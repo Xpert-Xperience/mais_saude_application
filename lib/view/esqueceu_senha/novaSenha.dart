@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class novasenha extends StatefulWidget {
-  const novasenha({super.key});
+class NovaSenha extends StatefulWidget {
+  const NovaSenha({super.key});
 
   @override
-  State<novasenha> createState() => _novasenhaState();
+  State<NovaSenha> createState() => _NovaSenhaState();
 }
 
-class _novasenhaState extends State<novasenha> {
+class _NovaSenhaState extends State<NovaSenha> {
   @override
   Widget build(BuildContext context) {
      return Scaffold(
@@ -94,7 +94,7 @@ class _novasenhaState extends State<novasenha> {
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const novasenha()),
+                MaterialPageRoute(builder: (context) => const NovaSenha()),
               );
             
                 },
