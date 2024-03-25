@@ -3,7 +3,7 @@
 ## Organização dos diretórios:
 
  - lib
-    ├── controller
+    ├── controller\n
     |   ├── cadastro
     |   |   └── cadastro_controller.dart
     |   └── login
