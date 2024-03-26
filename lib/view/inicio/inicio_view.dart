@@ -26,39 +26,41 @@ class _inicialState extends State<inicial> {
       color: Colors.white,
       width: 550,
       child: Column(
-  
         children: <Widget>[
-          const SizedBox(height: 100), 
+          const SizedBox(height: 100),
           SizedBox(
             height: displayHeight() / 4,
             child: Image.asset(
-              "assets/mais.png", 
-             width: 420, 
-             height: 420, 
-             fit: BoxFit.contain, 
-  ),
+              "assets/mais.png",
+              width: 420,
+              height: 420,
+              fit: BoxFit.contain,
+            ),
           ),
-          const SizedBox(height: 100), 
+          const SizedBox(height: 100),
           const Text(
             'Seja Bem-Vindo!',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 5), 
+          const SizedBox(height: 5),
           const Text(
             'Marque suas consultas com facilidade \ne praticidade, sem precisar ir ao IF. ',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16),
           ),
-          const SizedBox(height: 100), 
+          const SizedBox(height: 100),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginView(key: null,)),
+                MaterialPageRoute(
+                    builder: (context) => const LoginView(
+                          key: null,
+                        )),
               );
             },
-        style: ButtonStyle(
+            style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.black),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
@@ -69,12 +71,12 @@ class _inicialState extends State<inicial> {
                 Size(displayWidth() * 0.8, 55),
               ),
             ),
-             child: const Text(
+            child: const Text(
               'Login',
-              style: TextStyle(fontSize: 18, color: Colors.white), 
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ),
-          const SizedBox(height: 20), 
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -82,7 +84,7 @@ class _inicialState extends State<inicial> {
                 MaterialPageRoute(builder: (context) => const CadastroView()),
               );
             },
-        style: ButtonStyle(
+            style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.black),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
@@ -93,9 +95,9 @@ class _inicialState extends State<inicial> {
                 Size(displayWidth() * 0.8, 55),
               ),
             ),
-          child: const Text(
+            child: const Text(
               'Cadastro',
-              style: TextStyle(fontSize: 18, color: Colors.white), 
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ),
         ],

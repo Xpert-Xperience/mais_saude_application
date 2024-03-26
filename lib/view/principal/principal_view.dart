@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/cadastro/cadastro_view.dart';
-import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/view/marcacao1/marcacao1_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 
 class Principal extends StatefulWidget {
@@ -37,88 +36,87 @@ class _PrincipalState extends State<Principal> {
             ),
             const SizedBox(height: 20),
             Center(
-  child: Container(
-    width: 308,
-    height: 75,
-    padding: const EdgeInsets.symmetric(horizontal: 8),
-    decoration: BoxDecoration(
-      border: Border.all(),
-      borderRadius: BorderRadius.circular(5),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('Nome do Doutor'),
-        const SizedBox(width: 40),
-        Container(
-          width: 1, 
-          height: 40, 
-          color: Colors.black, 
-        ),
-        const SizedBox(width: 40),
-        const Text('Data'),
-      ],
-    ),
-  ),
-),
-
-            const SizedBox(height:50),
+              child: Container(
+                width: 308,
+                height: 75,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Nome do Doutor'),
+                    const SizedBox(width: 40),
+                    Container(
+                      width: 1,
+                      height: 40,
+                      color: Colors.black,
+                    ),
+                    const SizedBox(width: 40),
+                    const Text('Data'),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginView()),
+                    MaterialPageRoute(builder: (context) => const marcacao1()),
                   ),
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 125,
+                        height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                         "assets/fisioterapia.png", 
-                         fit: BoxFit.contain, 
-                       ),
+                          "assets/fisioterapia.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
                       const Text('Fisioterapia',
-                       style: TextStyle(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold, 
-                       )
-                      )
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ))
                     ],
                   ),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const CadastroView()),
+                    MaterialPageRoute(builder: (context) => const marcacao1()),
                   ),
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 125,
+                        height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                         "assets/dentista.png", 
-                         fit: BoxFit.contain, 
-                       ),
+                          "assets/dentista.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                        const Text('Odontologia',
-                       style: TextStyle(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold, 
-      ),),
-
+                      const Text(
+                        'Odontologia',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -131,55 +129,59 @@ class _PrincipalState extends State<Principal> {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginView()),
+                    MaterialPageRoute(builder: (context) => const marcacao1()),
                   ),
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 125,
+                        height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                         "assets/plus.png", 
-                         fit: BoxFit.contain, 
-                       ),
+                          "assets/plus.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                        const Text('Clínico Geral',
-                       style: TextStyle(
-                      fontSize: 20, // Tamanho da fonte
-                      fontWeight: FontWeight.bold, // Peso da fonte (negrito)
-      ),),             
+                      const Text(
+                        'Clínico Geral',
+                        style: TextStyle(
+                          fontSize: 20, // Tamanho da fonte
+                          fontWeight:
+                              FontWeight.bold, // Peso da fonte (negrito)
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginView()),
+                    MaterialPageRoute(builder: (context) => const marcacao1()),
                   ),
                   child: Column(
                     children: [
                       Container(
-                        width: 150,
-                        height: 120,
+                        width: 125,
+                        height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                         "assets/psico.png", 
-                         fit: BoxFit.contain, 
+                          "assets/psico.png",
+                          fit: BoxFit.contain,
                         ),
                       ),
-                       const Text('Psicologia',
-                       style: TextStyle(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold, 
-      ),), 
-                      
+                      const Text(
+                        'Psicologia',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -206,22 +208,21 @@ class _PrincipalState extends State<Principal> {
           ),
         ],
         onTap: (index) {
-         
           switch (index) {
             case 0:
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginView()),
+                MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 1:
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 2:
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );

@@ -70,9 +70,12 @@ class _CadastroViewState extends State<CadastroView> {
                 const SizedBox(height: 15),
                 _inputField("Telefone", _controller.telefoneController),
                 const SizedBox(height: 15),
-                _inputField("Senha", _controller.senhaController, isPassword: true),
+                _inputField("Senha", _controller.senhaController,
+                    isPassword: true),
                 const SizedBox(height: 15),
-                _inputField("Confirmar Senha", _controller.confirmarSenhaController, isPassword: true),
+                _inputField(
+                    "Confirmar Senha", _controller.confirmarSenhaController,
+                    isPassword: true),
                 const SizedBox(height: 30),
                 _cadastrarBtn(context),
                 const SizedBox(height: 20),
@@ -86,7 +89,8 @@ class _CadastroViewState extends State<CadastroView> {
     );
   }
 
-  Widget _inputField(String hintText, TextEditingController controller, {bool isPassword = false}) {
+  Widget _inputField(String hintText, TextEditingController controller,
+      {bool isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
@@ -105,31 +109,35 @@ class _CadastroViewState extends State<CadastroView> {
     );
   }
 
-Widget _cadastrarBtn(BuildContext context) {
-  return ElevatedButton(
-    onPressed: () {
-      _controller.cadastrarUsuario(context);
-    },
-    style: ElevatedButton.styleFrom(
-      shape: const StadiumBorder(),
-      backgroundColor: Colors.black,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-    ),
-    child: const SizedBox(
-      width: double.infinity,
-      child: Text(
-        "Cadastrar",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 20, color: Colors.white),
+  Widget _cadastrarBtn(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        _controller.cadastrarUsuario(context);
+      },
+      style: ElevatedButton.styleFrom(
+        shape: const StadiumBorder(),
+        backgroundColor: Colors.black,
+        padding: const EdgeInsets.symmetric(vertical: 16),
       ),
-    ),
-  );
-}
+      child: const SizedBox(
+        width: double.infinity,
+        child: Text(
+          "Cadastrar",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
 
   Widget _loginText() {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginView(key: ValueKey('login_screen'))));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const LoginView(key: ValueKey('login_screen'))));
       },
       child: const Text(
         "Já tem uma conta? Login",
