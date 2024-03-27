@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/marcacao2/marcacao_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
@@ -14,48 +15,43 @@ class _marcacao1State extends State<marcacao1> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        leading: Container(
+          decoration: BoxDecoration(
+          ),
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              size: 30, 
+              color: const Color.fromARGB(255, 255, 255, 255), 
+            ),
+            onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Principal()),
+            );
+            },
+          ),
+        ),
+        title: Text('Marcação', style: TextStyle(fontSize: 25)),
+        foregroundColor: Color.fromARGB(255,255,255,255),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Principal()),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               const Text(
                 'Marcação',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Center(
                 child: Container(
                   width: 300,
@@ -88,7 +84,7 @@ class _marcacao1State extends State<marcacao1> {
                         ),
                       ),
                       Positioned(
-                        bottom: 60,
+                        bottom: 70,
                         left: 0,
                         right: 0,
                         child: Container(
@@ -104,7 +100,7 @@ class _marcacao1State extends State<marcacao1> {
                         ),
                       ),
                       Positioned(
-                        bottom: 20,
+                        bottom: 40,
                         left: 0,
                         right: 0,
                         child: Container(
@@ -119,38 +115,23 @@ class _marcacao1State extends State<marcacao1> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Horario de funcionamento',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 10),
-              Center(
-                child: Container(
-                  width: 180,
-                  height: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '7:00 -- 12H30',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                      Positioned(
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            '7:00 -- 12H30', //Aqui o valor do text precisa ser alterado de acordo com a escolha da tela inicial
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -160,25 +141,49 @@ class _marcacao1State extends State<marcacao1> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
+              const SizedBox(height: 10),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const marcacao2()),
+            );
+          },
+          child: const Text(
+            "marcacao2",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+        ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        unselectedItemColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        unselectedItemColor: Color.fromARGB(255, 3, 3, 3),
+        type: BottomNavigationBarType.fixed,
+        unselectedFontSize: 15,
+        selectedFontSize: 15,
+        iconSize: 30,
+        currentIndex: 0,
+        fixedColor: Color.fromARGB(255, 6, 7, 7),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list_alt),
             label: 'Histórico',
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
+            
           ),
         ],
         onTap: (index) {
@@ -201,7 +206,7 @@ class _marcacao1State extends State<marcacao1> {
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
-          }
+          }         
         },
       ),
     );

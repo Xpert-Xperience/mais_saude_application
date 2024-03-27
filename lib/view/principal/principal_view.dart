@@ -25,19 +25,19 @@ class _PrincipalState extends State<Principal> {
             const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.only(left: 8.0),
-              child: Text('Olá, Lucas'),
+              child: Text('Olá, Lucas', style: TextStyle(fontSize: 20),),
             ),
             const SizedBox(height: 20),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Próxima Consulta'),
+                Text('Próxima Consulta',style: TextStyle(fontSize: 20),),
               ],
             ),
             const SizedBox(height: 20),
             Center(
               child: Container(
-                width: 308,
+                width: 310,
                 height: 75,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class _PrincipalState extends State<Principal> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Nome do Doutor'),
+                    const Text('Nome do Doutor\nEspecialidade'),
                     const SizedBox(width: 40),
                     Container(
                       width: 1,
@@ -75,18 +75,18 @@ class _PrincipalState extends State<Principal> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(width: 2),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/fisioterapia.png",
+                          "assets/icons8-physical-therapy-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
                       const Text('Fisioterapia',
                           style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ))
                     ],
                   ),
@@ -102,11 +102,11 @@ class _PrincipalState extends State<Principal> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(width: 2),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/dentista.png",
+                          "assets/icons8-hora-do-dentista-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -114,7 +114,7 @@ class _PrincipalState extends State<Principal> {
                         'Odontologia',
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -137,20 +137,20 @@ class _PrincipalState extends State<Principal> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(width: 2),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/plus.png",
+                          "assets/icons8-plus-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
                       const Text(
                         'Clínico Geral',
                         style: TextStyle(
-                          fontSize: 20, // Tamanho da fonte
+                          fontSize: 20, 
                           fontWeight:
-                              FontWeight.bold, // Peso da fonte (negrito)
+                              FontWeight.w500, 
                         ),
                       ),
                     ],
@@ -167,11 +167,11 @@ class _PrincipalState extends State<Principal> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(width: 2),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/psico.png",
+                          "assets/icons8-head-with-brain-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -179,7 +179,7 @@ class _PrincipalState extends State<Principal> {
                         'Psicologia',
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -191,20 +191,29 @@ class _PrincipalState extends State<Principal> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        unselectedItemColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        unselectedItemColor: Color.fromARGB(255, 3, 3, 3),
+        type: BottomNavigationBarType.fixed,
+        unselectedFontSize: 15,
+        selectedFontSize: 15,
+        iconSize: 30,
+        currentIndex: 0,
+        fixedColor: Color.fromARGB(255, 6, 7, 7),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list_alt),
             label: 'Histórico',
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
+            
           ),
         ],
         onTap: (index) {
@@ -227,7 +236,7 @@ class _PrincipalState extends State<Principal> {
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
-          }
+          }         
         },
       ),
     );
