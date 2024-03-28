@@ -128,7 +128,8 @@ class _LoginViewState extends State<LoginView> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ConfirmarEsqueceuSenha()),
+              MaterialPageRoute(
+                  builder: (context) => const ConfirmarEsqueceuSenha()),
             );
           },
           child: const Text(

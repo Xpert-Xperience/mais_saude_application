@@ -40,7 +40,8 @@ class _PerfilState extends State<Perfil> {
                         Center(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 0, 0, 0),
                               minimumSize: const Size(150, 40),
                             ),
                             onPressed: () {
@@ -48,7 +49,8 @@ class _PerfilState extends State<Perfil> {
                             },
                             child: const Text(
                               'Editar',
-                              style: TextStyle(fontSize: 20, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
                             ),
                           ),
                         ),
@@ -61,23 +63,27 @@ class _PerfilState extends State<Perfil> {
           ),
           Positioned(
             top: displayHeight() / 7 + 167 + 20,
-            left: displayWidth() / 1.52 - 167 / 2, 
+            left: displayWidth() / 1.52 - 167 / 2,
             child: const Center(
               child: Text(
                 'Erick',
-                style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold,),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
           Positioned(
             top: displayHeight() / 6,
-            left: displayWidth() / 2 - 167 / 2, 
+            left: displayWidth() / 2 - 167 / 2,
             child: Container(
-              width: 167, 
-              height: 156, 
+              width: 167,
+              height: 156,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey, 
+                color: Colors.grey,
                 image: DecorationImage(
                   image: AssetImage('assets/erick.png'),
                   fit: BoxFit.cover,
@@ -106,49 +112,57 @@ class _PerfilState extends State<Perfil> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        unselectedItemColor: Color.fromARGB(255, 3, 3, 3),
+        type: BottomNavigationBarType.fixed,
+        unselectedFontSize: 15,
+        selectedFontSize: 15,
+        iconSize: 30,
+        currentIndex: 0,
+        fixedColor: Color.fromARGB(255, 6, 7, 7),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list_alt),
             label: 'Histórico',
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
+            
           ),
         ],
-onTap: (index) {
-  switch (index) {
+        onTap: (index) {
+          switch (index) {
             case 0:
-            Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 1:
-             Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Principal()),
               );
               break;
             case 2:
-                Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
-          }
-        }
+          }         
+        },
       ),
     );
   }
-  
+
   Widget _buildTextField(String labelText, String value) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,19 +171,19 @@ onTap: (index) {
           labelText,
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 10), 
+        const SizedBox(height: 10),
         Container(
-          width: 400, 
-          height: 45, 
-          margin: const EdgeInsets.symmetric(vertical: 5), 
+          width: 400,
+          height: 45,
+          margin: const EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 255, 255), 
-            borderRadius: BorderRadius.circular(10), 
+            color: const Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.black),
           ),
           child: Center(
             child: Text(
-              value, 
+              value,
               style: const TextStyle(fontSize: 16),
             ),
           ),
