@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
+import 'package:mais_saude/view/historico/historico_view.dart';
 
 class Perfil extends StatefulWidget {
   const Perfil({super.key});
@@ -91,24 +92,7 @@ class _PerfilState extends State<Perfil> {
               ),
             ),
           ),
-          Positioned(
-            left: 20,
-            top: 20,
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 55, 47, 47),
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                color: Colors.white,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),
+          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -148,7 +132,7 @@ class _PerfilState extends State<Perfil> {
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Principal()),
+                MaterialPageRoute(builder: (context) => const Historico()),
               );
               break;
             case 2:

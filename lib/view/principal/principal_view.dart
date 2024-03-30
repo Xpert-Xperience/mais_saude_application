@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/marcacao1/marcacao1_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
+import 'package:mais_saude/view/historico/historico_view.dart';
 
 class Principal extends StatefulWidget {
   const Principal({super.key});
@@ -227,7 +228,7 @@ class _PrincipalState extends State<Principal> {
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Principal()),
+                MaterialPageRoute(builder: (context) => const Historico()),
               );
               break;
             case 2:
