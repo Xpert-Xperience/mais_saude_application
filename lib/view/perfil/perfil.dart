@@ -22,7 +22,7 @@ class _PerfilState extends State<Perfil> {
             children: <Widget>[
               Container(
                 height: displayHeight() / 4,
-                color: Colors.black,
+                color: Color(0xFF0D4542),
               ),
               Expanded(
                 child: Container(
@@ -41,8 +41,7 @@ class _PerfilState extends State<Perfil> {
                         Center(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 0, 0, 0),
+                              backgroundColor:const Color(0xFF0A9080),
                               minimumSize: const Size(150, 40),
                             ),
                             onPressed: () {
@@ -51,7 +50,7 @@ class _PerfilState extends State<Perfil> {
                             child: const Text(
                               'Editar',
                               style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
+                                TextStyle(fontSize: 20, color: Colors.white),
                             ),
                           ),
                         ),

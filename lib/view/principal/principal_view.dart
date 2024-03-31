@@ -15,7 +15,11 @@ class _PrincipalState extends State<Principal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home', textAlign: TextAlign.center),
+        title: const Text(
+          'Home',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Color(0xFF0D4542), fontWeight: FontWeight.bold)
+          ),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
