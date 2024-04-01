@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
 import 'package:mais_saude/view/marcacao1/marcacao1_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 
@@ -159,7 +160,7 @@ class _PrincipalState extends State<Principal> {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(builder: (context) => const Confcheck()),
                   ),
                   child: Column(
                     children: [
