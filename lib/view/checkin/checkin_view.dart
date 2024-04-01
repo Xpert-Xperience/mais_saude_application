@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/cancelamentocheck/cancelamentocheck_view.dart';
 import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
-import 'package:mais_saude/view/esqueceu_senha/confcheck.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
 
 class Checkin extends StatefulWidget {
   const Checkin({super.key});
@@ -17,14 +15,14 @@ class _CheckinState extends State<Checkin> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.push(
@@ -34,12 +32,12 @@ class _CheckinState extends State<Checkin> {
             },
           ),
         ),
-         title: Text(
+         title: const Text(
           'Check-In',
           style: TextStyle(fontSize: 25),
         ),
         centerTitle: true, 
-        foregroundColor: Color.fromARGB(255, 255, 255, 255), 
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255), 
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -57,11 +55,11 @@ class _CheckinState extends State<Checkin> {
                 style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w400),
               ),
               const SizedBox(height: 60),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+              const Padding(
+                padding: EdgeInsets.only(left: 10.0),
                 child: Align(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     'Sua Ficha É:',
                     textAlign: TextAlign.start,
                     style: TextStyle(color: Colors.black, fontSize: 35, fontWeight: FontWeight.w400),
@@ -90,9 +88,9 @@ class _CheckinState extends State<Checkin> {
                  style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
-                   minimumSize: Size(150, 50),
+                   minimumSize: const Size(150, 50),
                 ),
-                child: Text(
+                child: const Text(
                   'Cancelar',
                   style: TextStyle(fontSize: 20),
                 ),
@@ -109,7 +107,7 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.black),
+          style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         const SizedBox(height: 10),
       ],
@@ -121,12 +119,12 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black),
+          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         const SizedBox(height: 10),
         Text(
           description,
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: const TextStyle(fontSize: 18, color: Colors.black),
         ),
       ],
     );

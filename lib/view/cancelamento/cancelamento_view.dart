@@ -17,34 +17,34 @@ class _CancelamentoState extends State<Cancelamento> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
         ),
-        title: Text(
+        title: const Text(
           'Cancelamento',
           style: TextStyle(fontSize: 25),
         ),
         centerTitle: true,
-        foregroundColor: Color.fromARGB(255, 255, 255, 255),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
-            Text(
+            const SizedBox(height: 50),
+            const Text(
               'Cancelar',
               style: TextStyle(
                 fontSize: 36,
@@ -52,15 +52,15 @@ class _CancelamentoState extends State<Cancelamento> {
                 color: Color(0xFF0D4542),
               ),
             ),
-            Text(
+            const Text(
               'Agendamento',
               style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF0D4542)),
             ),
-            SizedBox(height: 18),
-            Text(
+            const SizedBox(height: 18),
+            const Text(
               'Tem certeza que deseja CANCELAR esse agendamento? Essa ação não poderá ser desfeita.',
               style: TextStyle(fontSize: 14, color: Color(0xFF014B47)),
             ),
@@ -75,7 +75,7 @@ class _CancelamentoState extends State<Cancelamento> {
                 },
                 style: ElevatedButton.styleFrom(
                     minimumSize: Size(displayWidth(context) * 0.8, 55),
-                    backgroundColor: Color(0xFF0A9080)),
+                    backgroundColor: const Color(0xFF0A9080)),
                 child: const Text(
                   'Confirmar',
                   style: TextStyle(
@@ -88,7 +88,7 @@ class _CancelamentoState extends State<Cancelamento> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Align(
+              child: const Align(
                 alignment: Alignment.center,
                 child: Text(
                   'Manter',

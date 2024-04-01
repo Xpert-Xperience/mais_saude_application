@@ -14,22 +14,22 @@ class _marcacao2State extends State<marcacao2> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
         ),
-        title: Text('Detalhes', style: TextStyle(fontSize: 25)),
-        foregroundColor: Color.fromARGB(255, 255, 255, 255),
+        title: const Text('Detalhes', style: TextStyle(fontSize: 25)),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -43,7 +43,7 @@ class _marcacao2State extends State<marcacao2> {
               ),
               const SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -53,8 +53,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '13:00',
                           style: TextStyle(fontSize: 18),
@@ -67,8 +67,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '14:00',
                           style: TextStyle(fontSize: 18),
@@ -81,8 +81,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '15:00',
                           style: TextStyle(fontSize: 18),
@@ -92,9 +92,9 @@ class _marcacao2State extends State<marcacao2> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -104,8 +104,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '16:00',
                           style: TextStyle(fontSize: 18),
@@ -118,8 +118,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '17:00',
                           style: TextStyle(fontSize: 18),
@@ -132,8 +132,8 @@ class _marcacao2State extends State<marcacao2> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      child: Center(
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                      child: const Center(
                         child: Text(
                           '18:00',
                           style: TextStyle(fontSize: 18),
@@ -174,7 +174,7 @@ class _marcacao2State extends State<marcacao2> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 width: 320,
                 height: 140,
@@ -182,7 +182,7 @@ class _marcacao2State extends State<marcacao2> {
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextField(
+                child: const TextField(
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   decoration: InputDecoration(

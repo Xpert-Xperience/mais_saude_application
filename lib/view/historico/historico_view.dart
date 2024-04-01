@@ -29,21 +29,21 @@ class _HistoricoState extends State<Historico> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 hintText: 'Digite o nome',
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   color: Color(0xFF0D4542),
                   fontSize: 15,
                 ),
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.clear),
+                  icon: const Icon(Icons.clear),
                   onPressed: () {
                     // Lógica para limpar o campo de pesquisa
                   },
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0xFF28928B), // Borda da barra de pesquisa
                   ),
                 ),
@@ -53,38 +53,38 @@ class _HistoricoState extends State<Historico> {
               },
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Expanded(
             child: ListView.builder(
               itemCount: 3,
               itemBuilder: (context, index) {
                 return Container(
-                  margin: EdgeInsets.all(16),
+                  margin: const EdgeInsets.all(16),
                   height: 160, // Altura dos cards aumentada
                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFF28928B), width: 2), // Borda vermelha
+                    border: Border.all(color: const Color(0xFF28928B), width: 2), // Borda vermelha
                     borderRadius: BorderRadius.circular(10), // Borda arredondada
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           width: 80,
                           height: 80,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.grey,
                           ),
-                          child: Icon(Icons.person, size: 50),
+                          child: const Icon(Icons.person, size: 50),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Nome do Profissional',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -92,15 +92,15 @@ class _HistoricoState extends State<Historico> {
                                   color: Color(0xFF0D4542),
                                 ),
                               ),
-                              SizedBox(height: 2), // Espaçamento para o texto pequeno
-                              Text(
+                              const SizedBox(height: 2), // Espaçamento para o texto pequeno
+                              const Text(
                                 'Data/Horário',
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: Color(0xFF0D4542),
                                 ),
                               ),
-                              SizedBox(height: 18),
+                              const SizedBox(height: 18),
                               Row(
                                 children: [
                                   GestureDetector(
@@ -108,11 +108,11 @@ class _HistoricoState extends State<Historico> {
                                       // Navegar para a página de informações
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => Cancelamento()),
+                                        MaterialPageRoute(builder: (context) => const Cancelamento()),
                                       );
                                     },
                                     child: Container(
-                                      child: Row(
+                                      child: const Row(
                                         children: [
                                           Icon(Icons.cancel,
                                               color: Color(
@@ -130,16 +130,16 @@ class _HistoricoState extends State<Historico> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   GestureDetector(
                                     onTap: () {
                                       // Navegar para a página de informações
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => Informacoes()),
+                                        MaterialPageRoute(builder: (context) => const Informacoes()),
                                       );
                                     },
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Icon(Icons.info,
                                             color: Color(
@@ -171,14 +171,14 @@ class _HistoricoState extends State<Historico> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF136A65),
-        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color(0xFF136A65),
+        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
         selectedFontSize: 15,
         iconSize: 30,
         currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 255, 255, 255),
+        fixedColor: const Color.fromARGB(255, 255, 255, 255),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

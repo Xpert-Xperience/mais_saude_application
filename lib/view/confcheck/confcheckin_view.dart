@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/checkin/checkin_view.dart';
-import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
 class Confcheck extends StatefulWidget {
@@ -16,14 +15,14 @@ class _ConfcheckState extends State<Confcheck> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
                Navigator.push(
@@ -33,12 +32,12 @@ class _ConfcheckState extends State<Confcheck> {
             },
           ),
         ),
-        title: Text(
+        title: const Text(
           'Confirmação',
           style: TextStyle(fontSize: 25),
         ),
         centerTitle: true, 
-        foregroundColor: Color.fromARGB(255, 255, 255, 255),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
 
       body: SingleChildScrollView(
@@ -48,18 +47,18 @@ class _ConfcheckState extends State<Confcheck> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0), // Margem à esquerda
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
                 child: Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Entrar na fila',
                           style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
                         ),
-                        const Text(
+                        Text(
                           'de espera',
                           style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
                         ),
@@ -69,11 +68,11 @@ class _ConfcheckState extends State<Confcheck> {
                 ),
               ),
               const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0), // Margem à esquerda
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: const Text(
+                  child: Text(
                     'Tem certeza que deseja entrar na fila \nde espera para a consulta?',
                     textAlign: TextAlign.start,
                     style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
@@ -107,7 +106,7 @@ class _ConfcheckState extends State<Confcheck> {
                     MaterialPageRoute(builder: (context) => const Principal()),
                   );
                 },
-                child: Align(
+                child: const Align(
                   alignment: Alignment.center,
                   child: Text(
                     'Voltar',

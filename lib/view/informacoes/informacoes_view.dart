@@ -16,50 +16,50 @@ class _InformacoesState extends State<Informacoes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
         ),
-        title: Text(
+        title: const Text(
           'Detalhes',
           style: TextStyle(fontSize: 25),
         ),
         centerTitle: true,
-        foregroundColor: Color.fromARGB(255, 255, 255, 255),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: Column(
         children: [
-          SizedBox(height: 60), // Espaço entre a AppBar e o Body
+          const SizedBox(height: 60), // Espaço entre a AppBar e o Body
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Center(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment
                     .center, // Centraliza os elementos horizontalmente
                 children: [
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Container(
                     width: 100,
                     height: 100,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.grey,
                     ),
-                    child: Icon(Icons.person, size: 70),
+                    child: const Icon(Icons.person, size: 70),
                   ),
-                  SizedBox(width: 16),
-                  Expanded(
+                  const SizedBox(width: 16),
+                  const Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -86,16 +86,16 @@ class _InformacoesState extends State<Informacoes> {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Container(
-            margin: EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
             height: 140, // Altura dos cards aumentada
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0xFF28928B), width: 2),
+              border: Border.all(color: const Color(0xFF28928B), width: 2),
               borderRadius: BorderRadius.circular(10), // Borda arredondada
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -143,7 +143,7 @@ class _InformacoesState extends State<Informacoes> {
               ),
             ),
           ),
-          SizedBox(height: 80),
+          const SizedBox(height: 80),
           Center(
             child: ElevatedButton(
               onPressed: () {
@@ -154,7 +154,7 @@ class _InformacoesState extends State<Informacoes> {
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(displayWidth(context) * 0.8, 55),
-                backgroundColor: Color(0xFF0A9080),
+                backgroundColor: const Color(0xFF0A9080),
               ),
               child: const Text(
                 'Cancelar',
@@ -166,14 +166,14 @@ class _InformacoesState extends State<Informacoes> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF136A65),
-        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color(0xFF136A65),
+        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
         selectedFontSize: 15,
         iconSize: 30,
         currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 255, 255, 255),
+        fixedColor: const Color.fromARGB(255, 255, 255, 255),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
