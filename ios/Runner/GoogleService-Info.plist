@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAutVj9enMNkD1YzmySu6x8xvEwCpJlRr8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>683680419796</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.maisSaude</string>
+	<key>PROJECT_ID</key>
+	<string>maissaudeapp-9e9ae</string>
+	<key>STORAGE_BUCKET</key>
+	<string>maissaudeapp-9e9ae.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:683680419796:ios:fe3245e9ed1452bdac1041</string>
+</dict>
+</plist>
