@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
 import 'package:mais_saude/view/marcacao1/marcacao1_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
+import 'package:mais_saude/view/historico/historico_view.dart';
 
 class Principal extends StatefulWidget {
   const Principal({super.key});
@@ -15,7 +16,11 @@ class _PrincipalState extends State<Principal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home', textAlign: TextAlign.center),
+        title: const Text(
+          'Home',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Color(0xFF0D4542), fontWeight: FontWeight.bold)
+          ),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -228,7 +233,7 @@ class _PrincipalState extends State<Principal> {
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Principal()),
+                MaterialPageRoute(builder: (context) => const Historico()),
               );
               break;
             case 2:
