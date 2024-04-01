@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
-import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
+import 'package:mais_saude/view/principal/principal_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -11,8 +12,40 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  TextEditingController usernameController = TextEditingController();
+  String email = "", password = "";
+
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+
+  userLogin() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Principal()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text(
+              "No User Found for that Email",
+              style: TextStyle(fontSize: 18.0),
+            )));
+      } else if (e.code == 'wrong-password') {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text(
+              "Wrong Password Provided by User",
+              style: TextStyle(fontSize: 18.0),
+            )));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,55 +58,52 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget _page(BuildContext context) {
-    // Passando os controladores para o LoginController
-    final LoginController controller = LoginController(
-      usernameController: usernameController,
-      passwordController: passwordController,
-    );
-
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 0, 0, 0),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
+        child: Form(
+          key: _formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 60),
-            const Text(
-              'Seja Bem-Vindo!',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 130),
-            _inputField("Matrícula", usernameController),
-            const SizedBox(height: 70),
-            _inputField("Senha", passwordController, isPassword: true),
-            const SizedBox(height: 50),
-            _loginBtn(context, controller),
-            const SizedBox(height: 20),
-            _extraText(),
-          ],
+                ],
+              ),
+              const SizedBox(height: 60),
+              const Text(
+                'Seja Bem-Vindo!',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 130),
+              _inputField("Email", emailController),
+              const SizedBox(height: 70),
+              _inputField("Senha", passwordController, isPassword: true),
+              const SizedBox(height: 50),
+              _loginBtn(context),
+              const SizedBox(height: 20),
+              _extraText(),
+            ],
+          ),
         ),
       ),
     );
@@ -86,8 +116,14 @@ class _LoginViewState extends State<LoginView> {
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
     );
 
-    return TextField(
+    return TextFormField(
       style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Por favor preencha todos os campos';
+        }
+        return null;
+      },
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
@@ -99,10 +135,16 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _loginBtn(BuildContext context, LoginController controller) {
+  Widget _loginBtn(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        controller.login(context);
+        if (_formkey.currentState!.validate()) {
+          setState(() {
+            email = emailController.text;
+            password = passwordController.text;
+          });
+        }
+        userLogin();
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
