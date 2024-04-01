@@ -62,7 +62,7 @@ class _HistoricoState extends State<Historico> {
                   margin: EdgeInsets.all(16),
                   height: 160, // Altura dos cards aumentada
                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFF28928B)), // Borda vermelha
+                    border: Border.all(color: Color(0xFF28928B), width: 2), // Borda vermelha
                     borderRadius: BorderRadius.circular(10), // Borda arredondada
                   ),
                   child: Padding(

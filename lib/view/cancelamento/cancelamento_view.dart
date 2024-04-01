@@ -86,10 +86,7 @@ class _CancelamentoState extends State<Cancelamento> {
             const SizedBox(height: 60),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Historico()),
-                );
+                Navigator.pop(context);
               },
               child: Align(
                 alignment: Alignment.center,
