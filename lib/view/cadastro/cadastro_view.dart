@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
@@ -12,6 +13,55 @@ class CadastroView extends StatefulWidget {
 class _CadastroViewState extends State<CadastroView> {
   final CadastroController _controller = CadastroController();
 
+  String email = "",
+      nome = "",
+      senha = "",
+      confirmarSenha = "";
+
+  TextEditingController matriculaController = TextEditingController();
+  TextEditingController nomeController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController telefoneController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+  TextEditingController confirmarSenhaController = TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+
+  registration() async {
+    if (senha != null&& nomeController.text!=""&& emailController.text!="") {
+      try{
+        UserCredential credencialUsuario = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: senha);
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Registered Successfully",
+          style: TextStyle(fontSize: 20.0))));
+
+         // ignore: use_build_context_synchronously
+         Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const LoginView()));
+      } on FirebaseAuthException catch(e){
+        if (e.code == 'weak-password') {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Password Provided is too Weak",
+                style: TextStyle(fontSize: 18.0),
+              )));
+        } else if (e.code == "email-already-in-use") {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Account Already exists",
+                style: TextStyle(fontSize: 18.0),
+              )));
+        }
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,58 +80,59 @@ class _CadastroViewState extends State<CadastroView> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(32.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(0),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
+            child: Form(
+              key: _formkey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  'Cadastro',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                _inputField("Matrícula", _controller.matriculaController),
-                const SizedBox(height: 15),
-                _inputField("Nome", _controller.nomeController),
-                const SizedBox(height: 15),
-                _inputField("E-mail", _controller.emailController),
-                const SizedBox(height: 15),
-                _inputField("Telefone", _controller.telefoneController),
-                const SizedBox(height: 15),
-                _inputField("Senha", _controller.senhaController,
-                    isPassword: true),
-                const SizedBox(height: 15),
-                _inputField(
-                    "Confirmar Senha", _controller.confirmarSenhaController,
-                    isPassword: true),
-                const SizedBox(height: 30),
-                _cadastrarBtn(context),
-                const SizedBox(height: 20),
-                _loginText(),
-                const SizedBox(height: 23),
-              ],
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    'Cadastro',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  _inputField("Matrícula", matriculaController),
+                  const SizedBox(height: 15),
+                  _inputField("Nome", nomeController),
+                  const SizedBox(height: 15),
+                  _inputField("E-mail", emailController),
+                  const SizedBox(height: 15),
+                  _inputField("Telefone", telefoneController),
+                  const SizedBox(height: 15),
+                  _inputField("Senha", senhaController, isPassword: true),
+                  const SizedBox(height: 15),
+                  _inputField("Confirmar Senha", confirmarSenhaController,
+                      isPassword: true),
+                  const SizedBox(height: 30),
+                  _cadastrarBtn(context),
+                  const SizedBox(height: 20),
+                  _loginText(),
+                  const SizedBox(height: 23),
+                ],
+              ),
             ),
           ),
         ),
@@ -96,8 +147,14 @@ class _CadastroViewState extends State<CadastroView> {
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
     );
 
-    return TextField(
+    return TextFormField(
       style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Por favor, preencha todos os dados';
+        }
+        return null;
+      },
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
@@ -112,7 +169,14 @@ class _CadastroViewState extends State<CadastroView> {
   Widget _cadastrarBtn(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        _controller.cadastrarUsuario(context);
+        if (_formkey.currentState!.validate()) {
+          setState(() {
+            email = emailController.text;
+            nome = nomeController.text;
+            senha = senhaController.text;
+          });
+        }
+        registration();
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),

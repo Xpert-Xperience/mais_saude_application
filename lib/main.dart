@@ -1,12 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mais_saude/firebase_options.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
 import 'package:mais_saude/view/inicio/inicio_view.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
-void main() {
+Future<void> main() async {
   runApp(MyApp());
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
 }
 
 class MyApp extends StatelessWidget {
