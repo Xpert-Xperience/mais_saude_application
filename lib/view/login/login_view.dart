@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -12,40 +11,9 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  String email = "", password = "";
-
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final LoginController _controller = LoginController();
 
   final _formkey = GlobalKey<FormState>();
-
-  userLogin() async {
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-      // ignore: use_build_context_synchronously
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Principal()));
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "No User Found for that Email",
-              style: TextStyle(fontSize: 18.0),
-            )));
-      } else if (e.code == 'wrong-password') {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Wrong Password Provided by User",
-              style: TextStyle(fontSize: 18.0),
-            )));
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +63,10 @@ class _LoginViewState extends State<LoginView> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 130),
-              _inputField("Email", emailController),
+              _inputField("Email", _controller.emailController),
               const SizedBox(height: 70),
-              _inputField("Senha", passwordController, isPassword: true),
+              _inputField("Senha", _controller.passwordController,
+                  isPassword: true),
               const SizedBox(height: 50),
               _loginBtn(context),
               const SizedBox(height: 20),
@@ -140,11 +109,11 @@ class _LoginViewState extends State<LoginView> {
       onPressed: () {
         if (_formkey.currentState!.validate()) {
           setState(() {
-            email = emailController.text;
-            password = passwordController.text;
+            _controller.email = _controller.emailController.text;
+            _controller.password = _controller.passwordController.text;
           });
         }
-        userLogin();
+        _controller.userLogin();
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
