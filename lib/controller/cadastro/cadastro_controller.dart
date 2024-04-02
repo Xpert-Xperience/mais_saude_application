@@ -36,7 +36,6 @@ class CadastroController {
     int userId = await dbHelper.insertUser(user.toMap());
 
     if (userId != 0) {
-      print('User inserted with ID: $userId');
 
       // Print all users in the database
       await dbHelper.printUsers();
@@ -44,7 +43,6 @@ class CadastroController {
       // User inserted successfully, navigate to login screen
       Navigator.pushReplacement(context as BuildContext, MaterialPageRoute(builder: (context) => const LoginView(key: ValueKey('login_screen'))));
     } else {
-      print('Failed to insert user');
       // Handle failure to insert user
     }
   }
