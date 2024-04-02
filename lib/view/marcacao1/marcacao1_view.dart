@@ -16,15 +16,15 @@ class _marcacao1State extends State<marcacao1> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         leading: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
           ),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30, 
-              color: const Color.fromARGB(255, 255, 255, 255), 
+              color: Color.fromARGB(255, 255, 255, 255), 
             ),
             onPressed: () {
               Navigator.push(
@@ -35,8 +35,8 @@ class _marcacao1State extends State<marcacao1> {
             },
           ),
         ),
-        title: Text('Marcação', style: TextStyle(fontSize: 25)),
-        foregroundColor: Color.fromARGB(255,255,255,255),
+        title: const Text('Marcação', style: TextStyle(fontSize: 25)),
+        foregroundColor: const Color.fromARGB(255,255,255,255),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -75,7 +75,7 @@ class _marcacao1State extends State<marcacao1> {
                           height: 120,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             border: Border.all(
                               color: Colors.black,
                               width: 2,
@@ -89,7 +89,7 @@ class _marcacao1State extends State<marcacao1> {
                         right: 0,
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             'Dr.Lucas Davi',
                             style: TextStyle(
                               fontSize: 20,
@@ -105,7 +105,7 @@ class _marcacao1State extends State<marcacao1> {
                         right: 0,
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             'Fisioterapia', //Aqui o valor do text precisa ser alterado de acordo com a escolha da tela inicial
                             style: TextStyle(
                               fontSize: 18,
@@ -121,7 +121,7 @@ class _marcacao1State extends State<marcacao1> {
                         right: 0,
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             '7:00 -- 12H30', //Aqui o valor do text precisa ser alterado de acordo com a escolha da tela inicial
                             style: TextStyle(
                               fontSize: 18,
@@ -161,14 +161,14 @@ class _marcacao1State extends State<marcacao1> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        unselectedItemColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        unselectedItemColor: const Color.fromARGB(255, 3, 3, 3),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
         selectedFontSize: 15,
         iconSize: 30,
         currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 6, 7, 7),
+        fixedColor: const Color.fromARGB(255, 6, 7, 7),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

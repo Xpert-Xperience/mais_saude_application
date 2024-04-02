@@ -28,7 +28,7 @@ class _CadastroViewState extends State<CadastroView> {
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if (senha != null&& nomeController.text!=""&& emailController.text!="") {
+    if (nomeController.text!=""&& emailController.text!="") {
       try{
         UserCredential credencialUsuario = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: senha);

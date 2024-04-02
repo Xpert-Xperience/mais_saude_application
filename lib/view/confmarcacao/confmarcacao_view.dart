@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
 class confirmacao extends StatefulWidget {
@@ -15,22 +14,22 @@ class _confirmacaoState extends State<confirmacao> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
         leading: Container(
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
         ),
-        title: Text('Confirmação', style: TextStyle(fontSize: 25)),
-        foregroundColor: Color.fromARGB(255, 255, 255, 255),
+        title: const Text('Confirmação', style: TextStyle(fontSize: 25)),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -50,11 +49,11 @@ class _confirmacaoState extends State<confirmacao> {
                 
               ),
               const SizedBox(height: 60),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0), 
+              const Padding(
+                padding: EdgeInsets.only(left: 10.0), 
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: const Text(
+                  child: Text(
                     'Foi enviado para o seu email',
                     textAlign: TextAlign.start,
                     style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w400),
@@ -63,7 +62,7 @@ class _confirmacaoState extends State<confirmacao> {
               ),
               Column(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 320,
                         height: 320,
                         child: Image.asset(
