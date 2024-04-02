@@ -1,7 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison, unused_local_variable
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/login/login_view.dart';
-import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
 
 class CadastroView extends StatefulWidget {
   const CadastroView({super.key});
@@ -11,7 +12,6 @@ class CadastroView extends StatefulWidget {
 }
 
 class _CadastroViewState extends State<CadastroView> {
-  final CadastroController _controller = CadastroController();
 
   String email = "",
       nome = "",
@@ -28,7 +28,7 @@ class _CadastroViewState extends State<CadastroView> {
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if (nomeController.text!=""&& emailController.text!="") {
+    if (senha != null&& nomeController.text!=""&& emailController.text!="") {
       try{
         UserCredential credencialUsuario = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: senha);

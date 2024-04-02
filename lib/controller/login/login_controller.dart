@@ -1,7 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
-import 'package:path/path.dart';
 
 class LoginController {
   String email = "", password = "";
@@ -9,16 +10,15 @@ class LoginController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  userLogin() async {
+  userLogin(BuildContext context) async {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      Navigator.push(context as BuildContext,
+      Navigator.push(context,
           MaterialPageRoute(builder: (context) => const Principal()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context as BuildContext)
+        ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(
                 backgroundColor: Colors.orangeAccent,
                 content: Text(
@@ -26,8 +26,7 @@ class LoginController {
                   style: TextStyle(fontSize: 18.0),
                 )));
       } else if (e.code == 'wrong-password') {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context as BuildContext)
+        ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(
                 backgroundColor: Colors.orangeAccent,
                 content: Text(
