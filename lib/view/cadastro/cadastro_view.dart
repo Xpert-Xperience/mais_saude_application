@@ -1,8 +1,6 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
 
 class CadastroView extends StatefulWidget {
   const CadastroView({super.key});
@@ -12,56 +10,10 @@ class CadastroView extends StatefulWidget {
 }
 
 class _CadastroViewState extends State<CadastroView> {
-
-  String email = "",
-      nome = "",
-      senha = "",
-      confirmarSenha = "";
-
-  TextEditingController matriculaController = TextEditingController();
-  TextEditingController nomeController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController telefoneController = TextEditingController();
-  TextEditingController senhaController = TextEditingController();
-  TextEditingController confirmarSenhaController = TextEditingController();
+  final CadastroController _controller = CadastroController();
 
   final _formkey = GlobalKey<FormState>();
 
-  registration() async {
-    if (senha != null&& nomeController.text!=""&& emailController.text!="") {
-      try{
-        UserCredential credencialUsuario = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: senha);
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-            "Registered Successfully",
-          style: TextStyle(fontSize: 20.0))));
-
-         // ignore: use_build_context_synchronously
-         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const LoginView()));
-      } on FirebaseAuthException catch(e){
-        if (e.code == 'weak-password') {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Password Provided is too Weak",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        } else if (e.code == "email-already-in-use") {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Account Already exists",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        }
-      }
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,17 +66,17 @@ class _CadastroViewState extends State<CadastroView> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 15),
-                  _inputField("Matrícula", matriculaController),
+                  _inputField("Matrícula", _controller.matriculaController),
                   const SizedBox(height: 15),
-                  _inputField("Nome", nomeController),
+                  _inputField("Nome", _controller.nomeController),
                   const SizedBox(height: 15),
-                  _inputField("E-mail", emailController),
+                  _inputField("E-mail", _controller.emailController),
                   const SizedBox(height: 15),
-                  _inputField("Telefone", telefoneController),
+                  _inputField("Telefone", _controller.telefoneController),
                   const SizedBox(height: 15),
-                  _inputField("Senha", senhaController, isPassword: true),
+                  _inputField("Senha", _controller.senhaController, isPassword: true),
                   const SizedBox(height: 15),
-                  _inputField("Confirmar Senha", confirmarSenhaController,
+                  _inputField("Confirmar Senha", _controller.confirmarSenhaController,
                       isPassword: true),
                   const SizedBox(height: 30),
                   _cadastrarBtn(context),
@@ -171,12 +123,12 @@ class _CadastroViewState extends State<CadastroView> {
       onPressed: () {
         if (_formkey.currentState!.validate()) {
           setState(() {
-            email = emailController.text;
-            nome = nomeController.text;
-            senha = senhaController.text;
+            _controller.email = _controller.emailController.text;
+            _controller.nome = _controller.nomeController.text;
+            _controller.senha = _controller.senhaController.text;
           });
         }
-        registration();
+        _controller.registerUser(context);
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),

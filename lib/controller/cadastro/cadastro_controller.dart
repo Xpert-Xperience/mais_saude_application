@@ -1,9 +1,12 @@
+// ignore_for_file: unused_local_variable, use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mais_saude/model/usuario.dart';
-import 'package:mais_saude/services/database_service.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 
 class CadastroController {
+  String email = "", nome = "", senha = "", confirmarSenha = "";
+
   TextEditingController matriculaController = TextEditingController();
   TextEditingController nomeController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -11,39 +14,39 @@ class CadastroController {
   TextEditingController senhaController = TextEditingController();
   TextEditingController confirmarSenhaController = TextEditingController();
 
-  void cadastrarUsuario(context) async {
-    String matricula = matriculaController.text;
-    String nome = nomeController.text;
-    String email = emailController.text;
-    String telefone = telefoneController.text;
-    String senha = senhaController.text;
-    String confirmarSenha = confirmarSenhaController.text;
+  registerUser(BuildContext context) async {
+    if (nomeController.text != "" && emailController.text != "") {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: senha);
 
-    if (senha != confirmarSenha) {
-      // Handle password mismatch
-      return;
-    }
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text("Registrado com sucesso!",
+                    style: TextStyle(fontSize: 20.0))));
 
-    Usuario user = Usuario(
-      matricula: matricula,
-      nome: nome,
-      email: email,
-      telefone: telefone,
-      senha: senha,
-    );
-
-    DatabaseService dbHelper = DatabaseService();
-    int userId = await dbHelper.insertUser(user.toMap());
-
-    if (userId != 0) {
-
-      // Print all users in the database
-      await dbHelper.printUsers();
-
-      // User inserted successfully, navigate to login screen
-      Navigator.pushReplacement(context as BuildContext, MaterialPageRoute(builder: (context) => const LoginView(key: ValueKey('login_screen'))));
-    } else {
-      // Handle failure to insert user
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginView()));
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(
+                  backgroundColor: Colors.orangeAccent,
+                  content: Text(
+                    "Senha fraca, tente outra combinação",
+                    style: TextStyle(fontSize: 18.0),
+                  )));
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context as BuildContext)
+              .showSnackBar(const SnackBar(
+                  backgroundColor: Colors.orangeAccent,
+                  content: Text(
+                    "Este e-mail já está cadastrado",
+                    style: TextStyle(fontSize: 18.0),
+                  )));
+        }
+      }
     }
   }
+
 }
