@@ -12,6 +12,8 @@ class CadastroView extends StatefulWidget {
 class _CadastroViewState extends State<CadastroView> {
   final CadastroController _controller = CadastroController();
 
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,58 +32,59 @@ class _CadastroViewState extends State<CadastroView> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(32.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(0),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
+            child: Form(
+              key: _formkey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  'Cadastro',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                _inputField("Matrícula", _controller.matriculaController),
-                const SizedBox(height: 15),
-                _inputField("Nome", _controller.nomeController),
-                const SizedBox(height: 15),
-                _inputField("E-mail", _controller.emailController),
-                const SizedBox(height: 15),
-                _inputField("Telefone", _controller.telefoneController),
-                const SizedBox(height: 15),
-                _inputField("Senha", _controller.senhaController,
-                    isPassword: true),
-                const SizedBox(height: 15),
-                _inputField(
-                    "Confirmar Senha", _controller.confirmarSenhaController,
-                    isPassword: true),
-                const SizedBox(height: 30),
-                _cadastrarBtn(context),
-                const SizedBox(height: 20),
-                _loginText(),
-                const SizedBox(height: 23),
-              ],
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    'Cadastro',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  _inputField("Matrícula", _controller.matriculaController),
+                  const SizedBox(height: 15),
+                  _inputField("Nome", _controller.nomeController),
+                  const SizedBox(height: 15),
+                  _inputField("E-mail", _controller.emailController),
+                  const SizedBox(height: 15),
+                  _inputField("Telefone", _controller.telefoneController),
+                  const SizedBox(height: 15),
+                  _inputField("Senha", _controller.senhaController, isPassword: true),
+                  const SizedBox(height: 15),
+                  _inputField("Confirmar Senha", _controller.confirmarSenhaController,
+                      isPassword: true),
+                  const SizedBox(height: 30),
+                  _cadastrarBtn(context),
+                  const SizedBox(height: 20),
+                  _loginText(),
+                  const SizedBox(height: 23),
+                ],
+              ),
             ),
           ),
         ),
@@ -96,8 +99,14 @@ class _CadastroViewState extends State<CadastroView> {
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
     );
 
-    return TextField(
+    return TextFormField(
       style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Por favor, preencha todos os dados';
+        }
+        return null;
+      },
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
@@ -112,7 +121,14 @@ class _CadastroViewState extends State<CadastroView> {
   Widget _cadastrarBtn(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        _controller.cadastrarUsuario(context);
+        if (_formkey.currentState!.validate()) {
+          setState(() {
+            _controller.email = _controller.emailController.text;
+            _controller.nome = _controller.nomeController.text;
+            _controller.senha = _controller.senhaController.text;
+          });
+        }
+        _controller.registerUser(context);
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "683680419796",
+    "project_id": "maissaudeapp-9e9ae",
+    "storage_bucket": "maissaudeapp-9e9ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683680419796:android:8d036561da7636d9ac1041",
+        "android_client_info": {
+          "package_name": "com.example.mais_saude"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyocFrGODErK_JhLkDKVpOvLGc9YvuBoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
