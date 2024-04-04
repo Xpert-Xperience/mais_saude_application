@@ -135,10 +135,6 @@ class _PerfilState extends State<Perfil> {
               );
               break;
             case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Perfil()),
-              );
               break;
           }         
         },

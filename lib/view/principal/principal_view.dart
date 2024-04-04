@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
-import 'package:mais_saude/view/marcacao1/marcacao1_view.dart';
+import 'package:mais_saude/view/marcar_consulta/marcacao1_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
 
@@ -218,18 +218,13 @@ class _PrincipalState extends State<Principal> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Perfil',
-            
+            label: 'Perfil',            
           ),
         ],
         onTap: (index) {
           switch (index) {
             case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Principal()),
-              );
-              break;
+              break; 
             case 1:
               Navigator.push(
                 context,
