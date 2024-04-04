@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/marcacao2/marcacao_view.dart';
+import 'package:mais_saude/view/marcar_consulta/marcacao_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
+import 'calendario/calendario.dart';
 
 class marcacao1 extends StatefulWidget {
   const marcacao1({super.key});
@@ -14,10 +15,12 @@ class marcacao1 extends StatefulWidget {
 class _marcacao1State extends State<marcacao1> {
   @override
   Widget build(BuildContext context) {
+    double displayHeight() => MediaQuery.of(context).size.height;
+    double displayWidth() => MediaQuery.of(context).size.width;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         leading: Container(
           decoration: const BoxDecoration(
           ),
@@ -25,7 +28,7 @@ class _marcacao1State extends State<marcacao1> {
             icon: const Icon(
               Icons.arrow_back,
               size: 30, 
-              color: Color.fromARGB(255, 255, 255, 255), 
+              color: Color.fromARGB(255, 7, 7, 7), 
             ),
             onPressed: () {
               Navigator.push(
@@ -36,8 +39,13 @@ class _marcacao1State extends State<marcacao1> {
             },
           ),
         ),
-        title: const Text('Marcação', style: TextStyle(fontSize: 25)),
-        foregroundColor: const Color.fromARGB(255,255,255,255),
+        //alinhar titulo no centro
+        title: const Text('Marcação',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 25),
+        ),
+        centerTitle: true,
+        foregroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,12 +54,6 @@ class _marcacao1State extends State<marcacao1> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 5),
-              const Text(
-                'Marcação',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-              ),
               const SizedBox(height: 5),
               Center(
                 child: Container(
@@ -143,21 +145,21 @@ class _marcacao1State extends State<marcacao1> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const marcacao2()),
-            );
-          },
-          child: const Text(
-            "marcacao2",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+        Container(
+          width: displayWidth() / 0.5,
+          height: 360,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(5),
           ),
-        ),
-            ],
+          child: Center(
+            child: Calendario(),
+          ),
+        ), 
+         ],
           ),
         ),
       ),

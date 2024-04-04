@@ -171,7 +171,7 @@ class _HistoricoState extends State<Historico> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF136A65),
+        backgroundColor: const Color(0xFF000000),
         unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
@@ -202,11 +202,8 @@ class _HistoricoState extends State<Historico> {
               );
               break;
             case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Historico()),
-              );
               break;
+              
             case 2:
               Navigator.push(
                 context,
