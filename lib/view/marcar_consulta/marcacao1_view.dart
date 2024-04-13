@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/marcar_consulta/marcacao_view.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';

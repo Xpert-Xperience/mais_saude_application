@@ -37,12 +37,8 @@ class LoginController {
   }
 
   userLogout(BuildContext context) async {
-    try {
-      FirebaseAuth.instance.signOut();
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const LoginView()));
-    } on FirebaseAuthException catch (e) {
-      
-    }
+    FirebaseAuth.instance.signOut();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const LoginView()));
   }
 }
