@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
 
@@ -12,6 +13,8 @@ class Perfil extends StatefulWidget {
 class _PerfilState extends State<Perfil> {
   double displayHeight() => MediaQuery.of(context).size.height;
   double displayWidth() => MediaQuery.of(context).size.width;
+
+  final LoginController _controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +40,11 @@ class _PerfilState extends State<Perfil> {
                         _buildTextField("Email", "chiquin@gmail.com"),
                         _buildTextField("Matrícula", "123456"),
                         _buildTextField("Celular", "85998876543"),
-                        const SizedBox(height: 30),
-                        Center(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:const Color(0xFF0A9080),
-                              minimumSize: const Size(150, 40),
-                            ),
-                            onPressed: () {
-                              // Adicione aqui a lógica para a ação do botão "Editar"
-                            },
-                            child: const Text(
-                              'Editar',
-                              style:
-                                TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ),
+                        const SizedBox(
+                          height: 50,
                         ),
+                        // _editBtn(context),
+                        _logoutBtn(context),
                       ],
                     ),
                   ),
@@ -91,7 +82,6 @@ class _PerfilState extends State<Perfil> {
               ),
             ),
           ),
-          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -107,17 +97,14 @@ class _PerfilState extends State<Perfil> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
             label: 'Histórico',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
-            
           ),
         ],
         onTap: (index) {
@@ -136,7 +123,7 @@ class _PerfilState extends State<Perfil> {
               break;
             case 2:
               break;
-          }         
+          }
         },
       ),
     );
@@ -168,6 +155,40 @@ class _PerfilState extends State<Perfil> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _editBtn(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF0A9080),
+          minimumSize: const Size(150, 20),
+        ),
+        onPressed: () {},
+        child: const Text(
+          'Editar',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Widget _logoutBtn(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF0A9080),
+          minimumSize: const Size(150, 20),
+        ),
+        onPressed: () {
+          _controller.userLogout(context);
+        },
+        child: const Text(
+          'Logout',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
     );
   }
 }
