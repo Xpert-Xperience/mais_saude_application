@@ -131,11 +131,11 @@ class _CadastroViewState extends State<CadastroView> {
           });
         }
         _controller.registerUser(context);
-        _controller.adicionarInfo(
-            _controller.matriculaController.text.trim(),
-            _controller.nomeController.text.trim(),
-            _controller.emailController.text.trim(),
-            _controller.telefoneController.text.trim());
+        // _controller.adicionarInfo(
+        //     _controller.matriculaController.text.trim(),
+        //     _controller.nomeController.text.trim(),
+        //     _controller.emailController.text.trim(),
+        //     _controller.telefoneController.text.trim());
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),

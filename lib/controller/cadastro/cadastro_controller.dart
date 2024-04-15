@@ -27,11 +27,13 @@ class CadastroController {
     if (nomeController.text != "" && emailController.text != "") {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: senha);
+            .createUserWithEmailAndPassword(email: emailController.text, password: senhaController.text);
 
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Registrado com sucesso!",
                 style: TextStyle(fontSize: 20.0))));
+
+        adicionarInfo(matriculaController.text, nomeController.text, emailController.text, telefoneController.text);
 
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginView()));
