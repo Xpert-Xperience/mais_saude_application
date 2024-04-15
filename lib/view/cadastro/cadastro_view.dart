@@ -74,9 +74,11 @@ class _CadastroViewState extends State<CadastroView> {
                   const SizedBox(height: 15),
                   _inputField("Telefone", _controller.telefoneController),
                   const SizedBox(height: 15),
-                  _inputField("Senha", _controller.senhaController, isPassword: true),
+                  _inputField("Senha", _controller.senhaController,
+                      isPassword: true),
                   const SizedBox(height: 15),
-                  _inputField("Confirmar Senha", _controller.confirmarSenhaController,
+                  _inputField(
+                      "Confirmar Senha", _controller.confirmarSenhaController,
                       isPassword: true),
                   const SizedBox(height: 30),
                   _cadastrarBtn(context),
@@ -129,6 +131,11 @@ class _CadastroViewState extends State<CadastroView> {
           });
         }
         _controller.registerUser(context);
+        _controller.adicionarInfo(
+            _controller.matriculaController.text.trim(),
+            _controller.nomeController.text.trim(),
+            _controller.emailController.text.trim(),
+            _controller.telefoneController.text.trim());
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
