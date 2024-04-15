@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
 import 'package:mais_saude/view/marcar_consulta/marcacao1_view.dart';
@@ -12,15 +14,36 @@ class Principal extends StatefulWidget {
 }
 
 class _PrincipalState extends State<Principal> {
+  String _userName = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentUser();
+  }
+
+  Future<void> _getCurrentUser() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final docRef =
+          FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
+      final docSnapshot = await docRef.get();
+      if (docSnapshot.exists) {
+        setState(() {
+          _userName = docSnapshot['nome'];
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Home',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Color(0xFF0D4542), fontWeight: FontWeight.bold)
-          ),
+        title: const Text('Home',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Color(0xFF0D4542), fontWeight: FontWeight.bold)),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -29,15 +52,21 @@ class _PrincipalState extends State<Principal> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child: Text('Olá, Lucas', style: TextStyle(fontSize: 20),),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                'Olá, $_userName!',
+                style: const TextStyle(fontSize: 20),
+              ),
             ),
             const SizedBox(height: 20),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Próxima Consulta',style: TextStyle(fontSize: 20),),
+                Text(
+                  'Próxima Consulta',
+                  style: TextStyle(fontSize: 20),
+                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -154,9 +183,8 @@ class _PrincipalState extends State<Principal> {
                       const Text(
                         'Clínico Geral',
                         style: TextStyle(
-                          fontSize: 20, 
-                          fontWeight:
-                              FontWeight.w500, 
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -209,22 +237,20 @@ class _PrincipalState extends State<Principal> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
             label: 'Histórico',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Perfil',            
+            label: 'Perfil',
           ),
         ],
         onTap: (index) {
           switch (index) {
             case 0:
-              break; 
+              break;
             case 1:
               Navigator.push(
                 context,
@@ -237,7 +263,7 @@ class _PrincipalState extends State<Principal> {
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
-          }         
+          }
         },
       ),
     );
