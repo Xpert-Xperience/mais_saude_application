@@ -2,7 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
@@ -12,10 +11,13 @@ class LoginController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? user;
+
   userLogin(BuildContext context) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const Principal()));
     } on FirebaseAuthException catch (e) {
@@ -38,32 +40,19 @@ class LoginController {
   }
 
   userGoogleLogin(BuildContext context) async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-     print("chegou aqui");
     try {
-
-      final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-
-      if(googleSignInAccount != null ){
-        final GoogleSignInAuthentication googleSignInAuthentication = await
-        googleSignInAccount.authentication;
-
-        final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken,
-        );
-
-        await FirebaseAuth.instance.signInWithCredential(credential);
-        Navigator.pushNamed(context, "/home");
-      }
-
-    }catch(e) {
-      // showToast(message: "some error occured $e");
+      final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Principal()));
+    } catch (e) {
+      print("erro:");
+      print(e);
     }
   }
 
   userLogout(BuildContext context) async {
-    FirebaseAuth.instance.signOut();
+    _auth.signOut();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const LoginView()));
   }
