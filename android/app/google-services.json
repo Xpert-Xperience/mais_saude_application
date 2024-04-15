@@ -12,7 +12,20 @@
           "package_name": "com.example.mais_saude"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "683680419796-eu8tjhure9jn56gvvsb2t1g76u19j9va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mais_saude",
+            "certificate_hash": "8b169fd04cef1ef1e87de06bbfe3918607f8964a"
+          }
+        },
+        {
+          "client_id": "683680419796-alvkutis2obm03qgttfg6fnhlaperddk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAyocFrGODErK_JhLkDKVpOvLGc9YvuBoM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683680419796-alvkutis2obm03qgttfg6fnhlaperddk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "683680419796-dahja4r6viiatbqppmrc33te17btke7v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.maisSaude"
+              }
+            }
+          ]
         }
       }
     }
