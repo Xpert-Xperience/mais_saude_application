@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mais_saude/controller/login/login_controller.dart';
@@ -13,8 +14,19 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginController _controller = LoginController();
-
+   final FirebaseAuth _auth = FirebaseAuth.instance;
+   
   final _formkey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _auth.authStateChanges().listen((event) {
+      setState(() {
+        _controller.user = event;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
