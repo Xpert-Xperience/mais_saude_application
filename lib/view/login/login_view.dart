@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
@@ -69,6 +70,10 @@ class _LoginViewState extends State<LoginView> {
                   isPassword: true),
               const SizedBox(height: 50),
               _loginBtn(context),
+              const SizedBox(
+                height: 10,
+              ),
+              _loginGoogleBtn(context),
               const SizedBox(height: 20),
               _extraText(),
             ],
@@ -126,6 +131,43 @@ class _LoginViewState extends State<LoginView> {
           "Login",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Widget _loginGoogleBtn(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        _controller.userGoogleLogin(context);
+      },
+      child: Container(
+        width: double.infinity,
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: const Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                FontAwesomeIcons.google,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                "Sign in with Google",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
