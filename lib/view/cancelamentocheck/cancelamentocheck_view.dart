@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/checkin/checkin_view.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
 class Cancelcheck extends StatefulWidget {
@@ -16,27 +17,14 @@ class _CancelcheckState extends State<Cancelcheck> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 3, 3, 3),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
+        leading: buildBackButton(context),
         title: const Text(
           'Cancelamento',
           style: TextStyle(fontSize: 25),
         ),
-        centerTitle: true, 
+        centerTitle: true,
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
-
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -53,12 +41,18 @@ class _CancelcheckState extends State<Cancelcheck> {
                       children: [
                         Text(
                           'Sair da fila',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 5),
                         Text(
                           'de espera',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -73,7 +67,10 @@ class _CancelcheckState extends State<Cancelcheck> {
                   child: Text(
                     'Tem certeza que deseja sair da fila \nde espera? Essa ação não poderá \nser desfeita.',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -83,7 +80,8 @@ class _CancelcheckState extends State<Cancelcheck> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Principal()),
+                      MaterialPageRoute(
+                          builder: (context) => const Principal()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -92,7 +90,8 @@ class _CancelcheckState extends State<Cancelcheck> {
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
-                        fontSize: 22, color: Color.fromARGB(255, 255, 255, 255)),
+                        fontSize: 22,
+                        color: Color.fromARGB(255, 255, 255, 255)),
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/checkin/checkin_view.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
 class Confcheck extends StatefulWidget {
@@ -10,36 +11,20 @@ class Confcheck extends StatefulWidget {
 }
 
 class _ConfcheckState extends State<Confcheck> {
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 3, 3, 3),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Principal()),
-                    );
-            },
-          ),
-        ),
+        leading: buildBackButton(context),
         title: const Text(
           'Confirmação',
           style: TextStyle(fontSize: 25),
         ),
-        centerTitle: true, 
+        centerTitle: true,
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
-
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -56,11 +41,17 @@ class _ConfcheckState extends State<Confcheck> {
                       children: [
                         Text(
                           'Entrar na fila',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'de espera',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -75,7 +66,10 @@ class _ConfcheckState extends State<Confcheck> {
                   child: Text(
                     'Tem certeza que deseja entrar na fila \nde espera para a consulta?',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -94,7 +88,8 @@ class _ConfcheckState extends State<Confcheck> {
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
-                        fontSize: 22, color: Color.fromARGB(255, 255, 255, 255)),
+                        fontSize: 22,
+                        color: Color.fromARGB(255, 255, 255, 255)),
                   ),
                 ),
               ),

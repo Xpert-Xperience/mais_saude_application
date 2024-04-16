@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mais_saude/controller/login/login_controller.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -14,8 +15,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginController _controller = LoginController();
-   final FirebaseAuth _auth = FirebaseAuth.instance;
-   
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -47,28 +48,7 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
+              buildBackButton(context),
               const SizedBox(height: 60),
               const Text(
                 'Seja Bem-Vindo!',

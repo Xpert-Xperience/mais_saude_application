@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 
 class ConfirmarEsqueceuSenha extends StatefulWidget {
   const ConfirmarEsqueceuSenha({super.key});
@@ -55,30 +56,7 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
+              buildBackButton(context),
               const SizedBox(height: 60),
               const Text(
                 'Esqueceu a',

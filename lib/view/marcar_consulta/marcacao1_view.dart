@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/perfil/perfil.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
@@ -20,28 +21,12 @@ class _marcacao1State extends State<marcacao1> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        leading: Container(
-          decoration: const BoxDecoration(
-          ),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30, 
-              color: Color.fromARGB(255, 7, 7, 7), 
-            ),
-            onPressed: () {
-              Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const Principal()),
-            );
-            },
-          ),
-        ),
+        leading: buildBackButton(context),
         //alinhar titulo no centro
-        title: const Text('Marcação',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 25),
+        title: const Text(
+          'Marcação',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
         ),
         centerTitle: true,
         foregroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -144,21 +129,21 @@ class _marcacao1State extends State<marcacao1> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
-        Container(
-          width: displayWidth() / 0.5,
-          height: 360,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Center(
-            child: Calendario(),
-          ),
-        ), 
-         ],
+              Container(
+                width: displayWidth() / 0.5,
+                height: 360,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(
+                  child: Calendario(),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -175,17 +160,14 @@ class _marcacao1State extends State<marcacao1> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
             label: 'Histórico',
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
-            
           ),
         ],
         onTap: (index) {
@@ -208,7 +190,7 @@ class _marcacao1State extends State<marcacao1> {
                 MaterialPageRoute(builder: (context) => const Perfil()),
               );
               break;
-          }         
+          }
         },
       ),
     );
