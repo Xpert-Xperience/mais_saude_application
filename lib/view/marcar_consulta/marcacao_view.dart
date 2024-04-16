@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/confmarcacao/confmarcacao_view.dart';
 
-class marcacao2 extends StatefulWidget {
-  const marcacao2({super.key});
+class Marcacao2 extends StatefulWidget {
+  const Marcacao2({super.key});
 
   @override
-  State<marcacao2> createState() => _marcacao2State();
+  State<Marcacao2> createState() => _Marcacao2State();
 }
 
-class _marcacao2State extends State<marcacao2> {
+class _Marcacao2State extends State<Marcacao2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
