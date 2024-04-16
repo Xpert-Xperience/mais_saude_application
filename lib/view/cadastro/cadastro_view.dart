@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mais_saude/view/login/login_view.dart';
 import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
 
@@ -37,28 +38,7 @@ class _CadastroViewState extends State<CadastroView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildBackButton(context),
                   const SizedBox(height: 5),
                   const Text(
                     'Cadastro',
@@ -91,6 +71,31 @@ class _CadastroViewState extends State<CadastroView> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildBackButton(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(0),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -131,11 +136,6 @@ class _CadastroViewState extends State<CadastroView> {
           });
         }
         _controller.registerUser(context);
-        // _controller.adicionarInfo(
-        //     _controller.matriculaController.text.trim(),
-        //     _controller.nomeController.text.trim(),
-        //     _controller.emailController.text.trim(),
-        //     _controller.telefoneController.text.trim());
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
