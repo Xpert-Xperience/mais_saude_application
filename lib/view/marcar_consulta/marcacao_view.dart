@@ -187,7 +187,7 @@ class _marcacao2State extends State<marcacao2> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const confirmacao()),
+                          builder: (context) => const Confirmacao()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

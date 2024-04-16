@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/principal/principal_view.dart';
 
-class confirmacao extends StatefulWidget {
-  const confirmacao({super.key});
+class Confirmacao extends StatefulWidget {
+  const Confirmacao({super.key});
 
   @override
-  State<confirmacao> createState() => _confirmacaoState();
+  State<Confirmacao> createState() => _ConfirmacaoState();
 }
 
-class _confirmacaoState extends State<confirmacao> {
+class _ConfirmacaoState extends State<Confirmacao> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
