@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_saude/view/common/build_return_button.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
 
 class Cancelamento extends StatefulWidget {
@@ -18,19 +19,7 @@ class _CancelamentoState extends State<Cancelamento> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 3, 3, 3),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
+        leading: buildBackButton(context),
         title: const Text(
           'Cancelamento',
           style: TextStyle(fontSize: 25),
