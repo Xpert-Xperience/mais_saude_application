@@ -105,7 +105,7 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(builder: (context) => const Marcacao1()),
                   ),
                   child: Column(
                     children: [
@@ -132,7 +132,7 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(builder: (context) => const Marcacao1()),
                   ),
                   child: Column(
                     children: [
@@ -167,7 +167,7 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(builder: (context) => const Marcacao1()),
                   ),
                   child: Column(
                     children: [

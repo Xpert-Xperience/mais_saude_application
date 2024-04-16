@@ -5,14 +5,14 @@ import 'package:mais_saude/view/principal/principal_view.dart';
 import 'package:mais_saude/view/historico/historico_view.dart';
 import 'calendario/calendario.dart';
 
-class marcacao1 extends StatefulWidget {
-  const marcacao1({super.key});
+class Marcacao1 extends StatefulWidget {
+  const Marcacao1({super.key});
 
   @override
-  State<marcacao1> createState() => _marcacao1State();
+  State<Marcacao1> createState() => _Marcacao1State();
 }
 
-class _marcacao1State extends State<marcacao1> {
+class _Marcacao1State extends State<Marcacao1> {
   @override
   Widget build(BuildContext context) {
     double displayHeight() => MediaQuery.of(context).size.height;
