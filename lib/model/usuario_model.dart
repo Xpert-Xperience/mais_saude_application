@@ -3,7 +3,7 @@ class Usuario {
   String? nome;
   String? email;
   String? telefone;
-  
+    
   Usuario({
     this.matricula,
     this.nome,

@@ -23,44 +23,41 @@ class CadastroController {
 
   FirebaseFirestore db = FirebaseFirestore.instance;
 
-  registerUser(BuildContext context) async {
+  Future<void> registerUser(BuildContext context) async {
     if (nomeController.text != "" && emailController.text != "") {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: emailController.text, password: senhaController.text);
+            .createUserWithEmailAndPassword(
+                email: emailController.text, password: senhaController.text);
+
+        // Use the UID from the created user
+        String userId = userCredential.user!.uid;
+
+        adicionarInfo(matriculaController.text, nomeController.text,
+            emailController.text, telefoneController.text, userId);
 
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Registrado com sucesso!",
                 style: TextStyle(fontSize: 20.0))));
 
-        adicionarInfo(matriculaController.text, nomeController.text, emailController.text, telefoneController.text);
-
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginView()));
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Senha fraca, tente outra combinação",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        } else if (e.code == 'email-already-in-use') {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              backgroundColor: Colors.orangeAccent,
-              content: Text(
-                "Este e-mail já está cadastrado",
-                style: TextStyle(fontSize: 18.0),
-              )));
-        }
+        print(e);
       }
     }
   }
 
-  adicionarInfo(matricula, nome, email, telefone) async {
+  Future<bool> isMatriculaUnique(String matricula) async {
+    final docRef = db.collection("usuarios").doc(matricula);
+    final docSnap = await docRef.get();
+    return !docSnap.exists;
+  }
+
+  adicionarInfo( matricula, nome, email, telefone,
+      String userId) async {
     Usuario usuario = Usuario(
         matricula: matricula, nome: nome, email: email, telefone: telefone);
-
-    db.collection("usuarios").add(usuario.toFirestore());
+    db.collection("usuarios").doc(userId).set(usuario.toFirestore());
   }
 }

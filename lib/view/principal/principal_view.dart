@@ -22,19 +22,22 @@ class _PrincipalState extends State<Principal> {
     _getCurrentUser();
   }
 
-  Future<void> _getCurrentUser() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final docRef =
-          FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
-      final docSnapshot = await docRef.get();
-      if (docSnapshot.exists) {
-        setState(() {
-          _userName = docSnapshot['nome'];
-        });
-      }
+Future<void> _getCurrentUser() async {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    // Aqui você precisa buscar o nome do usuário no Firestore usando o userId
+    final docSnapshot = await FirebaseFirestore.instance.collection('usuarios').doc(user.uid).get();
+    if (docSnapshot.exists) {
+      setState(() {
+        _userName = docSnapshot.data()!['nome'] ?? 'Olá, ${user.email!.split('@')[0]}!';
+      });
+    } else {
+      setState(() {
+        _userName = 'Olá, ${user.email!.split('@')[0]}!';
+      });
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class _PrincipalState extends State<Principal> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
-                'Olá, $_userName!',
+                _userName,
                 style: const TextStyle(fontSize: 20),
               ),
             ),
