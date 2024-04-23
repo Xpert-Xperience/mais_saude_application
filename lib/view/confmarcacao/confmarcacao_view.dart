@@ -14,7 +14,7 @@ class _confirmacaoState extends State<confirmacao> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -28,6 +28,7 @@ class _confirmacaoState extends State<confirmacao> {
             },
           ),
         ),
+        centerTitle: true,
         title: const Text('Confirmação', style: TextStyle(fontSize: 25)),
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
@@ -40,12 +41,12 @@ class _confirmacaoState extends State<confirmacao> {
               const Text(
                 'Sua consulta',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black,fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Color(0xff0D4542),fontSize: 35, fontWeight: FontWeight.bold),
               ),
               const Text(
                 'foi confirmada!',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black ,fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Color(0xff0D4542) ,fontSize: 35, fontWeight: FontWeight.bold),
                 
               ),
               const SizedBox(height: 60),
@@ -56,7 +57,7 @@ class _confirmacaoState extends State<confirmacao> {
                   child: Text(
                     'Foi enviado para o seu email',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w400),
+                    style: TextStyle(color: Color(0xff005651), fontSize: 22, fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -83,7 +84,7 @@ class _confirmacaoState extends State<confirmacao> {
                 },
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size(300, 50),
-                    backgroundColor: Colors.black),
+                    backgroundColor: Color(0xff0A9080)),
                 child: const Text(
                   'Voltar',
                   style: TextStyle(

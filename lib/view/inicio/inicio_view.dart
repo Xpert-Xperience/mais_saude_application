@@ -31,7 +31,7 @@ class _inicialState extends State<inicial> {
           SizedBox(
             height: displayHeight() / 4,
             child: Image.asset(
-              "assets/mais.png",
+              "assets/ciano.png",
               width: 420,
               height: 420,
               fit: BoxFit.contain,
@@ -41,13 +41,14 @@ class _inicialState extends State<inicial> {
           const Text(
             'Seja Bem-Vindo!',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542),),
           ),
           const SizedBox(height: 5),
           const Text(
             'Marque suas consultas com facilidade \ne praticidade, sem precisar ir ao IF. ',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16, color: Color(0xFF005651),),
+            
           ),
           const SizedBox(height: 100),
           ElevatedButton(
@@ -61,7 +62,7 @@ class _inicialState extends State<inicial> {
               );
             },
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all(Color(0xFF0A9080)),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
@@ -85,7 +86,7 @@ class _inicialState extends State<inicial> {
               );
             },
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all(Color(0xFF0A9080)),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
