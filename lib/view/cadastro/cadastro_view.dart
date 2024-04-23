@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/login/login_view.dart';
+import 'package:flutter/services.dart';
 import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
+import 'package:mais_saude/view/login/login_view.dart';
 
 class CadastroView extends StatefulWidget {
-  const CadastroView({super.key});
+  const CadastroView({Key? key}) : super(key: key);
 
   @override
   State<CadastroView> createState() => _CadastroViewState();
@@ -14,9 +15,107 @@ class _CadastroViewState extends State<CadastroView> {
 
   final _formkey = GlobalKey<FormState>();
 
+  String _formatPhoneNumber(String phoneNumber) {
+    if (phoneNumber.length <= 2) {
+      return '($phoneNumber'; // Adiciona '(' no início
+    } else if (phoneNumber.length <= 6) {
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2)}'; // Formata até o sexto dígito
+    } else if (phoneNumber.length <= 10) {
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 6)}-${phoneNumber.substring(6)}'; // Formata até o décimo dígito
+    } else {
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 7)}-${phoneNumber.substring(7, 11)}'; // Formata completo
+    }
+  }
+
+  bool isEmailValid(String email) {
+    // Utilizando uma expressão regular para verificar se o e-mail tem um formato válido
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegex.hasMatch(email);
+  }
+
+   String? _emailError;
+
+  Widget _inputField(String hintText, TextEditingController controller,
+      {bool isPassword = false, bool isPhoneNumber = false, bool isEmail = false}) {
+    var border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(18),
+      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextFormField(
+          style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Por favor, preencha todos os dados';
+            }
+            if (isEmail && !isEmailValid(value)) {
+              setState(() {
+              _emailError = 'E-mail inválido';
+              });
+            return 'E-mail inválido';
+            }
+            return null;
+          },
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+            enabledBorder: border,
+            focusedBorder: border,
+            errorText: isEmail ? _emailError : null, 
+          ),
+          obscureText: isPassword,
+          keyboardType: isPhoneNumber ? TextInputType.phone : (isEmail ? TextInputType.emailAddress : TextInputType.text),
+          inputFormatters: isPhoneNumber
+              ? [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(11)]
+              : null,
+          onChanged: (value) {
+            if (isPhoneNumber) {
+              final formatted = _formatPhoneNumber(value);
+              if (formatted != controller.text) {
+                controller.value = controller.value.copyWith(
+                  text: formatted,
+                  selection: TextSelection.collapsed(offset: formatted.length),
+                );
+              }
+            }
+            if (isEmail) {
+              setState(() {
+                _emailError = null; // Limpa o erro ao editar
+              });
+            }
+          },
+        ),
+        if (isEmail && _emailError != null) // Mostra o texto de erro se houver erro de e-mail
+          Text(
+            _emailError!,
+            style: TextStyle(color: Colors.red),
+          ),
+      ],
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        leading: Container(
+          decoration: const BoxDecoration(),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -31,53 +130,30 @@ class _CadastroViewState extends State<CadastroView> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(20.0),
             child: Form(
               key: _formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 1),
                   const Text(
                     'Cadastro',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 15),
-                  _inputField("Matrícula", _controller.matriculaController),
+                  _inputField("Matricula", _controller.matriculaController),
                   const SizedBox(height: 15),
                   _inputField("Nome", _controller.nomeController),
                   const SizedBox(height: 15),
-                  _inputField("E-mail", _controller.emailController),
+                  _inputField("E-mail", _controller.emailController, isEmail: true),
                   const SizedBox(height: 15),
-                  _inputField("Telefone", _controller.telefoneController),
+                  _inputField("Telefone", _controller.telefoneController, isPhoneNumber: true),
                   const SizedBox(height: 15),
                   _inputField("Senha", _controller.senhaController, isPassword: true),
                   const SizedBox(height: 15),
-                  _inputField("Confirmar Senha", _controller.confirmarSenhaController,
-                      isPassword: true),
+                  _inputField("Confirmar Senha", _controller.confirmarSenhaController, isPassword: true),
                   const SizedBox(height: 30),
                   _cadastrarBtn(context),
                   const SizedBox(height: 20),
@@ -89,32 +165,6 @@ class _CadastroViewState extends State<CadastroView> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _inputField(String hintText, TextEditingController controller,
-      {bool isPassword = false}) {
-    var border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
-    );
-
-    return TextFormField(
-      style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor, preencha todos os dados';
-        }
-        return null;
-      },
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-        enabledBorder: border,
-        focusedBorder: border,
-      ),
-      obscureText: isPassword,
     );
   }
 
@@ -158,7 +208,7 @@ class _CadastroViewState extends State<CadastroView> {
       child: const Text(
         "Já tem uma conta? Login",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+        style: TextStyle(fontSize: 18),
       ),
     );
   }
