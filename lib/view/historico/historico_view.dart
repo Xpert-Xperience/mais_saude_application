@@ -41,12 +41,15 @@ class _HistoricoState extends State<Historico> {
                     // Lógica para limpar o campo de pesquisa
                   },
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF28928B), // Borda da barra de pesquisa
-                  ),
-                ),
+                 enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 1.8 ,color: Color(0xFF28928B)), // Definindo a cor da borda quando não está em foco
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 1.8, color: Color(0xFF28928B)), // Definindo a cor da borda quando está em foco
+        borderRadius: BorderRadius.circular(10),
+      ),
+                
               ),
               onChanged: (value) {
                 // Lógica para filtrar os resultados de acordo com o valor digitado
@@ -171,7 +174,7 @@ class _HistoricoState extends State<Historico> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF000000),
+        backgroundColor: const Color(0xff136A65),
         unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,

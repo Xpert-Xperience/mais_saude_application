@@ -37,7 +37,7 @@ class _inicialState extends State<inicial> {
                     SizedBox(
                       height: constraints.maxHeight * 0.4,
                       child: Image.asset(
-                        "assets/mais.png",
+                        "assets/ciano.png",
                         width: constraints.maxWidth * 0.6,
                         fit: BoxFit.contain,
                       ),

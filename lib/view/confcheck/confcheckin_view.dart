@@ -15,7 +15,7 @@ class _ConfcheckState extends State<Confcheck> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -56,11 +56,11 @@ class _ConfcheckState extends State<Confcheck> {
                       children: [
                         Text(
                           'Entrar na fila',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Color(0xff0D4542), fontSize: 50, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'de espera',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Color(0xff0D4542), fontSize: 50, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -75,7 +75,7 @@ class _ConfcheckState extends State<Confcheck> {
                   child: Text(
                     'Tem certeza que deseja entrar na fila \nde espera para a consulta?',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(color: Color(0xff014B47), fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -90,7 +90,7 @@ class _ConfcheckState extends State<Confcheck> {
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(300, 50),
-                      backgroundColor: Colors.black),
+                      backgroundColor: Color(0xff0A9080)),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
@@ -112,7 +112,8 @@ class _ConfcheckState extends State<Confcheck> {
                     'Voltar',
                     style: TextStyle(
                       fontSize: 22,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff014B47),
                     ),
                   ),
                 ),

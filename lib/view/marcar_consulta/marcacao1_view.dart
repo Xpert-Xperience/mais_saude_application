@@ -41,10 +41,10 @@ class _marcacao1State extends State<marcacao1> {
         //alinhar titulo no centro
         title: const Text('Marcação',
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        foregroundColor: Color.fromARGB(255, 0, 0, 0),
+        foregroundColor: Color(0xff0D4542),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -61,7 +61,7 @@ class _marcacao1State extends State<marcacao1> {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.black,
+                      color: Color(0xff28928B),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(5),
@@ -79,7 +79,7 @@ class _marcacao1State extends State<marcacao1> {
                             shape: BoxShape.circle,
                             color: const Color.fromARGB(255, 255, 255, 255),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Color(0xff08331E),
                               width: 2,
                             ),
                           ),
@@ -96,7 +96,7 @@ class _marcacao1State extends State<marcacao1> {
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              color: Color(0xff0D4542),
                             ),
                           ),
                         ),
@@ -112,7 +112,7 @@ class _marcacao1State extends State<marcacao1> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              color: Color(0xff0D4542),
                             ),
                           ),
                         ),
@@ -128,7 +128,7 @@ class _marcacao1State extends State<marcacao1> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              color: Color(0xff0D4542),
                             ),
                           ),
                         ),
@@ -141,7 +141,7 @@ class _marcacao1State extends State<marcacao1> {
               const Text(
                 'Data da marcação',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xff0D4542)),
               ),
               const SizedBox(height: 10),
         Container(
@@ -149,7 +149,7 @@ class _marcacao1State extends State<marcacao1> {
           height: 360,
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black,
+              color: const Color(0xff014B47),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(5),
@@ -163,14 +163,14 @@ class _marcacao1State extends State<marcacao1> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        unselectedItemColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xff136A65),
+        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
         selectedFontSize: 15,
         iconSize: 30,
         currentIndex: 0,
-        fixedColor: const Color.fromARGB(255, 6, 7, 7),
+        fixedColor: Color.fromARGB(255, 255, 255, 255),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
