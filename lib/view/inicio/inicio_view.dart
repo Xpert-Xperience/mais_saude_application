@@ -22,85 +22,100 @@ class _inicialState extends State<inicial> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: 550,
-      child: Column(
-        children: <Widget>[
-          const SizedBox(height: 100),
-          SizedBox(
-            height: displayHeight() / 4,
-            child: Image.asset(
-              "assets/mais.png",
-              width: 420,
-              height: 420,
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 100),
-          const Text(
-            'Seja Bem-Vindo!',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 5),
-          const Text(
-            'Marque suas consultas com facilidade \ne praticidade, sem precisar ir ao IF. ',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 100),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const LoginView(
-                          key: null,
-                        )),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Container(
+                padding: EdgeInsets.all(20.0),
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: constraints.maxHeight * 0.4,
+                      child: Image.asset(
+                        "assets/mais.png",
+                        width: constraints.maxWidth * 0.6,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Seja Bem-Vindo!',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Marque suas consultas com facilidade e praticidade, sem precisar ir ao IF. ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 50),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginView(),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        minimumSize: MaterialStateProperty.all(
+                          Size(constraints.maxWidth * 0.85,
+                              constraints.maxHeight * 0.082),
+                        ),
+                      ),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CadastroView()),
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        minimumSize: MaterialStateProperty.all(
+                          Size(constraints.maxWidth * 0.85,
+                              constraints.maxHeight * 0.082),
+                        ),
+                      ),
+                      child: Text(
+                        'Cadastro',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              minimumSize: MaterialStateProperty.all(
-                Size(displayWidth() * 0.8, 55),
-              ),
             ),
-            child: const Text(
-              'Login',
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CadastroView()),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ),
-              minimumSize: MaterialStateProperty.all(
-                Size(displayWidth() * 0.8, 55),
-              ),
-            ),
-            child: const Text(
-              'Cadastro',
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
