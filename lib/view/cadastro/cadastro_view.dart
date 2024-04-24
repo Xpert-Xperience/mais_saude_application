@@ -43,7 +43,7 @@ class _CadastroViewState extends State<CadastroView> {
                       Container(
                         padding: const EdgeInsets.all(0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 0, 0, 0),
+                          color: const Color(0xFF136863),
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -63,7 +63,7 @@ class _CadastroViewState extends State<CadastroView> {
                   const Text(
                     'Cadastro',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
                   ),
                   const SizedBox(height: 15),
                   _inputField("Matrícula", _controller.matriculaController),
@@ -95,8 +95,8 @@ class _CadastroViewState extends State<CadastroView> {
   Widget _inputField(String hintText, TextEditingController controller,
       {bool isPassword = false}) {
     var border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 1.8, color: Color(0xFF0D4542)),
     );
 
     return TextFormField(
@@ -132,7 +132,7 @@ class _CadastroViewState extends State<CadastroView> {
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(
@@ -158,7 +158,7 @@ class _CadastroViewState extends State<CadastroView> {
       child: const Text(
         "Já tem uma conta? Login",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+        style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500, color: Color(0xFF005651)),
       ),
     );
   }

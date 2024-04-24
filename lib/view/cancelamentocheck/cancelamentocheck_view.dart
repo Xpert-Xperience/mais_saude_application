@@ -15,7 +15,7 @@ class _CancelcheckState extends State<Cancelcheck> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -53,12 +53,12 @@ class _CancelcheckState extends State<Cancelcheck> {
                       children: [
                         Text(
                           'Sair da fila',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Color(0xff0D4542), fontSize: 50, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 5),
                         Text(
                           'de espera',
-                          style: TextStyle(color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Color(0xff0D4542), fontSize: 50, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -73,7 +73,7 @@ class _CancelcheckState extends State<Cancelcheck> {
                   child: Text(
                     'Tem certeza que deseja sair da fila \nde espera? Essa ação não poderá \nser desfeita.',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(color: Color(0xff014B47), fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -88,7 +88,7 @@ class _CancelcheckState extends State<Cancelcheck> {
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(300, 55),
-                      backgroundColor: Colors.black),
+                      backgroundColor: Color(0xff0A9080)),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
@@ -110,7 +110,8 @@ class _CancelcheckState extends State<Cancelcheck> {
                     'Manter',
                     style: TextStyle(
                       fontSize: 22,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff014B47),
                     ),
                   ),
                 ),

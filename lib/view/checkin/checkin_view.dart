@@ -15,7 +15,7 @@ class _CheckinState extends State<Checkin> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -47,12 +47,12 @@ class _CheckinState extends State<Checkin> {
               const Text(
                 'Fila Para Consulta',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Color(0xff0D4542), fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Em Serviço',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w400),
+                style: TextStyle(color: Color(0xff014B47), fontSize: 15, fontWeight: FontWeight.w400),
               ),
               const SizedBox(height: 60),
               const Padding(
@@ -62,7 +62,7 @@ class _CheckinState extends State<Checkin> {
                   child: Text(
                     'Sua Ficha É:',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black, fontSize: 35, fontWeight: FontWeight.w400),
+                    style: TextStyle(color: Color(0xff0D4542), fontSize: 35, fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -86,7 +86,7 @@ class _CheckinState extends State<Checkin> {
                   );
                 },
                  style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Color(0xff0A9080),
                   foregroundColor: Colors.white,
                    minimumSize: const Size(150, 50),
                 ),
@@ -107,7 +107,7 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.black),
+          style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Color(0xff0D4542)),
         ),
         const SizedBox(height: 10),
       ],
@@ -119,12 +119,12 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black),
+          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Color(0xff0D4542)),
         ),
         const SizedBox(height: 10),
         Text(
           description,
-          style: const TextStyle(fontSize: 18, color: Colors.black),
+          style: const TextStyle(fontSize: 18, color: Color(0xff0D4542)),
         ),
       ],
     );
