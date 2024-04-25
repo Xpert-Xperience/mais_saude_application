@@ -56,7 +56,7 @@ class _LoginViewState extends State<LoginView> {
               const Text(
                 'Seja Bem-Vindo!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
               ),
               const SizedBox(height: 100),
               _inputField("Email", _controller.emailController),
@@ -78,7 +78,7 @@ class _LoginViewState extends State<LoginView> {
       {isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+      borderSide: const BorderSide(width: 1.8, color: Color(0xFF28928B)),
     );
 
     return TextFormField(
@@ -113,7 +113,7 @@ class _LoginViewState extends State<LoginView> {
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(
@@ -142,7 +142,7 @@ class _LoginViewState extends State<LoginView> {
           child: const Text(
             "Esqueceu a senha?",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF005651)),
           ),
         ),
         const SizedBox(height: 10),
@@ -156,7 +156,7 @@ class _LoginViewState extends State<LoginView> {
           child: const Text(
             "Não tem uma conta? Cadastre-se",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+            style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500, color: Color(0xFF005651)),
           ),
         ),
       ],

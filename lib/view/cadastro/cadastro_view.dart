@@ -140,7 +140,7 @@ class _CadastroViewState extends State<CadastroView> {
                   const Text(
                     'Cadastro',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
                   ),
                   const SizedBox(height: 15),
                   _inputField("Matricula", _controller.matriculaController),
@@ -182,7 +182,7 @@ class _CadastroViewState extends State<CadastroView> {
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(

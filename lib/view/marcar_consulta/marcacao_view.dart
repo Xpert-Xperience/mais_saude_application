@@ -15,7 +15,7 @@ class _marcacao2State extends State<marcacao2> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -30,6 +30,7 @@ class _marcacao2State extends State<marcacao2> {
           ),
         ),
         title: const Text('Detalhes', style: TextStyle(fontSize: 25)),
+        centerTitle: true,
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
@@ -40,7 +41,7 @@ class _marcacao2State extends State<marcacao2> {
               const Text(
                 'Horarios disponiveis',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Color(0xff014B47)),
               ),
               const SizedBox(height: 10),
               Container(
@@ -52,44 +53,45 @@ class _marcacao2State extends State<marcacao2> {
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '13:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                    ),
+                    ),                   
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '14:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                    ),
+                    ),                   
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '15:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ),
+                    
                   ],
                 ),
               ),
@@ -103,41 +105,43 @@ class _marcacao2State extends State<marcacao2> {
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '16:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ),
+                    
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '17:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ),
+                    
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2),
+                          border: Border.all(color: Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 255, 255, 255)),
+                          color: const Color(0xff0D4542)),
                       child: const Center(
                         child: Text(
                           '18:00',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ),
@@ -161,9 +165,14 @@ class _marcacao2State extends State<marcacao2> {
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF28928B)), // Definindo a cor da borda quando não está em foco
+                          borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                       borderSide: BorderSide(color: Color(0xFF28928B)), // Definindo a cor da borda quando está em foco
+                       borderRadius: BorderRadius.circular(10),
+                     ),
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 20),
                   ),
@@ -180,7 +189,7 @@ class _marcacao2State extends State<marcacao2> {
                 width: 320,
                 height: 140,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
+                  border: Border.all(color: Color(0xff28928B)),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const TextField(
@@ -203,7 +212,7 @@ class _marcacao2State extends State<marcacao2> {
                 },
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size(300, 50),
-                    backgroundColor: Colors.black),
+                    backgroundColor: Color(0xff0A9080)),
                 child: const Text(
                   'Confirmar',
                   style: TextStyle(
