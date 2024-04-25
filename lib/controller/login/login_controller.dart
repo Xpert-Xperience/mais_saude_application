@@ -11,10 +11,13 @@ class LoginController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  User? user;
+
   userLogin(BuildContext context) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const Principal()));
     } on FirebaseAuthException catch (e) {
@@ -36,8 +39,20 @@ class LoginController {
     }
   }
 
+  userGoogleLogin(BuildContext context) async {
+    try {
+      final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Principal()));
+    } catch (e) {
+      print("erro:");
+      print(e);
+    }
+  }
+
   userLogout(BuildContext context) async {
-    FirebaseAuth.instance.signOut();
+    _auth.signOut();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const LoginView()));
   }

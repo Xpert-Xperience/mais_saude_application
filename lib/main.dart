@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mais_saude/services/firebase_options.dart';
+import 'package:mais_saude/firebase_options.dart';
 import 'package:mais_saude/view/cadastro/cadastro_view.dart';
 import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
 import 'package:mais_saude/view/inicio/inicio_view.dart';
