@@ -39,6 +39,22 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        leading: Container(
+          decoration: const BoxDecoration(),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: _page(),
       ),
@@ -47,7 +63,7 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
 
   Widget _page() {
     return Padding(
-      padding: const EdgeInsets.all(40.0),
+      padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Form(
           key: _formkey,
@@ -55,31 +71,7 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff136863),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 30),
               const Text(
                 'Esqueceu a',
                 textAlign: TextAlign.center,
