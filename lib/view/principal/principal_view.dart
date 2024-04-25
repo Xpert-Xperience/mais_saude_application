@@ -79,7 +79,7 @@ Future<void> _getCurrentUser() async {
                 height: 75,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
-                  border: Border.all(),
+                  border: Border.all(width: 1.8, color: Color(0xFF28928B)),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
@@ -113,7 +113,7 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 2),
+                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -140,7 +140,7 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 2),
+                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -175,7 +175,7 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 2),
+                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -204,7 +204,7 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 2),
+                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -228,14 +228,14 @@ Future<void> _getCurrentUser() async {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        unselectedItemColor: const Color.fromARGB(255, 3, 3, 3),
+        backgroundColor: const Color(0xff136A65),
+        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 15,
         selectedFontSize: 15,
         iconSize: 30,
         currentIndex: 0,
-        fixedColor: const Color.fromARGB(255, 6, 7, 7),
+        fixedColor: Color.fromARGB(255, 255, 255, 255),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

@@ -32,6 +32,22 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        leading: Container(
+          decoration: const BoxDecoration(),
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: _page(context),
       ),
@@ -39,43 +55,23 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget _page(BuildContext context) {
+    
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Form(
           key: _formkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 60),
+              
+              const SizedBox(height: 30),
               const Text(
                 'Seja Bem-Vindo!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
               ),
-              const SizedBox(height: 130),
+              const SizedBox(height: 100),
               _inputField("Email", _controller.emailController),
               const SizedBox(height: 70),
               _inputField("Senha", _controller.passwordController,
@@ -99,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
       {isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+      borderSide: const BorderSide(width: 1.8, color: Color(0xFF28928B)),
     );
 
     return TextFormField(
@@ -134,7 +130,7 @@ class _LoginViewState extends State<LoginView> {
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(
@@ -200,7 +196,7 @@ class _LoginViewState extends State<LoginView> {
           child: const Text(
             "Esqueceu a senha?",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF005651)),
           ),
         ),
         const SizedBox(height: 10),
@@ -214,7 +210,7 @@ class _LoginViewState extends State<LoginView> {
           child: const Text(
             "Não tem uma conta? Cadastre-se",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+            style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500, color: Color(0xFF005651)),
           ),
         ),
       ],
