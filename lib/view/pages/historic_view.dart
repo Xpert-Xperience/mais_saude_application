@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
-import 'package:mais_saude/view/perfil/perfil.dart';
-import 'package:mais_saude/view/informacoes/informacoes_view.dart';
-import 'package:mais_saude/view/cancelamento/cancelamento_view.dart';
+import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
+import 'package:mais_saude/view/pages/historic_schedule_information_view.dart';
+import 'package:mais_saude/view/pages/schedule_cancel_view.dart';
 
-class Historico extends StatefulWidget {
-  const Historico({super.key});
+class Historic extends StatefulWidget {
+  const Historic({super.key});
 
   @override
-  State<Historico> createState() => _HistoricoState();
+  State<Historic> createState() => _HistoricState();
 }
 
-class _HistoricoState extends State<Historico> {
+class _HistoricState extends State<Historic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _HistoricoState extends State<Historico> {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-       body: Column(
+      body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -41,15 +40,20 @@ class _HistoricoState extends State<Historico> {
                     // Lógica para limpar o campo de pesquisa
                   },
                 ),
-                 enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 1.8 ,color: Color(0xFF28928B)), // Definindo a cor da borda quando não está em foco
-        borderRadius: BorderRadius.circular(10),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 1.8, color: Color(0xFF28928B)), // Definindo a cor da borda quando está em foco
-        borderRadius: BorderRadius.circular(10),
-      ),
-                
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 1.8,
+                      color: Color(
+                          0xFF28928B)), // Definindo a cor da borda quando não está em foco
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 1.8,
+                      color: Color(
+                          0xFF28928B)), // Definindo a cor da borda quando está em foco
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
               onChanged: (value) {
                 // Lógica para filtrar os resultados de acordo com o valor digitado
@@ -65,8 +69,11 @@ class _HistoricoState extends State<Historico> {
                   margin: const EdgeInsets.all(16),
                   height: 160, // Altura dos cards aumentada
                   decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFF28928B), width: 2), // Borda vermelha
-                    borderRadius: BorderRadius.circular(10), // Borda arredondada
+                    border: Border.all(
+                        color: const Color(0xFF28928B),
+                        width: 2), // Borda vermelha
+                    borderRadius:
+                        BorderRadius.circular(10), // Borda arredondada
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -95,7 +102,9 @@ class _HistoricoState extends State<Historico> {
                                   color: Color(0xFF0D4542),
                                 ),
                               ),
-                              const SizedBox(height: 2), // Espaçamento para o texto pequeno
+                              const SizedBox(
+                                  height:
+                                      2), // Espaçamento para o texto pequeno
                               const Text(
                                 'Data/Horário',
                                 style: TextStyle(
@@ -111,26 +120,26 @@ class _HistoricoState extends State<Historico> {
                                       // Navegar para a página de informações
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => const Cancelamento()),
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ScheduleCancellation()),
                                       );
                                     },
-                                    child: Container(
-                                      child: const Row(
-                                        children: [
-                                          Icon(Icons.cancel,
-                                              color: Color(
-                                                  0xFF0D4542)), // Ícone de cancelar
-                                          SizedBox(width: 4),
-                                          Text(
-                                            'Cancelar',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF0D4542),
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                    child: const Row(
+                                      children: [
+                                        Icon(Icons.cancel,
+                                            color: Color(
+                                                0xFF0D4542)), // Ícone de cancelar
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'Cancelar',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF0D4542),
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   const SizedBox(width: 8),
@@ -139,7 +148,9 @@ class _HistoricoState extends State<Historico> {
                                       // Navegar para a página de informações
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => const Informacoes()),
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Information()),
                                       );
                                     },
                                     child: const Row(
@@ -173,49 +184,7 @@ class _HistoricoState extends State<Historico> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff136A65),
-        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-        type: BottomNavigationBarType.fixed,
-        unselectedFontSize: 15,
-        selectedFontSize: 15,
-        iconSize: 30,
-        currentIndex: 0,
-        fixedColor: const Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Histórico',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Principal()),
-              );
-              break;
-            case 1:
-              break;
-              
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Perfil()),
-              );
-              break;
-          }
-        },
-      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 1),
     );
   }
 }

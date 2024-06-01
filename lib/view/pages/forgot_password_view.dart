@@ -3,14 +3,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmarEsqueceuSenha extends StatefulWidget {
-  const ConfirmarEsqueceuSenha({super.key});
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
 
   @override
-  State<ConfirmarEsqueceuSenha> createState() => _ConfirmarEsqueceuSenhaState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   String email = "";
   TextEditingController emailController = TextEditingController();
 
@@ -40,7 +40,7 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -75,17 +75,26 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
               const Text(
                 'Esqueceu a',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600, color: Color(0xff0D4542)),
+                style: TextStyle(
+                    fontSize: 38,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff0D4542)),
               ),
               const Text(
                 'Senha?',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600, color: Color(0xff0D4542)),
+                style: TextStyle(
+                    fontSize: 38,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff0D4542)),
               ),
               const Text(
                 'Digite seu email utilizado no cadastro para receber um \nlink de recuperação',
                 textAlign: TextAlign.start,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: Color(0xff005651)),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff005651)),
               ),
               const SizedBox(height: 60),
               Padding(
@@ -105,14 +114,14 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
-                        enabledBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Color(0xFF28928B)), 
-                           borderRadius: BorderRadius.circular(10),
-                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF28928B)), 
-                           borderRadius: BorderRadius.circular(10),
-                        ), 
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xFF28928B)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xFF28928B)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 20),
                   ),
@@ -131,7 +140,7 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(300, 50),
-                      backgroundColor: Color(0xff0A9080)),
+                      backgroundColor: const Color(0xff0A9080)),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
@@ -147,7 +156,9 @@ class _ConfirmarEsqueceuSenhaState extends State<ConfirmarEsqueceuSenha> {
                   child: Text(
                 'Cancelar',
                 style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xff005651)),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff005651)),
               ))
             ],
           ),

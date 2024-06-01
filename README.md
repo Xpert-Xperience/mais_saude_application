@@ -1,109 +1,43 @@
-# Projeto Mais Saúde
+# Projeto Mais Saúde - Aplicação mobile
 
 ## Organização dos diretórios:
 
- - `lib/`: Contém o código-fonte do seu projeto.
+ - `lib/`: Contém o código-fonte do projeto.
   - `controller/`: Controllers responsáveis pela lógica de negócio.
-    - `cadastro/`: Contém o controller para cadastro.
-      - `cadastro_controller.dart`
-    - `login/`: Contém o controller para login.
-      - `login_controller.dart`
+    - `login_controller.dart`
+    - `registration_controller.dart`
 
   - `model/`: Models representando a estrutura de dados.
-    - `usuario.dart`: Modelo para usuário.
-
-  - `services/`: Serviços utilizados no projeto.
-    - `auth_service.dart`: Serviço de autenticação.
-    - `database_service.dart`: Serviço de acesso ao banco de dados.
+    - `user_model.dart`: Modelo para usuário.
 
   - `views/`: Telas e componentes visuais.
-    - `cadastro/`: Telas relacionadas ao cadastro.
-      - `cadastro_view.dart`: View para cadastro.
-    - `esqueceu_senha/`: Telas relacionadas à recuperação de senha.
-      - `confcheck.dart`: Componente para confirmação.
-      - `confirmar_esqueceu_senha_view.dart`: View para confirmar esqueceu a senha.
-      - `novaSenha.dart`: View para nova senha.
-    - `inicio/`: Telas relacionadas à tela inicial.
-      - `inicio_view.dart`: View para a tela inicial.
-    - `login/`: Telas relacionadas ao login.
-      - `login_view.dart`: View para o login.
-    - `perfil/`: Telas relacionadas ao perfil do usuário.
-      - `perfil.dart`: View para o perfil do usuário.
-    - `principal/`: Telas principais do aplicativo.
-      - `principal_view.dart`: View principal.
-
+    - `components/`:  Armazena todos os componentes reutilizáveis da sua aplicação.
+      - `calendar/`: Calendário e utilitário utilizado na marcação de consultas.
+        - `calendar.dart`
+        - `utils.dart`
+      - `custom_bottom_navigation_bar.dart`: Barra de navegação inferior.
+    - `pages/`: Telas da aplicação.
+      - `checkin_cancel_view.dart`: Permite sair da fila de espera da psicologia.
+      - `checkin_confirmation_view.dart`: Permite entrar na fila de espera da psicologia.
+      - `checkin_view.dart`: Apresenta a fila de espera da psicologia.
+      - `forgot_password_view.dart`: Para inserir o email para qual será enviado o pedido de troca de senha.
+      - `historic_schedule_information_view.dart`: Apresenta informações da consulta apartir de consulta pelo histórico.
+      - `historic_view.dart`: Apresenta histórico de consultas, elas são apresentadas aqui apartir do instante que são marcadas.
+      - `home_application_view.dart`: Principal da aplicação.
+      - `initial_presentation_view.dart`: Inicial ao entrar na aplicação, apresenta curtas informações.
+      - `login_view.dart`: Apresenta formulário de login.
+      - `profile_view.dart`: Apresenta perfil do usuário, informações cadastradas.
+      - `registration_view.dart`: Apresenta formulário de cadastro do usuário.
+      - `schedule_appoiment_select_date_view.dart`: Apresenta o calendário para iniciar agendamento de consulta, permite escolher o dia.
+      - `schedule_appoiment_select_time_view.dart`: Apresenta horários para agendar consulta, apresenta campo de texto para descrição e campo para atletas.
+      - `schedule_cancel_view.dart`: Permite cancelar consulta agendada, através do histórico de consultas.
+      - `schedule_confirmation_view.dart`: Apresenta aviso de envio de email para o email cadastrado pelo usuário.
+- `firebase_options.dart`: Configurações de uso do firebasee
 - `main.dart`: Arquivo principal do aplicativo.
 
-## Sobre o funcionamento do projeto:
-  Ficamos acordados de criar uma branch para cada tela a ser implementada.
-  Essa decisão vem para que possamos trabalhar de forma assíncrona sem causar-mos erros nos trabalhos dos outros
-
-## Sobre as funcionalidades já implementadas:
-
-  ### Cadastro
-
-  - [x] Página de cadastro com formulário.
-  - [x] Integração com o serviço de autenticação para criar novos usuários.
-
-  ### Login
-
-  - [x] Página de login com campos de usuário e senha.
-  - [x] Autenticação de usuário com o serviço de autenticação.
-
-  ### Recuperação de senha
-
-  - [x] Página de "esqueci minha senha"
-  - [x] Página de "criar nova senha"
-
-  ### Principal
-
-  - [x] Página principal da aplicação com botões
-  - [x] Página principal com botão de página de perfil
-
-  ### Perfil
-  - [ ] Página de perfil com informações do usuário
-
-## Sobre as funcionalidades a serem implementadas
-
-  ### Recuperação de senha
-  - [ ] Lógica de recuperação de senha
-
-  ### Principal
-  - [ ] Referenciar ao usuário logado
-
-  ### Perfil
-  - [ ] Referenciar usuário logado
-  - [ ] Lógica de editar informações do usuário  
-
-  ### Marcação 1
-  - [ ] Página de marcação inicial
-  - [ ] Referenciar dados do especialista da área selecionada
-
-  ### Marcação 2
-  - [ ] Página de marcação final
-
-  ### Confirmação de Marcação
-  - [ ] Página de confirmação da marcação
-  - [ ] Enviar comprovante de confirmação para o e-mail do aluno
-
-  ### Histórico
-  - [ ] Página de apresentação do histórico
-  - [ ] Referenciar ao histórico do usuário logado
-
-  ### Informações
-  - [ ] Página de apresentação das informações da consulta
-
-  ### Cancelamento
-  - [ ] Página de cancelamento da consulta marcada
-  - [ ] Enviar comprovante de cancelamento para o e-mail do aluno
-
-  ### Confirmação de check-in
-  - [ ] Página de confirmação entrar na fila de espera
-  - [ ] Implementar logica de fila virtual em tempo real
-
-  ### Check-in
-  - [ ] Página de check-in
-  - [ ] Atualização de fila em tempo real
-
-  ### Cancelamento fila de espera
-  - [ ] Página de cancelamento da fila (sair)
+## Padrão de código a ser utilizado: 
+  - Todo texto (menos comentário) deverá ser escrito em inglês.
+  - Os nomes de arquivos obrigatoriamente deverão ser escritos usando a convenção Snake case "minusculas_underline".
+  - Os nomes de classes deverão, obrigatoriamente, ser escritos usando Pascal case "PrimeirasLetrasMaiusculas".
+  - Os nomes de funções, métodos, variáveis ou constantes deverão ser escritos usando Camel case "primeiraPalavraPrimeiraLetraMinusculaORestanteNao".
+  - Ao criar as funções, métodos, variáveis ou constantes, levar em consideração a funcionalidade para a escolha do nome, utilizar nomes que facilitem a compreensão.

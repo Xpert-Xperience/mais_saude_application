@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/controller/login/login_controller.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
-import 'package:mais_saude/view/historico/historico_view.dart';
+import 'package:mais_saude/controller/login_controller.dart';
+import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
 
-class Perfil extends StatefulWidget {
-  const Perfil({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  State<Perfil> createState() => _PerfilState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _PerfilState extends State<Perfil> {
+class _ProfileState extends State<Profile> {
   final LoginController _controller = LoginController();
 
   @override
@@ -81,48 +80,7 @@ class _PerfilState extends State<Perfil> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff136A65),
-        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
-        type: BottomNavigationBarType.fixed,
-        unselectedFontSize: 15,
-        selectedFontSize: 15,
-        iconSize: 30,
-        currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Histórico',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Principal()),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Historico()),
-              );
-              break;
-            case 2:
-              break;
-          }
-        },
-      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 2),
     );
   }
 
@@ -142,7 +100,7 @@ class _PerfilState extends State<Perfil> {
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Color(0xff28928B), width: 1.8),
+            border: Border.all(color: const Color(0xff28928B), width: 1.8),
           ),
           child: Center(
             child: Padding(
@@ -186,7 +144,8 @@ class _PerfilState extends State<Perfil> {
         },
         child: const Text(
           'Logout',
-          style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
+          style: TextStyle(
+              fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
     );

@@ -1,19 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
-import 'package:mais_saude/view/marcar_consulta/marcacao1_view.dart';
-import 'package:mais_saude/view/perfil/perfil.dart';
-import 'package:mais_saude/view/historico/historico_view.dart';
+import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
+import 'package:mais_saude/view/pages/checkin_confirmation_view.dart';
+import 'package:mais_saude/view/pages/schedule_appoitment_select_date_view.dart';
 
-class Principal extends StatefulWidget {
-  const Principal({super.key});
+class HomeApplication extends StatefulWidget {
+  const HomeApplication({super.key});
 
   @override
-  State<Principal> createState() => _PrincipalState();
+  State<HomeApplication> createState() => _HomeApplicationState();
 }
 
-class _PrincipalState extends State<Principal> {
+class _HomeApplicationState extends State<HomeApplication> {
   String _userName = '';
 
   @override
@@ -22,22 +21,26 @@ class _PrincipalState extends State<Principal> {
     _getCurrentUser();
   }
 
-Future<void> _getCurrentUser() async {
-  final user = FirebaseAuth.instance.currentUser;
-  if (user != null) {
-    // Aqui você precisa buscar o nome do usuário no Firestore usando o userId
-    final docSnapshot = await FirebaseFirestore.instance.collection('usuarios').doc(user.uid).get();
-    if (docSnapshot.exists) {
-      setState(() {
-        _userName = docSnapshot.data()!['nome'] ?? 'Olá, ${user.email!.split('@')[0]}!';
-      });
-    } else {
-      setState(() {
-        _userName = 'Olá, ${user.email!.split('@')[0]}!';
-      });
+  Future<void> _getCurrentUser() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      // Aqui você precisa buscar o nome do usuário no Firestore usando o userId
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection('usuarios')
+          .doc(user.uid)
+          .get();
+      if (docSnapshot.exists) {
+        setState(() {
+          _userName = docSnapshot.data()!['nome'] ??
+              'Olá, ${user.email!.split('@')[0]}!';
+        });
+      } else {
+        setState(() {
+          _userName = 'Olá, ${user.email!.split('@')[0]}!';
+        });
+      }
     }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +82,7 @@ Future<void> _getCurrentUser() async {
                 height: 75,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1.8, color: Color(0xFF28928B)),
+                  border: Border.all(width: 1.8, color: const Color(0xFF28928B)),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
@@ -105,7 +108,9 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const ScheduleAppitmentSelectDate()),
                   ),
                   child: Column(
                     children: [
@@ -113,7 +118,8 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
+                          border:
+                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -132,7 +138,9 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const ScheduleAppitmentSelectDate()),
                   ),
                   child: Column(
                     children: [
@@ -140,7 +148,8 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
+                          border:
+                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -167,7 +176,9 @@ Future<void> _getCurrentUser() async {
                 GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const marcacao1()),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const ScheduleAppitmentSelectDate()),
                   ),
                   child: Column(
                     children: [
@@ -175,7 +186,8 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
+                          border:
+                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -204,7 +216,8 @@ Future<void> _getCurrentUser() async {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1.8, color: Color(0xFF28928B)),
+                          border:
+                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -227,48 +240,7 @@ Future<void> _getCurrentUser() async {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff136A65),
-        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
-        type: BottomNavigationBarType.fixed,
-        unselectedFontSize: 15,
-        selectedFontSize: 15,
-        iconSize: 30,
-        currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Histórico',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Historico()),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Perfil()),
-              );
-              break;
-          }
-        },
-      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 0),
     );
   }
 }

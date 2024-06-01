@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/login/login_view.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
+import 'package:mais_saude/view/pages/login_view.dart';
+import 'package:mais_saude/view/pages/home_application_view.dart';
 
 class LoginController {
   String email = "", password = "";
@@ -15,13 +15,15 @@ class LoginController {
 
   User? user;
 
-  userLogin(BuildContext context) async {
+  userLoginLocal(BuildContext context) async {
+    //método de login utilizando email e senha
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Principal()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const HomeApplication()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
+        //tratando erro "usuário não encontrado"
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.orangeAccent,
             content: Text(
@@ -29,6 +31,7 @@ class LoginController {
               style: TextStyle(fontSize: 18.0),
             )));
       } else if (e.code == 'wrong-password') {
+        //tratando erro "senha incorreta"
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.orangeAccent,
             content: Text(
@@ -40,11 +43,12 @@ class LoginController {
   }
 
   userGoogleLogin(BuildContext context) async {
+    //metodo de login utilizando autenticação com o google
     try {
       final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
       _auth.signInWithProvider(googleAuthProvider);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Principal()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const HomeApplication()));
     } catch (e) {
       print("erro:");
       print(e);
@@ -52,6 +56,7 @@ class LoginController {
   }
 
   userLogout(BuildContext context) async {
+    //metodo de logout
     _auth.signOut();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const LoginView()));

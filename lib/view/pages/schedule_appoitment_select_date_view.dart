@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/perfil/perfil.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
-import 'package:mais_saude/view/historico/historico_view.dart';
-import 'calendario/calendario.dart';
+import 'package:mais_saude/view/pages/home_application_view.dart';
+import '../components/calendar/calendar.dart';
 
-class marcacao1 extends StatefulWidget {
-  const marcacao1({super.key});
+class ScheduleAppitmentSelectDate extends StatefulWidget {
+  const ScheduleAppitmentSelectDate({super.key});
 
   @override
-  State<marcacao1> createState() => _marcacao1State();
+  State<ScheduleAppitmentSelectDate> createState() =>
+      _ScheduleAppitmentSelectDateState();
 }
 
-class _marcacao1State extends State<marcacao1> {
+class _ScheduleAppitmentSelectDateState
+    extends State<ScheduleAppitmentSelectDate> {
   @override
   Widget build(BuildContext context) {
     double displayHeight() => MediaQuery.of(context).size.height;
@@ -21,30 +21,30 @@ class _marcacao1State extends State<marcacao1> {
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         leading: Container(
-          decoration: const BoxDecoration(
-          ),
+          decoration: const BoxDecoration(),
           child: IconButton(
             icon: const Icon(
               Icons.arrow_back,
-              size: 30, 
-              color: Color.fromARGB(255, 7, 7, 7), 
+              size: 30,
+              color: Color.fromARGB(255, 7, 7, 7),
             ),
             onPressed: () {
               Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const Principal()),
-            );
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomeApplication()),
+              );
             },
           ),
         ),
         //alinhar titulo no centro
-        title: const Text('Marcação',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        title: const Text(
+          'Marcação',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        foregroundColor: Color(0xff0D4542),
+        foregroundColor: const Color(0xff0D4542),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -61,7 +61,7 @@ class _marcacao1State extends State<marcacao1> {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xff28928B),
+                      color: const Color(0xff28928B),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(5),
@@ -79,7 +79,7 @@ class _marcacao1State extends State<marcacao1> {
                             shape: BoxShape.circle,
                             color: const Color.fromARGB(255, 255, 255, 255),
                             border: Border.all(
-                              color: Color(0xff08331E),
+                              color: const Color(0xff08331E),
                               width: 2,
                             ),
                           ),
@@ -141,75 +141,29 @@ class _marcacao1State extends State<marcacao1> {
               const Text(
                 'Data da marcação',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xff0D4542)),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff0D4542)),
               ),
               const SizedBox(height: 10),
-        Container(
-          width: displayWidth() / 0.5,
-          height: 360,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: const Color(0xff014B47),
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Center(
-            child: Calendario(),
-          ),
-        ), 
-         ],
+              Container(
+                width: displayWidth() / 0.5,
+                height: 360,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xff014B47),
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Center(
+                  child: Calendar(),
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff136A65),
-        unselectedItemColor: Color.fromARGB(255, 255, 255, 255),
-        type: BottomNavigationBarType.fixed,
-        unselectedFontSize: 15,
-        selectedFontSize: 15,
-        iconSize: 30,
-        currentIndex: 0,
-        fixedColor: Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Histórico',
-            
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-            
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Principal()),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Historico()),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Perfil()),
-              );
-              break;
-          }         
-        },
       ),
     );
   }

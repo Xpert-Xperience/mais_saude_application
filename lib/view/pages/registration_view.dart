@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mais_saude/controller/cadastro/cadastro_controller.dart';
-import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/controller/registration_controller.dart';
+import 'package:mais_saude/view/pages/login_view.dart';
 
-class CadastroView extends StatefulWidget {
-  const CadastroView({Key? key}) : super(key: key);
+class RegistrationView extends StatefulWidget {
+  const RegistrationView({super.key});
 
   @override
-  State<CadastroView> createState() => _CadastroViewState();
+  State<RegistrationView> createState() => _RegistrationViewState();
 }
 
-class _CadastroViewState extends State<CadastroView> {
-  final CadastroController _controller = CadastroController();
+class _RegistrationViewState extends State<RegistrationView> {
+  final RegistrationController _controller = RegistrationController();
 
   final _formkey = GlobalKey<FormState>();
 
@@ -33,10 +33,12 @@ class _CadastroViewState extends State<CadastroView> {
     return emailRegex.hasMatch(email);
   }
 
-   String? _emailError;
+  String? _emailError;
 
   Widget _inputField(String hintText, TextEditingController controller,
-      {bool isPassword = false, bool isPhoneNumber = false, bool isEmail = false}) {
+      {bool isPassword = false,
+      bool isPhoneNumber = false,
+      bool isEmail = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
       borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
@@ -53,9 +55,9 @@ class _CadastroViewState extends State<CadastroView> {
             }
             if (isEmail && !isEmailValid(value)) {
               setState(() {
-              _emailError = 'E-mail inválido';
+                _emailError = 'E-mail inválido';
               });
-            return 'E-mail inválido';
+              return 'E-mail inválido';
             }
             return null;
           },
@@ -65,12 +67,17 @@ class _CadastroViewState extends State<CadastroView> {
             hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
             enabledBorder: border,
             focusedBorder: border,
-            errorText: isEmail ? _emailError : null, 
+            errorText: isEmail ? _emailError : null,
           ),
           obscureText: isPassword,
-          keyboardType: isPhoneNumber ? TextInputType.phone : (isEmail ? TextInputType.emailAddress : TextInputType.text),
+          keyboardType: isPhoneNumber
+              ? TextInputType.phone
+              : (isEmail ? TextInputType.emailAddress : TextInputType.text),
           inputFormatters: isPhoneNumber
-              ? [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(11)]
+              ? [
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(11)
+                ]
               : null,
           onChanged: (value) {
             if (isPhoneNumber) {
@@ -89,19 +96,22 @@ class _CadastroViewState extends State<CadastroView> {
             }
           },
         ),
-        if (isEmail && _emailError != null) // Mostra o texto de erro se houver erro de e-mail
+        if (isEmail &&
+            _emailError !=
+                null) // Mostra o texto de erro se houver erro de e-mail
           Text(
             _emailError!,
-            style: TextStyle(color: Colors.red),
+            style: const TextStyle(color: Colors.red),
           ),
       ],
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -140,22 +150,28 @@ class _CadastroViewState extends State<CadastroView> {
                   const Text(
                     'Cadastro',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF0D4542)),
                   ),
                   const SizedBox(height: 15),
                   _inputField("Matricula", _controller.matriculaController),
                   const SizedBox(height: 15),
-                  _inputField("Nome", _controller.nomeController),
+                  _inputField("Nome", _controller.nameController),
                   const SizedBox(height: 15),
-                  _inputField("E-mail", _controller.emailController, isEmail: true),
+                  _inputField("E-mail", _controller.emailController,
+                      isEmail: true),
                   const SizedBox(height: 15),
-                  _inputField("Telefone", _controller.telefoneController, isPhoneNumber: true),
+                  _inputField("Telefone", _controller.telephoneController,
+                      isPhoneNumber: true),
                   const SizedBox(height: 15),
-                  _inputField("Senha", _controller.senhaController,
+                  _inputField("Senha", _controller.passwordController,
                       isPassword: true),
                   const SizedBox(height: 15),
                   _inputField(
-                      "Confirmar Senha", _controller.confirmarSenhaController, isPassword: true),
+                      "Confirmar Senha", _controller.confirmPasswordController,
+                      isPassword: true),
                   const SizedBox(height: 30),
                   _cadastrarBtn(context),
                   const SizedBox(height: 20),
@@ -176,20 +192,15 @@ class _CadastroViewState extends State<CadastroView> {
         if (_formkey.currentState!.validate()) {
           setState(() {
             _controller.email = _controller.emailController.text;
-            _controller.nome = _controller.nomeController.text;
-            _controller.senha = _controller.senhaController.text;
+            _controller.name = _controller.nameController.text;
+            _controller.password = _controller.passwordController.text;
           });
         }
         _controller.registerUser(context);
-        // _controller.adicionarInfo(
-        //     _controller.matriculaController.text.trim(),
-        //     _controller.nomeController.text.trim(),
-        //     _controller.emailController.text.trim(),
-        //     _controller.telefoneController.text.trim());
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Color(0xFF0A9080),
+        backgroundColor: const Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(

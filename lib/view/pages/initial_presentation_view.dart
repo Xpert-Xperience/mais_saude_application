@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/cadastro/cadastro_view.dart';
-import 'package:mais_saude/view/login/login_view.dart';
+import 'package:mais_saude/view/pages/registration_view.dart';
+import 'package:mais_saude/view/pages/login_view.dart';
 
-// ignore: camel_case_types
-class inicial extends StatefulWidget {
-  final PageController controller;
+class InitialPresentation extends StatelessWidget {
+  const InitialPresentation({super.key});
 
-  const inicial(this.controller, {super.key});
-
-  @override
-  State<inicial> createState() => _inicialState(controller);
-}
-
-class _inicialState extends State<inicial> {
-  final PageController pageController;
-
-  _inicialState(this.pageController);
-
-  double displayHeight() => MediaQuery.of(context).size.height;
-  double displayWidth() => MediaQuery.of(context).size.width;
+  double displayHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  double displayWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +19,7 @@ class _inicialState extends State<inicial> {
             child: ConstrainedBox(
               constraints: BoxConstraints(minHeight: constraints.maxHeight),
               child: Container(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 color: Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -42,26 +32,27 @@ class _inicialState extends State<inicial> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       'Seja Bem-Vindo!',
                       textAlign: TextAlign.center,
                       style:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      'Marque suas consultas com facilidade e praticidade, sem precisar ir ao IF. ',
+                    const SizedBox(height: 5),
+                    const Text(
+                      'Marque suas consultas com facilidade e praticidade, sem precisar ir ao IF.',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginView(),
+                            builder: (context) =>
+                                const Scaffold(body: LoginView()),
                           ),
                         );
                       },
@@ -78,18 +69,20 @@ class _inicialState extends State<inicial> {
                               constraints.maxHeight * 0.082),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const CadastroView()),
+                            builder: (context) =>
+                                const Scaffold(body: RegistrationView()),
+                          ),
                         );
                       },
                       style: ButtonStyle(
@@ -105,7 +98,7 @@ class _inicialState extends State<inicial> {
                               constraints.maxHeight * 0.082),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Cadastro',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),

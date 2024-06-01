@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/cancelamentocheck/cancelamentocheck_view.dart';
-import 'package:mais_saude/view/confcheck/confcheckin_view.dart';
+import 'package:mais_saude/view/pages/checkin_cancel_view.dart';
+import 'package:mais_saude/view/pages/checkin_confirmation_view.dart';
 
 class Checkin extends StatefulWidget {
   const Checkin({super.key});
@@ -26,18 +26,18 @@ class _CheckinState extends State<Checkin> {
             ),
             onPressed: () {
               Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Confcheck()),
-                  );        
+                context,
+                MaterialPageRoute(builder: (context) => const Confcheck()),
+              );
             },
           ),
         ),
-         title: const Text(
+        title: const Text(
           'Check-In',
           style: TextStyle(fontSize: 25),
         ),
-        centerTitle: true, 
-        foregroundColor: const Color.fromARGB(255, 255, 255, 255), 
+        centerTitle: true,
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -47,12 +47,18 @@ class _CheckinState extends State<Checkin> {
               const Text(
                 'Fila Para Consulta',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xff0D4542), fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Color(0xff0D4542),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
               const Text(
                 'Em Serviço',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xff014B47), fontSize: 15, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    color: Color(0xff014B47),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400),
               ),
               const SizedBox(height: 60),
               const Padding(
@@ -62,7 +68,10 @@ class _CheckinState extends State<Checkin> {
                   child: Text(
                     'Sua Ficha É:',
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Color(0xff0D4542), fontSize: 35, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        color: Color(0xff0D4542),
+                        fontSize: 35,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
@@ -82,13 +91,14 @@ class _CheckinState extends State<Checkin> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Cancelcheck()),
+                    MaterialPageRoute(
+                        builder: (context) => const Cancelcheck()),
                   );
                 },
-                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff0A9080),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xff0A9080),
                   foregroundColor: Colors.white,
-                   minimumSize: const Size(150, 50),
+                  minimumSize: const Size(150, 50),
                 ),
                 child: const Text(
                   'Cancelar',
@@ -107,7 +117,10 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Color(0xff0D4542)),
+          style: const TextStyle(
+              fontSize: 100,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff0D4542)),
         ),
         const SizedBox(height: 10),
       ],
@@ -119,7 +132,10 @@ class _CheckinState extends State<Checkin> {
       children: [
         Text(
           number,
-          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Color(0xff0D4542)),
+          style: const TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff0D4542)),
         ),
         const SizedBox(height: 10),
         Text(

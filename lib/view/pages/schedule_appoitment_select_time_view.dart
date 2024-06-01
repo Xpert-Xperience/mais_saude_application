@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/confmarcacao/confmarcacao_view.dart';
+import 'package:mais_saude/view/pages/schedule_confirmation_view.dart';
 
-class marcacao2 extends StatefulWidget {
-  const marcacao2({super.key});
+class ScheduleAppoitmentSelectTime extends StatefulWidget {
+  const ScheduleAppoitmentSelectTime({super.key});
 
   @override
-  State<marcacao2> createState() => _marcacao2State();
+  State<ScheduleAppoitmentSelectTime> createState() =>
+      _ScheduleAppoitmentSelectTimeState();
 }
 
-class _marcacao2State extends State<marcacao2> {
+class _ScheduleAppoitmentSelectTimeState
+    extends State<ScheduleAppoitmentSelectTime> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -41,7 +42,10 @@ class _marcacao2State extends State<marcacao2> {
               const Text(
                 'Horarios disponiveis',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Color(0xff014B47)),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff014B47)),
               ),
               const SizedBox(height: 10),
               Container(
@@ -53,7 +57,8 @@ class _marcacao2State extends State<marcacao2> {
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -62,12 +67,13 @@ class _marcacao2State extends State<marcacao2> {
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                    ),                   
+                    ),
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -76,12 +82,13 @@ class _marcacao2State extends State<marcacao2> {
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                    ),                   
+                    ),
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -91,7 +98,6 @@ class _marcacao2State extends State<marcacao2> {
                         ),
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -105,7 +111,8 @@ class _marcacao2State extends State<marcacao2> {
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -115,12 +122,12 @@ class _marcacao2State extends State<marcacao2> {
                         ),
                       ),
                     ),
-                    
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -130,12 +137,12 @@ class _marcacao2State extends State<marcacao2> {
                         ),
                       ),
                     ),
-                    
                     Container(
                       width: 110,
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xff0D4542), width: 2),
+                          border:
+                              Border.all(color: const Color(0xff0D4542), width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xff0D4542)),
                       child: const Center(
@@ -165,14 +172,18 @@ class _marcacao2State extends State<marcacao2> {
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF28928B)), // Definindo a cor da borda quando não está em foco
-                          borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Color(0xFF28928B)), // Definindo a cor da borda quando está em foco
-                       borderRadius: BorderRadius.circular(10),
-                     ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(
+                              0xFF28928B)), // Definindo a cor da borda quando não está em foco
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(
+                              0xFF28928B)), // Definindo a cor da borda quando está em foco
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 20),
                   ),
@@ -189,7 +200,7 @@ class _marcacao2State extends State<marcacao2> {
                 width: 320,
                 height: 140,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xff28928B)),
+                  border: Border.all(color: const Color(0xff28928B)),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const TextField(
@@ -202,24 +213,26 @@ class _marcacao2State extends State<marcacao2> {
                 ),
               ),
               const SizedBox(height: 50),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const confirmacao()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(300, 50),
-                    backgroundColor: Color(0xff0A9080)),
-                child: const Text(
-                  'Confirmar',
-                  style: TextStyle(
-                      fontSize: 22, color: Color.fromARGB(255, 255, 255, 255)),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ScheduleConfirmation()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 50),
+                      backgroundColor: const Color(0xff0A9080)),
+                  child: const Text(
+                    'Confirmar',
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
                 ),
               ),
-            ),
             ],
           ),
         ),

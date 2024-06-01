@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mais_saude/controller/login/login_controller.dart';
-import 'package:mais_saude/view/cadastro/cadastro_view.dart';
-import 'package:mais_saude/view/esqueceu_senha/confirmar_esqueceu_senha_view.dart';
+import 'package:mais_saude/controller/login_controller.dart';
+import 'package:mais_saude/view/pages/registration_view.dart';
+import 'package:mais_saude/view/pages/forgot_password_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -14,8 +14,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginController _controller = LoginController();
-   final FirebaseAuth _auth = FirebaseAuth.instance;
-   
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: Container(
           decoration: const BoxDecoration(),
           child: IconButton(
@@ -55,7 +55,6 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget _page(BuildContext context) {
-    
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Center(
@@ -64,12 +63,14 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
               const SizedBox(height: 30),
               const Text(
                 'Seja Bem-Vindo!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0D4542)),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF0D4542)),
               ),
               const SizedBox(height: 100),
               _inputField("Email", _controller.emailController),
@@ -126,11 +127,11 @@ class _LoginViewState extends State<LoginView> {
             _controller.password = _controller.passwordController.text;
           });
         }
-        _controller.userLogin(context);
+        _controller.userLoginLocal(context);
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
-        backgroundColor: Color(0xFF0A9080),
+        backgroundColor: const Color(0xFF0A9080),
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
       child: const SizedBox(
@@ -189,14 +190,16 @@ class _LoginViewState extends State<LoginView> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const ConfirmarEsqueceuSenha()),
+              MaterialPageRoute(builder: (context) => const ForgotPassword()),
             );
           },
           child: const Text(
             "Esqueceu a senha?",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF005651)),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF005651)),
           ),
         ),
         const SizedBox(height: 10),
@@ -204,13 +207,16 @@ class _LoginViewState extends State<LoginView> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CadastroView()),
+              MaterialPageRoute(builder: (context) => const RegistrationView()),
             );
           },
           child: const Text(
             "Não tem uma conta? Cadastre-se",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500, color: Color(0xFF005651)),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF005651)),
           ),
         ),
       ],

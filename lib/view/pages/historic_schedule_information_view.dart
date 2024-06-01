@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/principal/principal_view.dart';
-import 'package:mais_saude/view/perfil/perfil.dart';
-import 'package:mais_saude/view/historico/historico_view.dart';
-import 'package:mais_saude/view/cancelamento/cancelamento_view.dart';
+import 'package:mais_saude/view/pages/schedule_cancel_view.dart';
 
-class Informacoes extends StatefulWidget {
-  const Informacoes({super.key});
+class Information extends StatefulWidget {
+  const Information({super.key});
 
   @override
-  State<Informacoes> createState() => _InformacoesState();
+  State<Information> createState() => _InformationState();
 }
 
-class _InformacoesState extends State<Informacoes> {
+class _InformationState extends State<Information> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,7 +146,8 @@ class _InformacoesState extends State<Informacoes> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Cancelamento()),
+                  MaterialPageRoute(
+                      builder: (context) => const ScheduleCancellation()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -164,52 +162,6 @@ class _InformacoesState extends State<Informacoes> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF136A65),
-        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-        type: BottomNavigationBarType.fixed,
-        unselectedFontSize: 15,
-        selectedFontSize: 15,
-        iconSize: 30,
-        currentIndex: 0,
-        fixedColor: const Color.fromARGB(255, 255, 255, 255),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Histórico',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Principal()),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Historico()),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Perfil()),
-              );
-              break;
-          }
-        },
       ),
     );
   }

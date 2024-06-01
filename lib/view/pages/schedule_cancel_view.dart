@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/historico/historico_view.dart';
+import 'package:mais_saude/view/pages/historic_view.dart';
 
-class Cancelamento extends StatefulWidget {
-  const Cancelamento({super.key});
+class ScheduleCancellation extends StatefulWidget {
+  const ScheduleCancellation({super.key});
 
   @override
-  State<Cancelamento> createState() => _CancelamentoState();
+  State<ScheduleCancellation> createState() => _ScheduleCancellationState();
 }
 
 double displayWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
 }
 
-class _CancelamentoState extends State<Cancelamento> {
+class _ScheduleCancellationState extends State<ScheduleCancellation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +70,7 @@ class _CancelamentoState extends State<Cancelamento> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Historico()),
+                    MaterialPageRoute(builder: (context) => const Historic()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
