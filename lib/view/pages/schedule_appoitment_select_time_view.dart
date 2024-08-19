@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/view/pages/schedule_confirmation_view.dart';
 
 class ScheduleAppoitmentSelectTime extends StatefulWidget {
-  const ScheduleAppoitmentSelectTime({super.key});
+  final DateTime? selectedDay;
+  final String especialidade;
 
+  const ScheduleAppoitmentSelectTime({
+    super.key,
+    required this.selectedDay,
+    required this.especialidade,
+  });
+  
   @override
   State<ScheduleAppoitmentSelectTime> createState() =>
       _ScheduleAppoitmentSelectTimeState();
@@ -16,6 +23,7 @@ class _ScheduleAppoitmentSelectTimeState
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+                title: Text('Marcar consulta em ${widget.selectedDay?.day}/${widget.selectedDay?.month}/${widget.selectedDay?.year}'),
         backgroundColor: const Color(0xFF136A65),
         leading: Container(
           decoration: const BoxDecoration(),
@@ -30,7 +38,7 @@ class _ScheduleAppoitmentSelectTimeState
             },
           ),
         ),
-        title: const Text('Detalhes', style: TextStyle(fontSize: 25)),
+//title: const Text('Detalhes', style: TextStyle(fontSize: 25)),
         centerTitle: true,
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),

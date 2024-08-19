@@ -4,7 +4,9 @@ import 'utils.dart';
 import '../../pages/schedule_appoitment_select_time_view.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+  final String especialidade;
+
+  const Calendar({super.key, required this.especialidade});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -47,7 +49,10 @@ class _Calendar extends State<Calendar> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ScheduleAppoitmentSelectTime()),
+                      builder: (context) => ScheduleAppoitmentSelectTime(
+                         selectedDay: _selectedDay,
+                          especialidade: widget.especialidade,
+                      )),
                 );
               });
             }

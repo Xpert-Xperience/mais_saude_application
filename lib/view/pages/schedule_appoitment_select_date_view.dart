@@ -158,8 +158,8 @@ class _ScheduleAppitmentSelectDateState
                   ),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: const Center(
-                  child: Calendar(),
+                child: Center(
+                  child: Calendar(especialidade: widget.especialidade,),
                 ),
               ),
             ],
