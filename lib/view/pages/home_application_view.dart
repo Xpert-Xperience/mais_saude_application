@@ -82,7 +82,8 @@ class _HomeApplicationState extends State<HomeApplication> {
                 height: 75,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                  border:
+                      Border.all(width: 1.8, color: const Color(0xFF28928B)),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
@@ -110,7 +111,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const ScheduleAppitmentSelectDate()),
+                            const ScheduleAppitmentSelectDate(especialidade: 'Fisioterapia')),
                   ),
                   child: Column(
                     children: [
@@ -118,8 +119,8 @@ class _HomeApplicationState extends State<HomeApplication> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                          border: Border.all(
+                              width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -140,7 +141,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const ScheduleAppitmentSelectDate()),
+                            const ScheduleAppitmentSelectDate(especialidade: 'Odontologia')),
                   ),
                   child: Column(
                     children: [
@@ -148,8 +149,8 @@ class _HomeApplicationState extends State<HomeApplication> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                          border: Border.all(
+                              width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -178,7 +179,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const ScheduleAppitmentSelectDate()),
+                            const ScheduleAppitmentSelectDate(especialidade: 'Clinico Geral')),
                   ),
                   child: Column(
                     children: [
@@ -186,8 +187,8 @@ class _HomeApplicationState extends State<HomeApplication> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                          border: Border.all(
+                              width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
@@ -216,8 +217,8 @@ class _HomeApplicationState extends State<HomeApplication> {
                         width: 125,
                         height: 115,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                          border: Border.all(
+                              width: 1.8, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(

@@ -3,7 +3,9 @@ import 'package:mais_saude/view/pages/home_application_view.dart';
 import '../components/calendar/calendar.dart';
 
 class ScheduleAppitmentSelectDate extends StatefulWidget {
-  const ScheduleAppitmentSelectDate({super.key});
+  final String especialidade;
+
+  const ScheduleAppitmentSelectDate({super.key, required this.especialidade});
 
   @override
   State<ScheduleAppitmentSelectDate> createState() =>
@@ -14,7 +16,6 @@ class _ScheduleAppitmentSelectDateState
     extends State<ScheduleAppitmentSelectDate> {
   @override
   Widget build(BuildContext context) {
-    double displayHeight() => MediaQuery.of(context).size.height;
     double displayWidth() => MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -107,9 +108,9 @@ class _ScheduleAppitmentSelectDateState
                         right: 0,
                         child: Container(
                           alignment: Alignment.center,
-                          child: const Text(
-                            'Fisioterapia', //Aqui o valor do text precisa ser alterado de acordo com a escolha da tela inicial
-                            style: TextStyle(
+                          child: Text(
+                            widget.especialidade, //Aqui o valor do text precisa ser alterado de acordo com a escolha da tela inicial
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff0D4542),
