@@ -45,6 +45,7 @@ class _HomeApplicationState extends State<HomeApplication> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Home',
             textAlign: TextAlign.center,

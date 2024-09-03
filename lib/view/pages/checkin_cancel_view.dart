@@ -16,18 +16,15 @@ class _CancelcheckState extends State<Cancelcheck> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF136A65),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         title: const Text(
           'Cancelamento',
@@ -37,55 +34,39 @@ class _CancelcheckState extends State<Cancelcheck> {
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Sair da fila',
-                          style: TextStyle(
-                              color: Color(0xff0D4542),
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          'de espera',
-                          style: TextStyle(
-                              color: Color(0xff0D4542),
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
+              const Text(
+                'Sair da fila',
+                style: TextStyle(
+                  color: Color(0xff0D4542),
+                  fontSize: 40, // Reduzido para evitar overflow
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 5),
+              const Text(
+                'de espera',
+                style: TextStyle(
+                  color: Color(0xff0D4542),
+                  fontSize: 40, // Reduzido para evitar overflow
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Tem certeza que deseja sair da fila \nde espera? Essa ação não poderá \nser desfeita.',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Color(0xff014B47),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400),
-                  ),
+              const Text(
+                'Tem certeza que deseja sair da fila de espera? Essa ação não poderá ser desfeita.',
+                style: TextStyle(
+                  color: Color(0xff014B47),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 110),
+              const SizedBox(height: 80),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -96,17 +77,19 @@ class _CancelcheckState extends State<Cancelcheck> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(300, 55),
-                      backgroundColor: const Color(0xff0A9080)),
+                    minimumSize: const Size(300, 55),
+                    backgroundColor: const Color(0xff0A9080),
+                  ),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
-                        fontSize: 22,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 22,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 50), // Ajustado para mais espaço
               GestureDetector(
                 onTap: () {
                   Navigator.push(

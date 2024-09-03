@@ -212,7 +212,7 @@ class _ScheduleAppoitmentSelectTimeState
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 50), // Espaço extra adicionado aqui
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -233,6 +233,7 @@ class _ScheduleAppoitmentSelectTimeState
                   ),
                 ),
               ),
+              const SizedBox(height: 50), // Espaço adicionado abaixo do botão
             ],
           ),
         ),

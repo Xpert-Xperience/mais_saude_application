@@ -17,18 +17,17 @@ class _RegistrationViewState extends State<RegistrationView> {
 
   String _formatPhoneNumber(String phoneNumber) {
     if (phoneNumber.length <= 2) {
-      return '($phoneNumber'; // Adiciona '(' no início
+      return '($phoneNumber';
     } else if (phoneNumber.length <= 6) {
-      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2)}'; // Formata até o sexto dígito
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2)}';
     } else if (phoneNumber.length <= 10) {
-      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 6)}-${phoneNumber.substring(6)}'; // Formata até o décimo dígito
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 6)}-${phoneNumber.substring(6)}';
     } else {
-      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 7)}-${phoneNumber.substring(7, 11)}'; // Formata completo
+      return '(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 7)}-${phoneNumber.substring(7, 11)}';
     }
   }
 
   bool isEmailValid(String email) {
-    // Utilizando uma expressão regular para verificar se o e-mail tem um formato válido
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return emailRegex.hasMatch(email);
   }
@@ -91,14 +90,12 @@ class _RegistrationViewState extends State<RegistrationView> {
             }
             if (isEmail) {
               setState(() {
-                _emailError = null; // Limpa o erro ao editar
+                _emailError = null;
               });
             }
           },
         ),
-        if (isEmail &&
-            _emailError !=
-                null) // Mostra o texto de erro se houver erro de e-mail
+        if (isEmail && _emailError != null)
           Text(
             _emailError!,
             style: const TextStyle(color: Colors.red),
@@ -126,62 +123,64 @@ class _RegistrationViewState extends State<RegistrationView> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color.fromARGB(255, 255, 255, 255),
-                Color.fromARGB(255, 255, 255, 255),
-              ],
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: _formkey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 1),
-                  const Text(
-                    'Cadastro',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF0D4542)),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color.fromARGB(255, 255, 255, 255),
+                        Color.fromARGB(255, 255, 255, 255),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 15),
-                  _inputField("Matricula", _controller.matriculaController),
-                  const SizedBox(height: 15),
-                  _inputField("Nome", _controller.nameController),
-                  const SizedBox(height: 15),
-                  _inputField("E-mail", _controller.emailController,
-                      isEmail: true),
-                  const SizedBox(height: 15),
-                  _inputField("Telefone", _controller.telephoneController,
-                      isPhoneNumber: true),
-                  const SizedBox(height: 15),
-                  _inputField("Senha", _controller.passwordController,
-                      isPassword: true),
-                  const SizedBox(height: 15),
-                  _inputField(
-                      "Confirmar Senha", _controller.confirmPasswordController,
-                      isPassword: true),
-                  const SizedBox(height: 30),
-                  _cadastrarBtn(context),
-                  const SizedBox(height: 20),
-                  _loginText(),
-                  const SizedBox(height: 23),
-                ],
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 1),
+                        const Text(
+                          'Cadastro',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF0D4542),
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        _inputField("Matricula", _controller.matriculaController),
+                        const SizedBox(height: 15),
+                        _inputField("Nome", _controller.nameController),
+                        const SizedBox(height: 15),
+                        _inputField("E-mail", _controller.emailController, isEmail: true),
+                        const SizedBox(height: 15),
+                        _inputField("Telefone", _controller.telephoneController, isPhoneNumber: true),
+                        const SizedBox(height: 15),
+                        _inputField("Senha", _controller.passwordController, isPassword: true),
+                        const SizedBox(height: 15),
+                        _inputField("Confirmar Senha", _controller.confirmPasswordController, isPassword: true),
+                        const SizedBox(height: 30),
+                        _cadastrarBtn(context),
+                        const SizedBox(height: 20),
+                        _loginText(),
+                        const SizedBox(height: 23),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
@@ -218,10 +217,9 @@ class _RegistrationViewState extends State<RegistrationView> {
     return GestureDetector(
       onTap: () {
         Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    const LoginView(key: ValueKey('login_screen'))));
+          context,
+          MaterialPageRoute(builder: (context) => const LoginView(key: ValueKey('login_screen'))),
+        );
       },
       child: const Text(
         "Já tem uma conta? Login",

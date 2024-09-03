@@ -101,6 +101,7 @@ class _ScheduleConfirmationState extends State<ScheduleConfirmation> {
                   ),
                 ),
               ),
+              const SizedBox(height: 50),
             ],
           ),
         ),

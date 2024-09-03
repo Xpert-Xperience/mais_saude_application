@@ -15,10 +15,14 @@ class _HistoricState extends State<Historic> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Agendamentos',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Color(0xFF0D4542), fontWeight: FontWeight.bold)),
+        title: const Text(
+          'Agendamentos',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF0D4542),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -42,16 +46,16 @@ class _HistoricState extends State<Historic> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
-                      width: 1.8,
-                      color: Color(
-                          0xFF28928B)), // Definindo a cor da borda quando não está em foco
+                    width: 1.8,
+                    color: Color(0xFF28928B),
+                  ), // Definindo a cor da borda quando não está em foco
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
-                      width: 1.8,
-                      color: Color(
-                          0xFF28928B)), // Definindo a cor da borda quando está em foco
+                    width: 1.8,
+                    color: Color(0xFF28928B),
+                  ), // Definindo a cor da borda quando está em foco
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -67,116 +71,118 @@ class _HistoricState extends State<Historic> {
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.all(16),
-                  height: 160, // Altura dos cards aumentada
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(
-                        color: const Color(0xFF28928B),
-                        width: 2), // Borda vermelha
-                    borderRadius:
-                        BorderRadius.circular(10), // Borda arredondada
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey,
-                          ),
-                          child: const Icon(Icons.person, size: 50),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Nome do Profissional',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                  color: Color(0xFF0D4542),
-                                ),
-                              ),
-                              const SizedBox(
-                                  height:
-                                      2), // Espaçamento para o texto pequeno
-                              const Text(
-                                'Data/Horário',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Color(0xFF0D4542),
-                                ),
-                              ),
-                              const SizedBox(height: 18),
-                              Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Navegar para a página de informações
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ScheduleCancellation()),
-                                      );
-                                    },
-                                    child: const Row(
-                                      children: [
-                                        Icon(Icons.cancel,
-                                            color: Color(
-                                                0xFF0D4542)), // Ícone de cancelar
-                                        SizedBox(width: 4),
-                                        Text(
-                                          'Cancelar',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Color(0xFF0D4542),
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Navegar para a página de informações
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Information()),
-                                      );
-                                    },
-                                    child: const Row(
-                                      children: [
-                                        Icon(Icons.info,
-                                            color: Color(
-                                                0xFF0D4542)), // Ícone de informações
-                                        SizedBox(width: 4),
-                                        Text(
-                                          'Informações',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Color(0xFF0D4542),
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      color: const Color(0xFF28928B),
+                      width: 2,
                     ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey,
+                            ),
+                            child: const Icon(Icons.person, size: 50),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Nome do Profissional',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: Color(0xFF0D4542),
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  'Data/Horário',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Color(0xFF0D4542),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 18),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              // Navegar para a página de cancelamento
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ScheduleCancellation(),
+                                ),
+                              );
+                            },
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.cancel,
+                                  color: Color(0xFF0D4542),
+                                ),
+                                SizedBox(width: 4),
+                                Text(
+                                  'Cancelar',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF0D4542),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Navegar para a página de informações
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Information(),
+                                ),
+                              );
+                            },
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.info,
+                                  color: Color(0xFF0D4542),
+                                ),
+                                SizedBox(width: 4),
+                                Text(
+                                  'Informações',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF0D4542),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 );
               },

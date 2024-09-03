@@ -14,77 +14,41 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
-            children: <Widget>[
-              Container(
-                height: MediaQuery.of(context).size.height / 4,
-                color: const Color(0xFF0D4542),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  padding: const EdgeInsets.all(20),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 60),
-                        _buildTextField("Email", "chiquin@gmail.com"),
-                        _buildTextField("Matrícula", "123456"),
-                        _buildTextField("Celular", "85998876543"),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        // _editBtn(context),
-                        _logoutBtn(context),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height / 7 + 167 + 20,
-            left: MediaQuery.of(context).size.width / 1.52 - 167 / 2,
-            child: const Center(
-              child: Text(
-                'Erick',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: screenHeight * 0.25,
+              color: const Color(0xFF0D4542),
+            ),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(screenWidth * 0.05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: screenHeight * 0.07),
+                  _buildTextField("Email", "chiquin@gmail.com", screenWidth),
+                  _buildTextField("Matrícula", "123456", screenWidth),
+                  _buildTextField("Celular", "85998876543", screenWidth),
+                  SizedBox(height: screenHeight * 0.04),
+                  _logoutBtn(context, screenWidth),
+                ],
               ),
             ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height / 6,
-            left: MediaQuery.of(context).size.width / 2 - 167 / 2,
-            child: Container(
-              width: 167,
-              height: 156,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey,
-                image: DecorationImage(
-                  image: AssetImage('assets/erick.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 2),
     );
   }
 
-  Widget _buildTextField(String labelText, String value) {
+  Widget _buildTextField(String labelText, String value, double screenWidth) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -92,9 +56,9 @@ class _ProfileState extends State<Profile> {
           labelText,
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: screenWidth * 0.02),
         Container(
-          width: 400,
+          width: screenWidth,
           height: 45,
           margin: const EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
@@ -116,28 +80,12 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget _editBtn(BuildContext context) {
+  Widget _logoutBtn(BuildContext context, double screenWidth) {
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF0A9080),
-          minimumSize: const Size(150, 20),
-        ),
-        onPressed: () {},
-        child: const Text(
-          'Editar',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _logoutBtn(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF0A9080),
-          minimumSize: const Size(150, 20),
+          minimumSize: Size(screenWidth * 0.5, 45),
         ),
         onPressed: () {
           _controller.userLogout(context);
@@ -145,7 +93,9 @@ class _ProfileState extends State<Profile> {
         child: const Text(
           'Logout',
           style: TextStyle(
-              fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
+            fontSize: 20,
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
         ),
       ),
     );

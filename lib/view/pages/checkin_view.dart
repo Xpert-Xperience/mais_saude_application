@@ -23,6 +23,7 @@ class _CheckinState extends State<Checkin> {
   Widget build(BuildContext context) {
     // Obtém os dados da fila
     final queueData = _queueController.getQueueData();
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -73,7 +74,7 @@ class _CheckinState extends State<Checkin> {
               ),
               const SizedBox(height: 60),
               const Padding(
-                padding: EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -88,23 +89,25 @@ class _CheckinState extends State<Checkin> {
                 ),
               ),
               const SizedBox(height: 20),
-              _buildCenterNumberWidget(queueData.userNumber.toString()), // Número central dinâmico
+              _buildCenterNumberWidget(queueData.userNumber.toString(), screenWidth), // Número central dinâmico
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _buildNumberWidget(
                     queueData.waitingPeople.toString(),
-                    'Pessoas Esperando',
+                    'Pessoas \nEsperando',
+                    screenWidth,
                   ),
                   const SizedBox(width: 20),
                   _buildNumberWidget(
                     queueData.estimatedTime.toString(),
-                    'Tempo Estimado(MIN)',
+                    'Tempo \nEstimado (MIN)',
+                    screenWidth,
                   ),
                 ],
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -122,6 +125,7 @@ class _CheckinState extends State<Checkin> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
+              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -129,15 +133,15 @@ class _CheckinState extends State<Checkin> {
     );
   }
 
-  Widget _buildCenterNumberWidget(String number) {
+  Widget _buildCenterNumberWidget(String number, double screenWidth) {
     return Column(
       children: [
         Text(
           number,
-          style: const TextStyle(
-            fontSize: 100,
+          style: TextStyle(
+            fontSize: screenWidth * 0.2,
             fontWeight: FontWeight.bold,
-            color: Color(0xff0D4542),
+            color: const Color(0xff0D4542),
           ),
         ),
         const SizedBox(height: 10),
@@ -145,21 +149,26 @@ class _CheckinState extends State<Checkin> {
     );
   }
 
-  Widget _buildNumberWidget(String number, String description) {
+  Widget _buildNumberWidget(String number, String description, double screenWidth) {
     return Column(
       children: [
         Text(
           number,
-          style: const TextStyle(
-            fontSize: 50,
+          style: TextStyle(
+            fontSize: screenWidth * 0.1,
             fontWeight: FontWeight.bold,
-            color: Color(0xff0D4542),
+            color: const Color(0xff0D4542),
           ),
         ),
         const SizedBox(height: 10),
         Text(
           description,
-          style: const TextStyle(fontSize: 18, color: Color(0xff0D4542)),
+          textAlign: TextAlign.center,
+          softWrap: true,
+          style: TextStyle(
+            fontSize: screenWidth * 0.045,
+            color: const Color(0xff0D4542),
+          ),
         ),
       ],
     );

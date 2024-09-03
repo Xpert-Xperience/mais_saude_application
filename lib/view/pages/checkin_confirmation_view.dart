@@ -12,26 +12,26 @@ class Confcheck extends StatefulWidget {
 class _ConfcheckState extends State<Confcheck> {
   @override
   Widget build(BuildContext context) {
+    // Dimensões da tela
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF136A65),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomeApplication()),
-              );
-            },
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeApplication()),
+            );
+          },
         ),
         title: const Text(
           'Confirmação',
@@ -41,54 +41,30 @@ class _ConfcheckState extends State<Confcheck> {
         foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
-        child: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 40),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Entrar na fila',
-                          style: TextStyle(
-                              color: Color(0xff0D4542),
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'de espera',
-                          style: TextStyle(
-                              color: Color(0xff0D4542),
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
+              SizedBox(height: screenHeight * 0.05),
+              const Text(
+                'Entrar na fila\nde espera',
+                style: TextStyle(
+                  color: Color(0xff0D4542),
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 30),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Tem certeza que deseja entrar na fila \nde espera para a consulta?',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Color(0xff014B47),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400),
-                  ),
+              SizedBox(height: screenHeight * 0.03),
+              const Text(
+                'Tem certeza que deseja entrar na fila\nde espera para a consulta?',
+                style: TextStyle(
+                  color: Color(0xff014B47),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 90),
+              SizedBox(height: screenHeight * 0.1),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -98,28 +74,28 @@ class _ConfcheckState extends State<Confcheck> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(300, 50),
-                      backgroundColor: const Color(0xff0A9080)),
+                    minimumSize: Size(screenWidth * 0.7, 50),
+                    backgroundColor: const Color(0xff0A9080),
+                  ),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
-                        fontSize: 22,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 22,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 70),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeApplication()),
-                  );
-                },
-                child: const Align(
-                  alignment: Alignment.center,
-                  child: Text(
+              SizedBox(height: screenHeight * 0.1),
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeApplication()),
+                    );
+                  },
+                  child: const Text(
                     'Voltar',
                     style: TextStyle(
                       fontSize: 22,
