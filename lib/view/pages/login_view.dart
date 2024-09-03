@@ -82,8 +82,7 @@ class _LoginViewState extends State<LoginView> {
               const SizedBox(
                 height: 10,
               ),
-              _loginGoogleBtn(context),
-              const SizedBox(height: 20),
+      
               _extraText(),
             ],
           ),
@@ -145,44 +144,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _loginGoogleBtn(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        _controller.userGoogleLogin(context);
-      },
-      child: Container(
-        width: double.infinity,
-        height: 45,
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                FontAwesomeIcons.google,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                "Sign in with Google",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _extraText() {
+    Widget _extraText() {
     return Column(
       children: [
         const SizedBox(height: 10),

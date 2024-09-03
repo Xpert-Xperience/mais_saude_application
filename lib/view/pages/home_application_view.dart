@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
 import 'package:mais_saude/view/pages/checkin_confirmation_view.dart';
+import 'package:mais_saude/view/pages/checkin_view.dart';
 import 'package:mais_saude/view/pages/schedule_appoitment_select_date_view.dart';
 
 class HomeApplication extends StatefulWidget {
@@ -206,35 +207,52 @@ class _HomeApplicationState extends State<HomeApplication> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Confcheck()),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 125,
-                        height: 115,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1.8, color: const Color(0xFF28928B)),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Image.asset(
-                          "assets/icons8-head-with-brain-96.png",
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      const Text(
-                        'Psicologia',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+  onTap: () async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final filaRef = FirebaseFirestore.instance.collection('filas').doc(user.uid);
+      final snapshot = await filaRef.get();
+
+      if (snapshot.exists) {
+        // Se já existe, vai diretamente para a fila
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Checkin()),
+        );
+      } else {
+        // Caso contrário, vai para a confirmação de check-in
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Confcheck()),
+        );
+      }
+    }
+  },
+  child: Column(
+    children: [
+      Container(
+        width: 125,
+        height: 115,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1.8, color: const Color(0xFF28928B)),
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Image.asset(
+          "assets/icons8-head-with-brain-96.png",
+          fit: BoxFit.contain,
+        ),
+      ),
+      const Text(
+        'Psicologia',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ],
+  ),
+),
+
               ],
             ),
           ],
