@@ -1,14 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/pages/home_application_view.dart';
 
 class ScheduleConfirmation extends StatefulWidget {
-  const ScheduleConfirmation({super.key});
+  final DateTime selectedDay;
+  final String especialidade;
+  final String selectedTime;
+
+  const ScheduleConfirmation({
+    super.key,
+    required this.selectedDay,
+    required this.especialidade,
+    required this.selectedTime,
+  });
 
   @override
   State<ScheduleConfirmation> createState() => _ScheduleConfirmationState();
 }
 
 class _ScheduleConfirmationState extends State<ScheduleConfirmation> {
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
