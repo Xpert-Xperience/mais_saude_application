@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mais_saude/controller/checkin_controller.dart';
 import 'package:mais_saude/view/pages/checkin_view.dart';
 import 'package:mais_saude/view/pages/home_application_view.dart';
 
@@ -88,23 +90,31 @@ class _CancelcheckState extends State<Cancelcheck> {
               const SizedBox(height: 110),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeApplication()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(300, 55),
-                      backgroundColor: const Color(0xff0A9080)),
-                  child: const Text(
-                    'Confirmar',
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                  ),
-                ),
+  onPressed: () async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        final checkinController = CheckinController();
+        await checkinController.cancelarCheckin(user.uid);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeApplication()),
+        );
+      }
+    } catch (e) {
+      // Exibir um alerta ou uma notificação de erro
+    }
+  },
+  style: ElevatedButton.styleFrom(
+      minimumSize: const Size(300, 55),
+      backgroundColor: const Color(0xff0A9080)),
+  child: const Text(
+    'Confirmar',
+    style: TextStyle(
+        fontSize: 22,
+        color: Color.fromARGB(255, 255, 255, 255)),
+  ),
+),
               ),
               const SizedBox(height: 70),
               GestureDetector(

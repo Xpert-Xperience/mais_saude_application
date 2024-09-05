@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/pages/schedule_cancel_view.dart';
+import 'package:intl/intl.dart';
+import 'package:mais_saude/view/pages/schedule_cancel_view.dart'; // Importando o pacote intl para formatação de datas
 
 class Information extends StatefulWidget {
-  const Information({super.key});
+  final String profissionalNome;
+  final String data;
+  final String? hora;
+
+  const Information({
+    super.key,
+    required this.profissionalNome,
+    required this.data,
+    this.hora,
+  });
 
   @override
   State<Information> createState() => _InformationState();
@@ -56,21 +66,22 @@ class _InformationState extends State<Information> {
                     child: const Icon(Icons.person, size: 70),
                   ),
                   const SizedBox(width: 16),
-                  const Expanded(
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Nome',
-                          style: TextStyle(
+                          widget.profissionalNome,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: Color(0xFF0D4542),
                           ),
                         ),
-                        SizedBox(height: 2), // Espaçamento para o texto pequeno
-                        Text(
-                          'Clínico Geral',
+                        const SizedBox(
+                            height: 2), // Espaçamento para o texto pequeno
+                        const Text(
+                          'Clínico Geral', // Ajuste conforme necessário
                           style: TextStyle(
                             fontSize: 12,
                             color: Color(0xFF0D4542),
@@ -91,15 +102,15 @@ class _InformationState extends State<Information> {
               border: Border.all(color: const Color(0xFF28928B), width: 2),
               borderRadius: BorderRadius.circular(10), // Borda arredondada
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Data e hora: ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -108,16 +119,16 @@ class _InformationState extends State<Information> {
                         ),
                       ),
                       Text(
-                        'Quinta, 17 de março às 13:00h',
-                        style: TextStyle(
+                        '${widget.data}${widget.hora != null ? ' às ${widget.hora}' : ''}',
+                        style: const TextStyle(
                           fontSize: 11.3,
                           color: Color(0xFF0D4542),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 18),
-                  Row(
+                  const SizedBox(height: 18),
+                  const Row(
                     children: [
                       Text(
                         'Local: ',

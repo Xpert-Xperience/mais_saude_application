@@ -1,9 +1,8 @@
-// ignore_for_file: use_build_context_synchronously, empty_catches
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/pages/login_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mais_saude/view/pages/home_application_view.dart';
+import 'package:mais_saude/view/pages/login_view.dart';
 
 class LoginController {
   String email = "", password = "";
@@ -15,50 +14,55 @@ class LoginController {
 
   User? user;
 
-  userLoginLocal(BuildContext context) async {
-    //método de login utilizando email e senha
+  Future<void> userLoginLocal(BuildContext context) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const HomeApplication()));
+      // Tenta realizar o login com email e senha
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      user = userCredential.user;
+
+      if (user != null) {
+        // Se o login foi bem-sucedido, navega para a próxima tela e remove a tela de login da pilha
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeApplication()),
+          (Route<dynamic> route) => false,
+        );
+
+   
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        //tratando erro "usuário não encontrado"
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Nenhum usuário encontrado",
-              style: TextStyle(fontSize: 18.0),
-            )));
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            "Nenhum usuário encontrado",
+            style: TextStyle(fontSize: 18.0),
+          ),
+        ));
       } else if (e.code == 'wrong-password') {
-        //tratando erro "senha incorreta"
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Senha incorreta",
-              style: TextStyle(fontSize: 18.0),
-            )));
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            "Senha incorreta",
+            style: TextStyle(fontSize: 18.0),
+          ),
+        ));
       }
     }
   }
 
-  userGoogleLogin(BuildContext context) async {
-    //metodo de login utilizando autenticação com o google
-    try {
-      final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
-      _auth.signInWithProvider(googleAuthProvider);
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const HomeApplication()));
-    } catch (e) {
-      print("erro:");
-      print(e);
-    }
-  }
-
-  userLogout(BuildContext context) async {
-    //metodo de logout
-    _auth.signOut();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const LoginView()));
+ 
+  // Método para fazer logout do usuário
+  Future<void> userLogout(BuildContext context) async {
+    await _auth.signOut();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginView()),
+      (Route<dynamic> route) => false,
+    );
   }
 }

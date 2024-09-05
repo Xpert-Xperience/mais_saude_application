@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mais_saude/controller/checkin_controller.dart';
 import 'package:mais_saude/view/pages/checkin_view.dart';
 import 'package:mais_saude/view/pages/home_application_view.dart';
 
@@ -10,6 +12,16 @@ class Confcheck extends StatefulWidget {
 }
 
 class _ConfcheckState extends State<Confcheck> {
+  final CheckinController _controller = CheckinController();
+  late String userId;
+
+  @override
+  void initState() {
+    super.initState();
+    // Recuperando o userId do FirebaseAuth
+    userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,20 +103,30 @@ class _ConfcheckState extends State<Confcheck> {
               const SizedBox(height: 90),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Checkin()),
-                    );
+                  onPressed: () async {
+                    try {
+                      await _controller.fazerCheckin(userId);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Checkin()),
+                      );
+                    } catch (e) {
+                      // Exibir uma mensagem de erro se necessário
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Erro ao fazer check-in: $e')),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(300, 50),
-                      backgroundColor: const Color(0xff0A9080)),
+                    minimumSize: const Size(300, 50),
+                    backgroundColor: const Color(0xff0A9080),
+                  ),
                   child: const Text(
                     'Confirmar',
                     style: TextStyle(
-                        fontSize: 22,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 22,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
                   ),
                 ),
               ),
