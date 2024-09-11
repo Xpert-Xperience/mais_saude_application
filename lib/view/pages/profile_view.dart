@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/controller/login_controller.dart';
 import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -9,8 +11,45 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
+
 class _ProfileState extends State<Profile> {
   final LoginController _controller = LoginController();
+  String? userName = "";
+  String? userEmail = "";
+  String? userMatricula = "";
+  String? userPhone = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserProfile(); // Busca as informações do usuário ao carregar a página
+  }
+
+  Future<void> fetchUserProfile() async {
+    try {
+      // Obtém o UID do usuário autenticado
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        String userId = user.uid;
+
+        // Busca o documento do Firestore com base no UID
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+        if (userDoc.exists) {
+          // Extrai o nome, email, matrícula e telefone do usuário
+          setState(() {
+            userName = userDoc.get('name');
+            userEmail = userDoc.get('email');
+            userMatricula = userDoc.get('matricula');
+            userPhone = userDoc.get('telephone');
+          });
+        }
+      }
+    } catch (e) {
+      print('Erro ao buscar os dados do usuário: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +72,9 @@ class _ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 60),
-                        _buildTextField("Email", "chiquin@gmail.com"),
-                        _buildTextField("Matrícula", "123456"),
-                        _buildTextField("Celular", "85998876543"),
+                        _buildTextField("Email", "$userEmail"),
+                        _buildTextField("Matrícula", "$userMatricula"),
+                        _buildTextField("Celular", "$userPhone"),
                         const SizedBox(
                           height: 30,
                         ),

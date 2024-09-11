@@ -13,37 +13,37 @@ class HomeApplication extends StatefulWidget {
   State<HomeApplication> createState() => _HomeApplicationState();
 }
 
-class _HomeApplicationState extends State<HomeApplication> {
-  String _userName = '';
+  class _HomeApplicationState extends State<HomeApplication> {
+    String? userName = ''; // Variável para armazenar o nome do usuário
 
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentUser();
-  }
-
-  Future<void> _getCurrentUser() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      // Aqui você precisa buscar o nome do usuário no Firestore usando o userId
-      final docSnapshot = await FirebaseFirestore.instance
-          .collection('usuarios')
-          .doc(user.uid)
-          .get();
-      if (docSnapshot.exists) {
-        setState(() {
-          _userName = docSnapshot.data()!['nome'] ??
-              'Olá, ${user.email!.split('@')[0]}!';
-        });
-      } else {
-        setState(() {
-          _userName = 'Olá, ${user.email!.split('@')[0]}!';
-        });
-      }
+    @override
+    void initState() {
+      super.initState();
+      fetchUserName(); // Chama a função para buscar o usuário ao inicializar
     }
-  }
 
-  @override
+    Future<void> fetchUserName() async {
+    try {
+     
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        String userId = user.uid;
+ 
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+        if (userDoc.exists) {
+      
+          setState(() {
+            userName = userDoc.get('name');
+          });
+        }
+      }
+    } catch (e) {
+      print('Erro ao buscar o nome do usuário: $e');
+    }
+  } 
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -61,8 +61,7 @@ class _HomeApplicationState extends State<HomeApplication> {
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                _userName,
+              child: Text("Bem Vindo, $userName", // Exibe o nome do usuário
                 style: const TextStyle(fontSize: 20),
               ),
             ),
@@ -208,52 +207,52 @@ class _HomeApplicationState extends State<HomeApplication> {
                   ),
                 ),
                 GestureDetector(
-  onTap: () async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final filaRef = FirebaseFirestore.instance.collection('filas').doc(user.uid);
-      final snapshot = await filaRef.get();
+                  onTap: () async {
+                    final user = FirebaseAuth.instance.currentUser;
+                    if (user != null) {
+                      final filaRef = FirebaseFirestore.instance.collection('filas').doc(user.uid);
+                      final snapshot = await filaRef.get();
 
-      if (snapshot.exists) {
-        // Se já existe, vai diretamente para a fila
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const Checkin()),
-        );
-      } else {
-        // Caso contrário, vai para a confirmação de check-in
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const Confcheck()),
-        );
-      }
-    }
-  },
-  child: Column(
-    children: [
-      Container(
-        width: 125,
-        height: 115,
-        decoration: BoxDecoration(
-          border: Border.all(width: 1.8, color: const Color(0xFF28928B)),
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Image.asset(
-          "assets/icons8-head-with-brain-96.png",
-          fit: BoxFit.contain,
-        ),
-      ),
-      const Text(
-        'Psicologia',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    ],
-  ),
-),
-
+                      if (snapshot.exists) {
+                        // Se já existe, vai diretamente para a fila
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Checkin()),
+                        );
+                      } else {
+                        // Caso contrário, vai para a confirmação de check-in
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Confcheck()),
+                        );
+                      }
+                    }
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 125,
+                        height: 115,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1.8, color: const Color(0xFF28928B)),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Image.asset(
+                          "assets/icons8-head-with-brain-96.png",
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      const Text(
+                        'Psicologia',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
