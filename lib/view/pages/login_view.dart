@@ -75,14 +75,10 @@ class _LoginViewState extends State<LoginView> {
               const SizedBox(height: 100),
               _inputField("Email", _controller.emailController),
               const SizedBox(height: 70),
-              _inputField("Senha", _controller.passwordController,
-                  isPassword: true),
+              _inputField("Senha", _controller.passwordController, isPassword: true),
               const SizedBox(height: 50),
               _loginBtn(context),
-              const SizedBox(
-                height: 10,
-              ),
-      
+              const SizedBox(height: 10),
               _extraText(),
             ],
           ),
@@ -92,28 +88,54 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget _inputField(String hintText, TextEditingController controller,
-      {isPassword = false}) {
+      {bool isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
       borderSide: const BorderSide(width: 1.8, color: Color(0xFF28928B)),
     );
 
-    return TextFormField(
-      style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor preencha todos os campos';
-        }
-        return null;
-      },
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-        enabledBorder: border,
-        focusedBorder: border,
-      ),
-      obscureText: isPassword,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextFormField(
+          style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Por favor preencha todos os campos';
+            }
+            return null;
+          },
+          controller: controller,
+          obscureText: isPassword ? _controller.isPasswordObscured : false,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+            enabledBorder: border,
+            focusedBorder: border,
+            suffixIcon: isPassword
+                ? IconButton(
+                    icon: Icon(
+                      _controller.isPasswordObscured ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _controller.isPasswordObscured = !_controller.isPasswordObscured;
+                      });
+                    },
+                  )
+                : null,
+          ),
+        ),
+        if (_formkey.currentState?.validate() == false && isPassword)
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(
+              'Por favor preencha todos os campos',
+              style: TextStyle(color: Colors.red[700], fontSize: 12),
+            ),
+          ),
+      ],
     );
   }
 
@@ -144,7 +166,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-    Widget _extraText() {
+  Widget _extraText() {
     return Column(
       children: [
         const SizedBox(height: 10),

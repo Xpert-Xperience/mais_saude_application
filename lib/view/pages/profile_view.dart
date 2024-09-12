@@ -88,35 +88,38 @@ class _ProfileState extends State<Profile> {
             ],
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 7 + 167 + 20,
-            left: MediaQuery.of(context).size.width / 1.52 - 167 / 2,
-            child: const Center(
-              child: Text(
-                'Erick',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+  top: MediaQuery.of(context).size.height / 6, // Ajuste conforme necessário
+  left: MediaQuery.of(context).size.width / 2 - 167 / 2,
+  child: Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min, // Use o tamanho mínimo necessário
+      children: [
+        Container(
+          width: 167,
+          height: 156,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey,
+            image: DecorationImage(
+              image: AssetImage('assets/erick.png'),
+              fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).size.height / 6,
-            left: MediaQuery.of(context).size.width / 2 - 167 / 2,
-            child: Container(
-              width: 167,
-              height: 156,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey,
-                image: DecorationImage(
-                  image: AssetImage('assets/erick.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+        ),
+        const SizedBox(height: 20), 
+        Text(
+          userName ?? 'Nome não disponível',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+      ],
+    ),
+  ),
+),
+
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 2),

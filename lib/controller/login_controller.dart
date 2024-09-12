@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:mais_saude/view/pages/home_application_view.dart';
 import 'package:mais_saude/view/pages/login_view.dart';
 
 class LoginController {
   String email = "", password = "";
-
+  bool isPasswordObscured = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
