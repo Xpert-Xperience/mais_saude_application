@@ -57,14 +57,13 @@ class InitialPresentation extends StatelessWidget {
                         );
                       },
                       style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                        backgroundColor: MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
@@ -86,14 +85,13 @@ class InitialPresentation extends StatelessWidget {
                         );
                       },
                       style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                        backgroundColor: MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
