@@ -41,7 +41,7 @@ class _RegistrationViewState extends State<RegistrationView> {
       bool isEmail = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+      borderSide: const BorderSide(width: 2.0, color: Color(0xFF28928B)),
     );
 
     return Column(
@@ -127,7 +127,9 @@ class _RegistrationViewState extends State<RegistrationView> {
         ),
       ),
       body: SingleChildScrollView(
+        
         child: Container(
+          
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -139,6 +141,7 @@ class _RegistrationViewState extends State<RegistrationView> {
               ],
             ),
           ),
+          
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Form(
@@ -226,7 +229,8 @@ class _RegistrationViewState extends State<RegistrationView> {
       child: const Text(
         "Já tem uma conta? Login",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 18, color: Color(0xFF005651)),
+        
       ),
     );
   }

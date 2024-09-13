@@ -114,7 +114,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0xFF28928B)),
+                      borderSide: const BorderSide(width: 2.0,color: Color(0xFF28928B)),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -138,7 +138,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(300, 50),
+                      minimumSize: const Size(300, 60),
                       backgroundColor: const Color(0xff0A9080)),
                   child: const Text(
                     'Confirmar',
@@ -151,14 +151,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const SizedBox(
                 height: 50,
               ),
-              const Center(
-                  child: Text(
-                'Cancelar',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff005651)),
-              ))
+              
             ],
           ),
         ),

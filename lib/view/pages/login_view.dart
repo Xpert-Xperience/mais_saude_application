@@ -40,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
             icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: Color.fromARGB(255, 0, 0, 0),
+              color: Color(0xFF0D4542),
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -95,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
       {isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(width: 1.8, color: Color(0xFF28928B)),
+      borderSide: const BorderSide(width: 2.0, color: Color(0xFF28928B)),
     );
 
     return TextFormField(

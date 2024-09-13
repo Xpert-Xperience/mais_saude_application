@@ -43,7 +43,7 @@ class InitialPresentation extends StatelessWidget {
                     const Text(
                       'Marque suas consultas com facilidade e praticidade, sem precisar ir ao IF.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 18),
                     ),
                     const SizedBox(height: 50),
                     ElevatedButton(
@@ -58,13 +58,13 @@ class InitialPresentation extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                            MaterialStateProperty.all(Color(0xFF0A9080)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
@@ -87,13 +87,13 @@ class InitialPresentation extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                            MaterialStateProperty.all(Color(0xFF0A9080)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
