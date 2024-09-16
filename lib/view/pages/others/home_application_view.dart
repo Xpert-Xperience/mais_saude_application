@@ -14,34 +14,35 @@ class HomeApplication extends StatefulWidget {
 }
 
 class _HomeApplicationState extends State<HomeApplication> {
-  String _userName = '';
+    String? userName = ''; // Variável para armazenar o nome do usuário
 
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentUser();
-  }
-
-  Future<void> _getCurrentUser() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      // Aqui você precisa buscar o nome do usuário no Firestore usando o userId
-      final docSnapshot = await FirebaseFirestore.instance
-          .collection('usuarios')
-          .doc(user.uid)
-          .get();
-      if (docSnapshot.exists) {
-        setState(() {
-          _userName = docSnapshot.data()!['nome'] ??
-              'Olá, ${user.email!.split('@')[0]}!';
-        });
-      } else {
-        setState(() {
-          _userName = 'Olá, ${user.email!.split('@')[0]}!';
-        });
-      }
+    @override
+    void initState() {
+      super.initState();
+      fetchUserName(); // Chama a função para buscar o usuário ao inicializar
     }
-  }
+
+    Future<void> fetchUserName() async {
+    try {
+     
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        String userId = user.uid;
+ 
+        DocumentSnapshot userDoc =
+            await FirebaseFirestore.instance.collection('users').doc(userId).get();
+
+        if (userDoc.exists) {
+      
+          setState(() {
+            userName = userDoc.get('name');
+          });
+        }
+      }
+    } catch (e) {
+      print('Erro ao buscar o nome do usuário: $e');
+    }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class _HomeApplicationState extends State<HomeApplication> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
-                _userName,
+                "Bem vindo, $userName",
                 style: const TextStyle(fontSize: 20),
               ),
             ),
@@ -125,7 +126,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/icons8-physical-therapy-96.png",
+                          "assets/fisioterapeuta.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -155,7 +156,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/icons8-hora-do-dentista-96.png",
+                          "assets/odontologia.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -193,7 +194,7 @@ class _HomeApplicationState extends State<HomeApplication> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/icons8-plus-96.png",
+                          "assets/clinico_geral.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -239,7 +240,7 @@ class _HomeApplicationState extends State<HomeApplication> {
           borderRadius: BorderRadius.circular(5),
         ),
         child: Image.asset(
-          "assets/icons8-head-with-brain-96.png",
+          "assets/psicologia.png",
           fit: BoxFit.contain,
         ),
       ),
