@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
-import 'package:mais_saude/view/pages/checkin_confirmation_view.dart';
-import 'package:mais_saude/view/pages/checkin_view.dart';
-import 'package:mais_saude/view/pages/schedule_appoitment_select_date_view.dart';
+import 'package:mais_saude/view/pages/checkin/checkin_confirmation_view.dart';
+import 'package:mais_saude/view/pages/checkin/checkin_view.dart';
+import 'package:mais_saude/view/pages/schedule/schedule_appoitment_select_date_view.dart';
 
 class HomeApplication extends StatefulWidget {
   const HomeApplication({super.key});

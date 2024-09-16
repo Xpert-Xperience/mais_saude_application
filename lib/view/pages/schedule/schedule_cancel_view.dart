@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/pages/historic_view.dart';
+import 'package:mais_saude/view/pages/historic/historic_view.dart';
 
 class ScheduleCancellation extends StatefulWidget {
   const ScheduleCancellation({super.key});

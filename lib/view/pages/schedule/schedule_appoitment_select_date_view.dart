@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/pages/home_application_view.dart';
-import '../components/calendar/calendar.dart';
+import 'package:mais_saude/view/pages/others/home_application_view.dart';
+import '../../components/calendar/calendar.dart';
 
 class ScheduleAppitmentSelectDate extends StatefulWidget {
   final String especialidade;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mais_saude/view/pages/schedule_confirmation_view.dart';
+import 'package:mais_saude/view/pages/schedule/schedule_confirmation_view.dart';
 
 class ScheduleAppoitmentSelectTime extends StatefulWidget {
   final DateTime? selectedDay;

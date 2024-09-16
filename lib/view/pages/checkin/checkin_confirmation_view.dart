@@ -1,17 +1,27 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mais_saude/controller/checkin_controller.dart';
-import 'package:mais_saude/view/pages/checkin_view.dart';
-import 'package:mais_saude/view/pages/home_application_view.dart';
+import 'package:mais_saude/view/pages/checkin/checkin_view.dart';
+import 'package:mais_saude/view/pages/others/home_application_view.dart';
 
-class Cancelcheck extends StatefulWidget {
-  const Cancelcheck({super.key});
+class Confcheck extends StatefulWidget {
+  const Confcheck({super.key});
 
   @override
-  State<Cancelcheck> createState() => _CancelcheckState();
+  State<Confcheck> createState() => _ConfcheckState();
 }
 
-class _CancelcheckState extends State<Cancelcheck> {
+class _ConfcheckState extends State<Confcheck> {
+  final CheckinController _controller = CheckinController();
+  late String userId;
+
+  @override
+  void initState() {
+    super.initState();
+    // Recuperando o userId do FirebaseAuth
+    userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +37,16 @@ class _CancelcheckState extends State<Cancelcheck> {
               color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomeApplication()),
+              );
             },
           ),
         ),
         title: const Text(
-          'Cancelamento',
+          'Confirmação',
           style: TextStyle(fontSize: 25),
         ),
         centerTitle: true,
@@ -53,13 +67,12 @@ class _CancelcheckState extends State<Cancelcheck> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Sair da fila',
+                          'Entrar na fila',
                           style: TextStyle(
                               color: Color(0xff0D4542),
                               fontSize: 50,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 5),
                         Text(
                           'de espera',
                           style: TextStyle(
@@ -72,13 +85,13 @@ class _CancelcheckState extends State<Cancelcheck> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.only(left: 20.0), // Margem à esquerda
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Tem certeza que deseja sair da fila \nde espera? Essa ação não poderá \nser desfeita.',
+                    'Tem certeza que deseja entrar na fila \nde espera para a consulta?',
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         color: Color(0xff014B47),
@@ -87,47 +100,49 @@ class _CancelcheckState extends State<Cancelcheck> {
                   ),
                 ),
               ),
-              const SizedBox(height: 110),
+              const SizedBox(height: 90),
               Center(
                 child: ElevatedButton(
-  onPressed: () async {
-    try {
-      final user = FirebaseAuth.instance.currentUser;
-      if (user != null) {
-        final checkinController = CheckinController();
-        await checkinController.cancelarCheckin(user.uid);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeApplication()),
-        );
-      }
-    } catch (e) {
-      // Exibir um alerta ou uma notificação de erro
-    }
-  },
-  style: ElevatedButton.styleFrom(
-      minimumSize: const Size(300, 55),
-      backgroundColor: const Color(0xff0A9080)),
-  child: const Text(
-    'Confirmar',
-    style: TextStyle(
-        fontSize: 22,
-        color: Color.fromARGB(255, 255, 255, 255)),
-  ),
-),
+                  onPressed: () async {
+                    try {
+                      await _controller.fazerCheckin(userId);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Checkin()),
+                      );
+                    } catch (e) {
+                      // Exibir uma mensagem de erro se necessário
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Erro ao fazer check-in: $e')),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(300, 50),
+                    backgroundColor: const Color(0xff0A9080),
+                  ),
+                  child: const Text(
+                    'Confirmar',
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(height: 70),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Checkin()),
+                    MaterialPageRoute(
+                        builder: (context) => const HomeApplication()),
                   );
                 },
                 child: const Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Manter',
+                    'Voltar',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,

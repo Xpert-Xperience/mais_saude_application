@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/firebase_options.dart';
-import 'package:mais_saude/view/pages/historic_view.dart';
-import 'package:mais_saude/view/pages/profile_view.dart';
-import 'package:mais_saude/view/pages/initial_presentation_view.dart';
-import 'package:mais_saude/view/pages/home_application_view.dart';
+import 'package:mais_saude/view/pages/historic/historic_view.dart';
+import 'package:mais_saude/view/pages/others/profile_view.dart';
+import 'package:mais_saude/view/pages/others/initial_presentation_view.dart';
+import 'package:mais_saude/view/pages/others/home_application_view.dart';
 
 Future<void> main() async {
   runApp(MyApp());

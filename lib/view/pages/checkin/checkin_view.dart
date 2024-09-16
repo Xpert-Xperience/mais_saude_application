@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mais_saude/controller/checkin_controller.dart';
 import 'package:mais_saude/model/fila_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mais_saude/view/pages/checkin_cancel_view.dart';
-import 'package:mais_saude/view/pages/checkin_confirmation_view.dart';
-import 'package:mais_saude/view/pages/home_application_view.dart';
+import 'package:mais_saude/view/pages/checkin/checkin_cancel_view.dart';
+import 'package:mais_saude/view/pages/checkin/checkin_confirmation_view.dart';
+import 'package:mais_saude/view/pages/others/home_application_view.dart';
 
 class Checkin extends StatefulWidget {
   const Checkin({super.key});

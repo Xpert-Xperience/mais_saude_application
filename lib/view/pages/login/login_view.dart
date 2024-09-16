@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mais_saude/controller/login_controller.dart';
-import 'package:mais_saude/view/pages/registration_view.dart';
-import 'package:mais_saude/view/pages/forgot_password_view.dart';
+import 'package:mais_saude/view/pages/login/registration_view.dart';
+import 'package:mais_saude/view/pages/login/forgot_password_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -15,7 +15,6 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final LoginController _controller = LoginController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
             icon: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: Color.fromARGB(255, 0, 0, 0),
+              color: Color(0xFF0D4542),
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -79,10 +78,7 @@ class _LoginViewState extends State<LoginView> {
                   isPassword: true),
               const SizedBox(height: 50),
               _loginBtn(context),
-              const SizedBox(
-                height: 10,
-              ),
-      
+              const SizedBox(height: 10),
               _extraText(),
             ],
           ),
@@ -92,10 +88,10 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget _inputField(String hintText, TextEditingController controller,
-      {isPassword = false}) {
+      {bool isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(width: 1.8, color: Color(0xFF28928B)),
+      borderSide: const BorderSide(width: 2.0, color: Color(0xFF28928B)),
     );
 
     return TextFormField(
@@ -107,13 +103,29 @@ class _LoginViewState extends State<LoginView> {
         return null;
       },
       controller: controller,
+      obscureText: isPassword ? _controller.isPasswordObscured : false,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
         enabledBorder: border,
         focusedBorder: border,
+        suffixIcon: isPassword
+            ? IconButton(
+                icon: Icon(
+                  _controller.isPasswordObscured
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _controller.isPasswordObscured =
+                        !_controller.isPasswordObscured;
+                  });
+                },
+              )
+            : null,
       ),
-      obscureText: isPassword,
     );
   }
 
@@ -144,7 +156,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-    Widget _extraText() {
+  Widget _extraText() {
     return Column(
       children: [
         const SizedBox(height: 10),
@@ -169,7 +181,8 @@ class _LoginViewState extends State<LoginView> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const RegistrationView()),
+              MaterialPageRoute(
+                  builder: (context) => const RegistrationView()),
             );
           },
           child: const Text(

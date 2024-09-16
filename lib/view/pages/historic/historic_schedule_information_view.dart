@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mais_saude/view/pages/schedule_cancel_view.dart'; // Importando o pacote intl para formatação de datas
+import 'package:mais_saude/view/pages/schedule/schedule_cancel_view.dart'; // Importando o pacote intl para formatação de datas
 
 class Information extends StatefulWidget {
   final String profissionalNome;

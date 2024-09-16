@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'utils.dart';
-import '../../pages/schedule_appoitment_select_time_view.dart';
+import '../../pages/schedule/schedule_appoitment_select_time_view.dart';
 
 class Calendar extends StatefulWidget {
   final String especialidade;

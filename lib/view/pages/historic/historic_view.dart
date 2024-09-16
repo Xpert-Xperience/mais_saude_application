@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/components/custom_bottom_navigation_bar.dart';
-import 'package:mais_saude/view/pages/historic_schedule_information_view.dart';
-import 'package:mais_saude/view/pages/schedule_cancel_view.dart';
+import 'package:mais_saude/view/pages/historic/historic_schedule_information_view.dart';
+import 'package:mais_saude/view/pages/schedule/schedule_cancel_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart'; // Importar o Firebase Auth
 import 'package:intl/intl.dart'; // Importando o pacote intl para formatação de datas

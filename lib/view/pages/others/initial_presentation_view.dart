@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:mais_saude/view/pages/registration_view.dart';
-import 'package:mais_saude/view/pages/login_view.dart';
+import 'package:mais_saude/view/pages/login/registration_view.dart';
+import 'package:mais_saude/view/pages/login/login_view.dart';
 
 class InitialPresentation extends StatelessWidget {
   const InitialPresentation({super.key});
@@ -43,7 +44,7 @@ class InitialPresentation extends StatelessWidget {
                     const Text(
                       'Marque suas consultas com facilidade e praticidade, sem precisar ir ao IF.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 18),
                     ),
                     const SizedBox(height: 50),
                     ElevatedButton(
@@ -58,13 +59,13 @@ class InitialPresentation extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                            MaterialStateProperty.all(Color(0xFF0A9080)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
@@ -87,13 +88,13 @@ class InitialPresentation extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            WidgetStateProperty.all(Colors.black),
-                        shape: WidgetStateProperty.all(
+                            MaterialStateProperty.all(Color(0xFF0A9080)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
-                        minimumSize: WidgetStateProperty.all(
+                        minimumSize: MaterialStateProperty.all(
                           Size(constraints.maxWidth * 0.85,
                               constraints.maxHeight * 0.082),
                         ),
