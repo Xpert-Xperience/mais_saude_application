@@ -80,26 +80,26 @@ class _HomeApplicationState extends State<HomeApplication> {
             const SizedBox(height: 20),
             Center(
               child: Container(
-                width: 310,
+                width: 350,
                 height: 75,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
                   border:
-                      Border.all(width: 1.8, color: const Color(0xFF28928B)),
+                      Border.all(width: 2, color: const Color(0xFF28928B)),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Nome do Doutor\nEspecialidade'),
-                    const SizedBox(width: 40),
+                    const Text('Dr. Matheus\nClínico Geral'),
+                    const SizedBox(width: 60),
                     Container(
-                      width: 1,
+                      width: 1.5,
                       height: 40,
-                      color: Colors.black,
+                      color: Color(0xFF28928B),
                     ),
                     const SizedBox(width: 40),
-                    const Text('Data'),
+                    const Text('33/33/3333'),
                   ],
                 ),
               ),
@@ -122,11 +122,11 @@ class _HomeApplicationState extends State<HomeApplication> {
                         height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(
-                              width: 1.8, color: const Color(0xFF28928B)),
+                              width: 2, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/fisioterapeuta.png",
+                          "assets/icons8-quiropraxia-fisioterapia-externa-inipagistudio-lineal-color-inipagistudio-64.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -152,11 +152,11 @@ class _HomeApplicationState extends State<HomeApplication> {
                         height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(
-                              width: 1.8, color: const Color(0xFF28928B)),
+                              width: 2, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/odontologia.png",
+                          "assets/icons8-hora-do-dentista-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -190,11 +190,11 @@ class _HomeApplicationState extends State<HomeApplication> {
                         height: 115,
                         decoration: BoxDecoration(
                           border: Border.all(
-                              width: 1.8, color: const Color(0xFF28928B)),
+                              width: 2, color: const Color(0xFF28928B)),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Image.asset(
-                          "assets/clinico_geral.png",
+                          "assets/icons8-mais-96.png",
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -236,11 +236,11 @@ class _HomeApplicationState extends State<HomeApplication> {
         width: 125,
         height: 115,
         decoration: BoxDecoration(
-          border: Border.all(width: 1.8, color: const Color(0xFF28928B)),
+          border: Border.all(width: 2, color: const Color(0xFF28928B)),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Image.asset(
-          "assets/psicologia.png",
+          "assets/icons8-cérebro-96.png",
           fit: BoxFit.contain,
         ),
       ),

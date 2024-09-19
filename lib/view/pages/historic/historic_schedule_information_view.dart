@@ -47,43 +47,48 @@ class _InformationState extends State<Information> {
           const SizedBox(height: 60),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey,
+            child: Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // Centraliza os elementos horizontalmente
+                children: [
+                  const SizedBox(width: 10),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey,
+                    ),
+                    child: const Icon(Icons.person, size: 70),
                   ),
-                  child: const Icon(Icons.person, size: 70),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.profissionalNome,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Color(0xFF0D4542),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.profissionalNome,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Color(0xFF0D4542),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        'Clínico Geral', // Ajuste conforme necessário
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF0D4542),
+                        const SizedBox(height: 2),
+                        const Text(
+                          'Clínico Geral',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF0D4542),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 30),
@@ -113,6 +118,26 @@ class _InformationState extends State<Information> {
                         '${widget.data}${widget.hora != null ? ' às ${widget.hora}' : ''}',
                         style: const TextStyle(
                           fontSize: 11.3,
+                          color: Color(0xFF0D4542),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 18),
+                  const Row(
+                    children: [
+                      Text(
+                        'Local: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color(0xFF0D4542),
+                        ),
+                      ),
+                      Text(
+                        'IFCE - Campus Fortaleza.',
+                        style: TextStyle(
+                          fontSize: 12,
                           color: Color(0xFF0D4542),
                         ),
                       ),

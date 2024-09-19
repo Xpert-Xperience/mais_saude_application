@@ -14,6 +14,9 @@ class Historic extends StatefulWidget {
 }
 
 class _HistoricState extends State<Historic> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchQuery = '';
+
   String? _getCurrentUserId() {
     final user = FirebaseAuth.instance.currentUser;
     return user?.uid;
@@ -32,13 +35,52 @@ class _HistoricState extends State<Historic> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search),
+                hintText: 'Digite o nome do Doutor(a)',
+                labelStyle: const TextStyle(
+                  color: Color(0xFF0D4542),
+                  fontSize: 15,
+                ),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    _searchController.clear();
+                    setState(() {
+                      _searchQuery = '';
+                    });
+                  },
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      const BorderSide(width: 1.8, color: Color(0xFF28928B)),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 1.8,
+                      color: Color(
+                          0xFF28928B)), // Definindo a cor da borda quando está em foco
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _searchQuery = value;
+                });
+              },
+            ),
+          ),
+          const SizedBox(height: 8),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('consultas')
-                  .where('userId',
-                      isEqualTo:
-                          _getCurrentUserId()) // Filtra pelo usuário logado
+                  .where('userId', isEqualTo: _getCurrentUserId())
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
@@ -46,7 +88,17 @@ class _HistoricState extends State<Historic> {
                       child: Text('Nenhuma consulta encontrada.'));
                 }
 
-                final consultas = snapshot.data!.docs;
+                final consultas = snapshot.data!.docs.where((doc) {
+                  const profissionalNome = "lucas";
+                  return profissionalNome
+                      .toLowerCase()
+                      .contains(_searchQuery.toLowerCase());
+                }).toList();
+
+                if (consultas.isEmpty) {
+                  return const Center(
+                      child: Text('Nenhuma consulta encontrada.'));
+                }
 
                 return ListView.builder(
                   itemCount: consultas.length,
@@ -124,7 +176,7 @@ class _HistoricState extends State<Historic> {
                                             Text(
                                               'Cancelar',
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: 14,
                                                 color: Color(0xFF0D4542),
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -158,7 +210,7 @@ class _HistoricState extends State<Historic> {
                                             Text(
                                               'Informações',
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: 14,
                                                 color: Color(0xFF0D4542),
                                                 fontWeight: FontWeight.bold,
                                               ),
