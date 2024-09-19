@@ -109,7 +109,7 @@ class _ProfileState extends State<Profile> {
         const SizedBox(height: 20), 
         Text(
           userName ?? 'Nome não disponível',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             color: Colors.black,
             fontWeight: FontWeight.bold,
