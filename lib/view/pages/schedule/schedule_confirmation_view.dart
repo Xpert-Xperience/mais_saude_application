@@ -72,7 +72,7 @@ class _ScheduleConfirmationState extends State<ScheduleConfirmation> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Foi enviado para o seu email',
+                    'Acompanhe no seu histórico',
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         color: Color(0xff005651),
