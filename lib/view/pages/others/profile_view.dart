@@ -179,13 +179,13 @@ class _ProfileState extends State<Profile> {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF0A9080),
-          minimumSize: const Size(150, 20),
+          minimumSize: const Size(150, 40),
         ),
         onPressed: () {
           _controller.userLogout(context);
         },
         child: const Text(
-          'Logout',
+          'Sair',
           style: TextStyle(
               fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
         ),

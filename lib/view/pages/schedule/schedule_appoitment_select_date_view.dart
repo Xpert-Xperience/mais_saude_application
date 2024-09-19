@@ -78,12 +78,13 @@ class _ScheduleAppitmentSelectDateState
                           height: 120,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 214, 210, 210),
                             border: Border.all(
-                              color: const Color(0xff08331E),
+                              color: Color.fromARGB(255, 6, 129, 109),
                               width: 2,
                             ),
                           ),
+                          child: const Icon(Icons.person, size: 70),
                         ),
                       ),
                       Positioned(
@@ -93,7 +94,7 @@ class _ScheduleAppitmentSelectDateState
                         child: Container(
                           alignment: Alignment.center,
                           child: const Text(
-                            'Dr.Lucas Davi',
+                            'Dr. Nome do doutor(a)',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
@@ -152,11 +153,12 @@ class _ScheduleAppitmentSelectDateState
                 width: displayWidth() / 0.5,
                 height: 360,
                 decoration: BoxDecoration(
+                 
                   border: Border.all(
-                    color: const Color(0xff014B47),
-                    width: 2,
+                    color: Color.fromARGB(255, 14, 163, 156),
+                    width: 2.5,
                   ),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(2.5),
                 ),
                 child: Center(
                   child: Calendar(especialidade: widget.especialidade,),

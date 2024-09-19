@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mais_saude/view/pages/schedule/schedule_cancel_view.dart'; // Importando o pacote intl para formatação de datas
 
 class Information extends StatefulWidget {
+  
   final String profissionalNome;
   final String data;
   final String? hora;
@@ -71,17 +72,17 @@ class _InformationState extends State<Information> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.profissionalNome,
+                          'Nome do Doutor(a)',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: 18,
                             color: Color(0xFF0D4542),
                           ),
                         ),
                         const SizedBox(
                             height: 2), // Espaçamento para o texto pequeno
                         const Text(
-                          'Clínico Geral', // Ajuste conforme necessário
+                          "Clínico Geral", // Ajuste conforme necessário
                           style: TextStyle(
                             fontSize: 12,
                             color: Color(0xFF0D4542),
@@ -140,6 +141,26 @@ class _InformationState extends State<Information> {
                       ),
                       Text(
                         'IFCE - Campus Fortaleza.',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF0D4542),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 18),
+                  const Row(
+                    children: [
+                      Text(
+                        'Informações: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color(0xFF0D4542),
+                        ),
+                      ),
+                      Text(
+                        'Gostaria de pedir um exame de sangue',
                         style: TextStyle(
                           fontSize: 12,
                           color: Color(0xFF0D4542),

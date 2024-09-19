@@ -20,14 +20,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-        "Password Reset Email has been sent !",
+        "O email foi enviado para a redefinição de senha",
         style: TextStyle(fontSize: 20.0),
       )));
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
-          "No user found for that email.",
+          "O email não foi encontrado",
           style: TextStyle(fontSize: 20.0),
         )));
       }
@@ -101,7 +101,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 child: TextFormField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please Enter Email';
+                      return 'Por favor digite seu email';
                     }
                     return null;
                   },

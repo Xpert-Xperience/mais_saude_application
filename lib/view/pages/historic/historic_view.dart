@@ -42,7 +42,7 @@ class _HistoricState extends State<Historic> {
               controller: _searchController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
-                hintText: 'Digite o nome',
+                hintText: 'Digite o nome do Doutor(a)',
                 labelStyle: const TextStyle(
                   color: Color(0xFF0D4542),
                   fontSize: 15,
@@ -96,7 +96,7 @@ class _HistoricState extends State<Historic> {
                 }
 
                 final consultas = snapshot.data!.docs.where((doc) {
-                  const profissionalNome = "Lucas";
+                  const profissionalNome = "lucas";
                   return profissionalNome
                       .toLowerCase()
                       .contains(_searchQuery.toLowerCase());
@@ -185,7 +185,7 @@ class _HistoricState extends State<Historic> {
                                             Text(
                                               'Cancelar',
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: 14,
                                                 color: Color(0xFF0D4542),
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -216,7 +216,7 @@ class _HistoricState extends State<Historic> {
                                             Text(
                                               'Informações',
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: 14,
                                                 color: Color(0xFF0D4542),
                                                 fontWeight: FontWeight.bold,
                                               ),
