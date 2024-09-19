@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mais_saude/view/pages/historic/historic_view.dart';
 
 class ScheduleCancellation extends StatefulWidget {
-  final String consultaId; // Recebe o ID da consulta a ser cancelada
+  final String consultaId;
 
   const ScheduleCancellation({super.key, required this.consultaId});
 
@@ -13,28 +12,24 @@ class ScheduleCancellation extends StatefulWidget {
 }
 
 class _ScheduleCancellationState extends State<ScheduleCancellation> {
-  // Função para cancelar a consulta
   Future<void> _cancelarConsulta() async {
     try {
-      // Deleta o documento da consulta pelo ID
       await FirebaseFirestore.instance
           .collection('consultas')
           .doc(widget.consultaId)
           .delete();
 
-      // Exibe uma mensagem de sucesso
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Consulta cancelada com sucesso!')),
       );
 
-      // Redireciona para a tela de histórico
+      // Redireciona o usuário para o histórico após cancelar a consulta
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const Historic()),
         (route) => false,
       );
     } catch (e) {
-      // Exibe uma mensagem de erro caso algo dê errado
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erro ao cancelar consulta.')),
       );
@@ -86,37 +81,8 @@ class _ScheduleCancellationState extends State<ScheduleCancellation> {
             Center(
               child: ElevatedButton(
                 onPressed: () async {
-                  // Exibe um diálogo de confirmação antes de cancelar
-                  final bool confirm = await showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: const Text('Confirmar Cancelamento'),
-                        content: const Text(
-                            'Você tem certeza que deseja cancelar esta consulta?'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop(false); // Não cancelar
-                            },
-                            child: const Text('Não'),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pop(true); // Confirmar cancelamento
-                            },
-                            child: const Text('Sim'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-
-                  // Se o usuário confirmar, cancelar a consulta
-                  if (confirm == true) {
-                    await _cancelarConsulta();
-                  }
+                  // Quando o botão "Confirmar" é pressionado, a consulta é cancelada diretamente
+                  await _cancelarConsulta();
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize:
