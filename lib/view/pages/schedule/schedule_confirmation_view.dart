@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/pages/others/home_application_view.dart';
 
@@ -73,7 +72,7 @@ class _ScheduleConfirmationState extends State<ScheduleConfirmation> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Foi enviado para o seu email',
+                    'Acompanhe no seu histórico',
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         color: Color(0xff005651),

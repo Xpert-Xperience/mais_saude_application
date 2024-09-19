@@ -14,13 +14,9 @@ class Historic extends StatefulWidget {
 }
 
 class _HistoricState extends State<Historic> {
-  final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
-
-  // Função para obter o ID do usuário logado
   String? _getCurrentUserId() {
     final user = FirebaseAuth.instance.currentUser;
-    return user?.uid; // Retorna o ID do usuário logado
+    return user?.uid;
   }
 
   @override
@@ -36,91 +32,29 @@ class _HistoricState extends State<Historic> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                hintText: 'Digite o nome',
-                labelStyle: const TextStyle(
-                  color: Color(0xFF0D4542),
-                  fontSize: 15,
-                ),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    _searchController.clear();
-                    setState(() {
-                      _searchQuery = '';
-                    });
-                  },
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      width: 1.8,
-                      color: Color(
-                          0xFF28928B)), // Definindo a cor da borda quando não está em foco
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      width: 1.8,
-                      color: Color(
-                          0xFF28928B)), // Definindo a cor da borda quando está em foco
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  _searchQuery = value;
-                });
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('consultas')
                   .where('userId',
-                      isEqualTo: _getCurrentUserId()) // Filtra por userId
+                      isEqualTo:
+                          _getCurrentUserId()) // Filtra pelo usuário logado
                   .snapshots(),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                   return const Center(
                       child: Text('Nenhuma consulta encontrada.'));
                 }
 
-                final consultas = snapshot.data!.docs.where((doc) {
-                  const profissionalNome = "Lucas";
-                  return profissionalNome
-                      .toLowerCase()
-                      .contains(_searchQuery.toLowerCase());
-                }).toList();
-
-                if (consultas.isEmpty) {
-                  return const Center(
-                      child: Text('Nenhuma consulta encontrada.'));
-                }
+                final consultas = snapshot.data!.docs;
 
                 return ListView.builder(
                   itemCount: consultas.length,
                   itemBuilder: (context, index) {
                     final consulta = consultas[index];
-                    const profissionalNome = "Lucas";
-                    final data = consulta['data'] as Timestamp?;
-                    final hora = consulta['hora'] as String?;
 
-                    // Verificando se o Timestamp está presente e formatando-o
-                    final formattedDate = data != null
-                        ? DateFormat('dd/MM/yyyy').format(data.toDate())
-                        : 'Data não disponível';
-                    final dataHorario =
-                        '$formattedDate às $hora'; // Combina data e hora
+                    // Extrai o ID da consulta
+                    final consultaId = consulta.id;
 
                     return Container(
                       margin: const EdgeInsets.all(16),
@@ -149,9 +83,9 @@ class _HistoricState extends State<Historic> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    profissionalNome,
-                                    style: TextStyle(
+                                  Text(
+                                    consulta['especialidade'],
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
                                       color: Color(0xFF0D4542),
@@ -159,9 +93,9 @@ class _HistoricState extends State<Historic> {
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    dataHorario,
+                                    'Data: ${DateFormat('dd/MM/yyyy').format(consulta['data'].toDate())}',
                                     style: const TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       color: Color(0xFF0D4542),
                                     ),
                                   ),
@@ -170,11 +104,16 @@ class _HistoricState extends State<Historic> {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
+                                          // Passando o ID da consulta para a tela de cancelamento
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const ScheduleCancellation()),
+                                              builder: (context) =>
+                                                  ScheduleCancellation(
+                                                consultaId:
+                                                    consultaId, // Aqui está a correção
+                                              ),
+                                            ),
                                           );
                                         },
                                         child: const Row(
@@ -201,9 +140,12 @@ class _HistoricState extends State<Historic> {
                                             MaterialPageRoute(
                                               builder: (context) => Information(
                                                 profissionalNome:
-                                                    profissionalNome,
-                                                data: formattedDate,
-                                                hora: hora,
+                                                    consulta['especialidade'],
+                                                data: DateFormat('dd/MM/yyyy')
+                                                    .format(consulta['data']
+                                                        .toDate()),
+                                                hora: consulta['hora'],
+                                                consultaId: consultaId,
                                               ),
                                             ),
                                           );

@@ -1,35 +1,55 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_saude/view/pages/historic/historic_view.dart';
 
 class ScheduleCancellation extends StatefulWidget {
-  const ScheduleCancellation({super.key});
+  final String consultaId;
+
+  const ScheduleCancellation({super.key, required this.consultaId});
 
   @override
   State<ScheduleCancellation> createState() => _ScheduleCancellationState();
 }
 
-double displayWidth(BuildContext context) {
-  return MediaQuery.of(context).size.width;
-}
-
 class _ScheduleCancellationState extends State<ScheduleCancellation> {
+  Future<void> _cancelarConsulta() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('consultas')
+          .doc(widget.consultaId)
+          .delete();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Consulta cancelada com sucesso!')),
+      );
+
+      // Redireciona o usuário para o histórico após cancelar a consulta
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const Historic()),
+        (route) => false,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Erro ao cancelar consulta.')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF136A65),
-        leading: Container(
-          decoration: const BoxDecoration(),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         title: const Text(
           'Cancelamento',
@@ -45,19 +65,12 @@ class _ScheduleCancellationState extends State<ScheduleCancellation> {
           children: [
             const SizedBox(height: 50),
             const Text(
-              'Cancelar',
+              'Cancelar Agendamento',
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF0D4542),
               ),
-            ),
-            const Text(
-              'Agendamento',
-              style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF0D4542)),
             ),
             const SizedBox(height: 18),
             const Text(
@@ -67,19 +80,21 @@ class _ScheduleCancellationState extends State<ScheduleCancellation> {
             const SizedBox(height: 110),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Historic()),
-                  );
+                onPressed: () async {
+                  // Quando o botão "Confirmar" é pressionado, a consulta é cancelada diretamente
+                  await _cancelarConsulta();
                 },
                 style: ElevatedButton.styleFrom(
-                    minimumSize: Size(displayWidth(context) * 0.8, 55),
-                    backgroundColor: const Color(0xFF0A9080)),
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.8, 55),
+                  backgroundColor: const Color(0xFF0A9080),
+                ),
                 child: const Text(
                   'Confirmar',
                   style: TextStyle(
-                      fontSize: 22, color: Color.fromARGB(255, 255, 255, 255)),
+                    fontSize: 22,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
                 ),
               ),
             ),
