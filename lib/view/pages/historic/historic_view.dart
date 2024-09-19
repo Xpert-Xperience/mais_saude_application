@@ -14,13 +14,9 @@ class Historic extends StatefulWidget {
 }
 
 class _HistoricState extends State<Historic> {
-  final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
-
-  // Função para obter o ID do usuário logado
   String? _getCurrentUserId() {
     final user = FirebaseAuth.instance.currentUser;
-    return user?.uid; // Retorna o ID do usuário logado
+    return user?.uid;
   }
 
   @override
@@ -36,47 +32,6 @@ class _HistoricState extends State<Historic> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                hintText: 'Digite o nome',
-                labelStyle: const TextStyle(
-                  color: Color(0xFF0D4542),
-                  fontSize: 15,
-                ),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    _searchController.clear();
-                    setState(() {
-                      _searchQuery = '';
-                    });
-                  },
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(width: 1.8, color: Color(0xFF28928B)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      width: 1.8,
-                      color: Color(
-                          0xFF28928B)), // Definindo a cor da borda quando está em foco
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  _searchQuery = value;
-                });
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
